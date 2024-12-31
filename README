@@ -5,3 +5,5 @@ source venv/bin/activate
 # I also had to homebrew install stockfish
 
 # pip install sklearn
+
+# jupyter-lab
