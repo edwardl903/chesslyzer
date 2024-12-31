@@ -1,0 +1,7 @@
+python -m venv venv
+source venv/bin/activate
+
+# just a reminder i had to pip install python-chess
+# I also had to homebrew install stockfish
+
+# pip install sklearn
