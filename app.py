@@ -16,7 +16,7 @@ def generate_csv():
     try:
         # Call the chesslytics.py script to generate the CSV
         result = subprocess.run(
-            ["python3", "chesslytics.py", username],  # Adjust the path if necessary
+            ["python", "chesslytics.py", username],  # Adjust the path if necessary
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
