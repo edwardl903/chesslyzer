@@ -7,3 +7,7 @@ source venv/bin/activate
 # pip install sklearn
 
 # jupyter-lab
+
+# I want to make a drop columns function
+
+# gotta drop pgn
