@@ -146,7 +146,7 @@
             submitBtn.disabled = true;
 
             // Make the POST request to the Flask API
-            fetch('https://chesslyzer.vercel.app/generate', {  // Use your live backend URL here
+            fetch('https://chesslyzer.vercel.app/api/generate', {  // Use your live backend URL here
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
