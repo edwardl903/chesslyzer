@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess.com Wrapped Dashboard</title>
+</head>
+<body>
+    <h1>Chess.com Wrapped</h1>
+    <p>Enter your Chess.com username to generate your personalized dashboard:</p>
+
+    <!-- Username Input Form -->
+    <form id="username-form" action="/generate" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Generate Dashboard</button>
+    </form>
+
+    <!-- Placeholder for the Dashboard -->
+    <div id="dashboard-container" style="margin-top: 20px; display: none;">
+        <h2>Your Dashboard:</h2>
+        <iframe
+            id="dashboard-frame"
+            src=""
+            width="100%"
+            height="600px"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Handle form submission
+        document.getElementById('username-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            const username = document.getElementById('username').value;
+            
+            try {
+                // Send username to backend to generate dashboard
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: username })
+                });
+
+                if (response.ok) {
+                    const data = await response.json(); // Expect backend to return the dashboard URL
+                    const dashboardUrl = data.dashboard_url;
+
+                    // Display the dashboard iframe
+                    const dashboardFrame = document.getElementById('dashboard-frame');
+                    dashboardFrame.src = dashboardUrl;
+
+                    document.getElementById('dashboard-container').style.display = 'block';
+                } else {
+                    console.error('Failed to generate dashboard:', response.statusText);
+                    alert('There was an error generating your dashboard. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an unexpected error. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

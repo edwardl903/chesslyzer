@@ -3,70 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chesslyzer</title>
+    <title>Chess Dashboard Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
         }
-        h1 {
-            color: #333;
+
+        .form-container {
             margin-bottom: 20px;
         }
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            background-color: #f9f9f9;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+
+        .error {
+            color: red;
         }
-        button:hover {
-            background-color: #0056b3;
+
+        .success {
+            color: green;
+        }
+
+        /* Styling for loading message */
+        #loadingMessage {
+            color: #ffa500;
+            display: none;
+        }
+
+        /* Styling for the disabled button */
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Chesslyzer</h1>
-        <p>Please input your Chess.com username below:</p>
-        <input type="text" id="username" placeholder="Enter your username">
-        <br>
-        <button onclick="analyzeChess()">Analyze</button>
+
+    <h1>Welcome to the Chess CSV Generator</h1>
+    
+    <div class="form-container">
+        <label for="username">Enter your Chess.com Username:</label>
+        <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required>
+        <button id="submitBtn">Generate CSV</button>
+    </div>
+
+    <div id="loadingMessage">Generating CSV...</div>
+
+    <div class="result" id="result">
+        <!-- This is where we will display the CSV download link -->
     </div>
 
     <script>
-        function analyzeChess() {
+        document.getElementById('submitBtn').addEventListener('click', function() {
             const username = document.getElementById('username').value;
-            if (username) {
-                alert(`Analyzing chess data for ${username}...`);
-                // You can replace the alert with actual logic to process the username
-            } else {
-                alert('Please enter a valid username.');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!username) {
+                alert('Please enter a username.');
+                return;
             }
-        }
+
+            // Show loading message and disable the button
+            loadingMessage.style.display = 'block';
+            submitBtn.disabled = true;
+
+            // Make the POST request to the Flask API
+            fetch('http://127.0.0.1:5000/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: username }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();  // Return CSV as a blob
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                // Hide loading message and enable the button again
+                loadingMessage.style.display = 'none';
+                submitBtn.disabled = false;
+
+                if (data instanceof Blob) {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(data);
+                    link.download = `${username}.csv`;  // Suggested filename
+                    link.click();
+                    document.getElementById('result').innerHTML = `
+                        <p class="success">CSV file generated successfully! Downloading...</p>
+                    `;
+                } else if (data.error) {
+                    document.getElementById('result').innerHTML = `
+                        <p class="error">${data.error}</p>
+                    `;
+                }
+            })
+            .catch(error => {
+                loadingMessage.style.display = 'none';
+                submitBtn.disabled = false;
+                document.getElementById('result').innerHTML = `
+                    <p class="error">Failed to fetch the CSV. Please try again later.</p>
+                `;
+            });
+        });
     </script>
+
 </body>
 </html>
