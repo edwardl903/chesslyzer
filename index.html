@@ -6,45 +6,117 @@
     <title>Chess Dashboard Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3c4e68;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
         }
 
         .form-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
             margin-bottom: 20px;
         }
 
-        .result {
-            margin-top: 20px;
-            padding: 15px;
+        label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
             border: 1px solid #ddd;
-            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #333;
+            box-sizing: border-box;
         }
 
-        .error {
-            color: red;
+        input[type="text"]:focus {
+            border-color: #4c8bf5;
+            outline: none;
         }
 
-        .success {
-            color: green;
+        button {
+            padding: 12px 24px;
+            background-color: #4c8bf5;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        /* Styling for loading message */
+        button:hover {
+            background-color: #4078d4;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
         #loadingMessage {
             color: #ffa500;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
             display: none;
         }
 
-        /* Styling for the disabled button */
-        button:disabled {
-            background-color: #ddd;
-            cursor: not-allowed;
+        .result {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 1.1rem;
+        }
+
+        .success {
+            color: #2ecc71;
+            font-size: 1.1rem;
+        }
+
+        /* Smooth background color transition */
+        .result p {
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to the Chess CSV Generator</h1>
+    <h1>Chess CSV Generator</h1>
     
     <div class="form-container">
         <label for="username">Enter your Chess.com Username:</label>
@@ -74,7 +146,7 @@
             submitBtn.disabled = true;
 
             // Make the POST request to the Flask API
-            fetch('http://127.0.0.1:5000/generate', {
+            fetch('https://chesslyzer.vercel.app/generate', {  // Use your live backend URL here
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

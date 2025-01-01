@@ -1,32 +1,31 @@
 from flask import Flask, request, jsonify, send_file
-from flask_cors import CORS  # Import Flask-CORS
+from flask_cors import CORS  # Import CORS
 import subprocess
 import os
 
 app = Flask(__name__)
 
-# Enable CORS for the specific frontend origin
-CORS(app, resources={r"/*": {"origins": "https://chesslyzer.vercel.app"}})
-
-@app.route('/')
-def index():
-    return send_from_directory('.', 'index.html')
+# Enable CORS for all routes
+CORS(app)
 
 @app.route('/generate', methods=['POST'])
 def generate_csv():
     data = request.json
-    username = data.get('username')
+    username = data['username']
 
     try:
+        # Call the chesslytics.py script to generate the CSV
         result = subprocess.run(
-            ["python", "chesslyzer.py", username],
+            ["python", "chesslytics.py", username],  # Adjust `python3` if needed
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
         )
 
+        # Assuming the Python script generates a CSV with the username
         csv_file = f"{username}.csv"
+
         if os.path.exists(csv_file):
             return send_file(csv_file, as_attachment=True)
 
