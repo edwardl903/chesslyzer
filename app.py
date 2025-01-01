@@ -6,7 +6,8 @@ import os
 app = Flask(__name__)
 
 # Enable CORS for all routes
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://chesslyzer.vercel.app"}})
+
 
 @app.route('/generate', methods=['POST'])
 def generate_csv():
