@@ -402,14 +402,42 @@ def extract_moves_and_timestamps(game_data):
     return white_moves, black_moves
 
 def format_single_time_control(time_control):
-    if '+' in time_control:
-        base, increment = time_control.split('+')
-    else:
-        base, increment = time_control, '0'
+    """
+    Formats the time control into a user-friendly string.
+    Handles cases with very short time controls like 1 second games.
     
-    minutes = int(base) // 60
-    seconds = int(increment)
-    return f"{minutes} + {seconds}"
+    Args:
+        time_control (str): Time control string in the format "base+increment" (e.g., "60+1").
+    
+    Returns:
+        str: Formatted time control string.
+    """
+    if '/' in time_control:
+        # Handle Chess.com's daily format like "1/259200"
+        parts = time_control.split('/')
+        if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
+            days = int(parts[0]) / (int(parts[1]) / 86400)  # Convert fraction to days
+            return f"{days:.1f} day(s) per move"
+        else:
+            return f"Unrecognized format: {time_control}"
+    if '+' in time_control:
+        base, increment = map(int, time_control.split('+'))
+    else:
+        #print(f"Testing Time_Control Value {time_control}")
+        base, increment = int(time_control), 0
+
+    # Convert base time to minutes and seconds
+    minutes = base // 60
+    seconds = base % 60
+    
+    if minutes > 0:
+        base_str = f"{minutes}m {seconds}s" if seconds > 0 else f"{minutes}m"
+    else:
+        base_str = f"{seconds}s"
+    
+    increment_str = f"{increment}s" if increment > 0 else "0s"
+
+    return f"{base_str} + {increment_str}"
     
 
 def convert_to_est(time_str):
@@ -426,15 +454,23 @@ def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfi
     all_games = fetch_all_games_for_last_year(username) ## change to current year if necessary
     game_data = []
 
+    #print(all_games[0].keys())
+    
+
+    # Find columns with some missing values
+    
+
     for game in all_games:
         # Extract PGN metadata
+
         if 'pgn' not in game:
-            print(f"Skipping game due to missing 'pgn' (Bughouse?): {game.get('url', 'Unknown URL')}")
+            #print(f"Skipping game due to missing 'pgn' (Bughouse?): {game.get('url', 'Unknown URL')}")
             continue  # Skip this game if 'pgn' is missing (these are bughouse games or weird ass games)
             
         pgn = game['pgn']
 
         time_control = format_single_time_control(game['time_control'])
+        
         metadata = extract_pgn_metadata(pgn)
 
         date = metadata.get('Date', None)
@@ -446,6 +482,7 @@ def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfi
         end_time_est = convert_to_est(end_time)
             
         link = metadata.get('Link', None)
+        #print(f"Link for this game: {link}")
         eco = metadata.get('ECOUrl', None)
         time_spent = calculate_time_difference(start_time, end_time)
         moves = extract_moves_from_pgn(pgn)
@@ -465,6 +502,7 @@ def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfi
             'link': link,
             'time_control': time_control,
             'time_class': game['time_class'],
+            'game_type': game['rules'],
             'rated': game['rated'],
             'tcn': game['tcn'],
             'uuid': game['uuid'],
@@ -663,15 +701,15 @@ def clean_dataframe(df, username):
 
     # Initialize new columns with None
     columns_to_initialize = [
-        'my_username', 'my_rating', 'my_result', 'my_win_or_lose', 'my_metamoves',
-        'opp_username', 'opp_rating', 'opp_result', 'opp_metamoves'
+        'my_username', 'my_rating', 'my_result', 'my_color', 'my_win_or_lose', 'my_metamoves',
+        'opp_username', 'opp_rating', 'opp_result', 'opp_metamoves' #do i have to initialize my_color
     ]
     for column in columns_to_initialize:
         cleaned_df[column] = None
 
     # Loop through and assign values based on the condition
     for index, row in cleaned_df.iterrows():
-        if row['white_username'] == username:
+        if row['white_username'].lower() == username.lower():
             cleaned_df.at[index, 'my_username'] = row['white_username']
             cleaned_df.at[index, 'my_rating'] = row['white_rating']
             cleaned_df.at[index, 'my_result'] = row['white_result']
@@ -683,7 +721,7 @@ def clean_dataframe(df, username):
             cleaned_df.at[index, 'opp_metamoves'] = row['black_metamoves']
             cleaned_df.at[index, 'my_win_or_lose'] = 'win' if row['white_result'] == 'win' else 'draw' if row['white_result'] in ['draw', 'stalemate', 'repetition', 'insufficient', 'timevsinsufficient'] else 'lose'
 
-        elif row['black_username'] == username:
+        elif row['black_username'].lower() == username.lower():
             cleaned_df.at[index, 'my_username'] = row['black_username']
             cleaned_df.at[index, 'my_rating'] = row['black_rating']
             cleaned_df.at[index, 'my_result'] = row['black_result']
@@ -694,6 +732,9 @@ def clean_dataframe(df, username):
             cleaned_df.at[index, 'opp_result'] = row['white_result']
             cleaned_df.at[index, 'opp_metamoves'] = row['white_metamoves']
             cleaned_df.at[index, 'my_win_or_lose'] = 'win' if row['black_result'] == 'win' else 'draw' if row['black_result'] in ['draw', 'stalemate', 'repetition', 'insufficient', 'timevsinsufficient'] else 'lose'
+        else:
+            print(f"BIG FUCKING Error: username '{username}' not found in either white or black columns at index {index}")
+            print(f"White Username: {row['white_username']}, Black Username: {row['black_username']}, Game Link: {row['link']}")
 
     def time_string_to_seconds_with_fraction(time_str):
         # Split the string into hours, minutes, and seconds
@@ -702,9 +743,48 @@ def clean_dataframe(df, username):
         return h * 3600 + m * 60 + s
 
     def convert_time_class_to_seconds(time_class):
-        # Extract the part before the '+', convert to integer, and multiply by 60 to get seconds
-        base_minutes = int(time_class.split('+')[0].strip())
-        return base_minutes * 60
+        """
+        Converts a time control string into total seconds.
+        Handles formats like '5+5' (base + increment), '5m + 0s', and Chess.com's daily formats like '1/259200'.
+        
+        Args:
+            time_class (str): The time control string.
+        
+        Returns:
+            float or str: Total seconds for the base time or "Weird" if unrecognized.
+        """
+        if 'm' in time_class and '+' in time_class:
+            # Handle formats like '5m + 0s'
+            try:
+                base_part, increment_part = time_class.split('+')
+                base_minutes = int(base_part.replace('m', '').strip())
+                increment_seconds = int(increment_part.replace('s', '').strip())
+                return base_minutes * 60 + increment_seconds
+            except ValueError:
+                return "Weird"
+        
+        if '/' in time_class:
+            # Handle Chess.com's daily format
+            parts = time_class.split('/')
+            if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
+                base_days = int(parts[0]) / (int(parts[1]) / 86400)  # Convert fraction to days in seconds
+                return base_days * 86400
+            else:
+                return "Weird"
+        
+        if '+' in time_class:
+            # Handle formats like '5+5'
+            try:
+                base_minutes = int(time_class.split('+')[0].strip())
+                return base_minutes * 60
+            except ValueError:
+                return "Weird"
+        
+        # Default case for unrecognized formats
+        return "Weird"
+
+
+    
 
     # Calculate time-related columns
     cleaned_df['my_time_left'] = np.where(
@@ -717,15 +797,23 @@ def clean_dataframe(df, username):
         cleaned_df['opp_metamoves'].apply(lambda x: time_string_to_seconds_with_fraction(x[-1][1]) if x and len(x[-1]) > 1 else 0) #account for empty 
     )
     
-    cleaned_df['my_num_moves'] = cleaned_df['my_metamoves'].apply(len)
+    cleaned_df['my_num_moves'] = cleaned_df['my_metamoves'].apply(lambda x: len(x) if x else 0)
 
+
+        # Add a safe calculation for ratios, only if time_control is valid
+    def safe_time_left_ratio(row, col_name):
+        time_control_seconds = convert_time_class_to_seconds(row['time_control'])
+        if time_control_seconds == "Weird" or time_control_seconds == 0:
+            return np.nan  # Return NaN for invalid or unrecognized time controls
+        return row[col_name] / time_control_seconds
+    
     cleaned_df['my_time_left_ratio'] = cleaned_df.apply(
-        lambda row: row['my_time_left'] / convert_time_class_to_seconds(row['time_control']),
+        lambda row: safe_time_left_ratio(row, 'my_time_left'),
         axis=1
     )
-
+    
     cleaned_df['opp_time_left_ratio'] = cleaned_df.apply(
-        lambda row: row['opp_time_left'] / convert_time_class_to_seconds(row['time_control']),
+        lambda row: safe_time_left_ratio(row, 'opp_time_left'),
         axis=1
     )
 
@@ -815,7 +903,7 @@ def total_statistics(cleaned_df):
 
     total_draw = total_stalemate + total_repetition + total_timevsinsufficient + total_insufficient
     total_loss = total_checkmated + total_timeout + total_resigned + total_abandoned
-    total_moves = cleaned_df['my_num_moves']
+    total_moves = cleaned_df['my_num_moves'].sum()
     total_time_spent = cleaned_df['time_spent'].sum()
     #total_thinking_time_spent = cleaned_df['']
 
@@ -943,8 +1031,8 @@ def collect_statistics(df):
     }
 
     # Elo progression
-    elo_progression = calculate_elo_progression(df)
-    stats['elo_progression'] = elo_progression
+    #elo_progression = calculate_elo_progression(df)
+    #stats['elo_progression'] = elo_progression # EDWARD LOOK AT THIS
 
     # Streaks
     winning_streak = longest_streak(df['my_win_or_lose'], 'win')
@@ -979,27 +1067,34 @@ def collect_statistics(df):
 
 
 def get_flag_statistics(cleaned_df):
-    # Filter the data to focus on games where time left is between 0.0 and 5.0 seconds
-    filtered_df = cleaned_df[cleaned_df['my_time_left'] >= 0.0]
-    filtered_df = filtered_df[filtered_df['my_time_left'] <= 5.0]
-    
-    # Filter for wins where 'my_win_or_lose' is 'win' and 'my_time_left' is between 0.1 and 5
-    my_filtered_wins = filtered_df[
-        (filtered_df['my_win_or_lose'] == 'win') &
-        (filtered_df['my_time_left'] >= 0.1) &
-        (filtered_df['my_time_left'] <= 5)
+    # Filter for wins where 'my_win_or_lose' is 'win' (games where you flagged the opponent)
+    my_filtered_wins = cleaned_df[
+        (cleaned_df['my_win_or_lose'] == 'win') &
+        (cleaned_df['my_time_left'] >= 0.1) &
+        (cleaned_df['my_time_left'] <= 5)
     ]
 
-    # Filter for losses where 'my_win_or_lose' is 'lose' and opponent's time is between 0.1 and 5
-    opp_filtered_wins = filtered_df[
-        (filtered_df['my_win_or_lose'] == 'lose') &
-        (filtered_df['opp_time_left'] >= 0.1) &
-        (filtered_df['opp_time_left'] <= 5)
+    # Sort by 'opp_time_left' (ascending) to get the games where you flagged the most
+    top_10_flagged_games = my_filtered_wins.sort_values(by='opp_time_left').head(10)
+
+    # Filter for losses where 'my_win_or_lose' is 'lose' (games where you got flagged)
+    opp_filtered_wins = cleaned_df[
+        (cleaned_df['my_win_or_lose'] == 'win') &
+        (cleaned_df['opp_time_left'] >= 0.1) &
+        (cleaned_df['opp_time_left'] <= 5)
     ]
+
+    # Sort by 'my_time_left' (ascending) to get the games where you were flagged the most
+    top_10_get_flagged_games = opp_filtered_wins.sort_values(by='my_time_left').head(10)
 
     # Print total counts for wins (my and opponent's)
-    print(f"My total flag wins {len(my_filtered_wins)}")
-    print(f"Opponent total flag wins {len(opp_filtered_wins)}")
+    #print(f"My total flag wins: {len(my_filtered_wins)}")
+    #print(f"My total flag losses: {len(opp_filtered_wins)}")
+    #print(f"Top 10 games where I flagged the most (based on opponent's time left):")
+    #print(top_10_flagged_games[['link', 'opp_time_left', 'my_time_left', 'black', 'white']])
+
+    #print(f"Top 10 games where I got flagged the most (based on my time left):")
+    #print(top_10_get_flagged_games[['link', 'opp_time_left', 'my_time_left', 'black', 'white']])
 
     # Group by relevant columns and get counts for both filtered dataframes
     my_flag_counts = my_filtered_wins.groupby(['my_time_left', 'my_win_or_lose', 'link']).size().sort_index()
@@ -1008,9 +1103,11 @@ def get_flag_statistics(cleaned_df):
     # Store statistics in a dictionary
     flag_statistics = {
         "my_total_flag_wins": len(my_filtered_wins),
-        "opp_total_flag_wins": len(opp_filtered_wins),
-        "my_flag_counts": my_flag_counts.to_dict(),
-        "opp_flag_counts": opp_flag_counts.to_dict()
+        "my_total_flag_losses": len(opp_filtered_wins),
+        "top_10_flagged_games": top_10_flagged_games[['link', 'opp_time_left', 'my_time_left', 'my_win_or_lose', 'my_color']].to_dict(orient='records'),
+        "top_10_get_flagged_games": top_10_get_flagged_games[['link', 'opp_time_left', 'my_time_left', 'my_win_or_lose', 'my_color']].to_dict(orient='records'),
+        #"my_flag_counts": my_flag_counts.to_dict(),
+        #"opp_flag_counts": opp_flag_counts.to_dict()
     }
 
     # Return the flag statistics dictionary
@@ -1123,6 +1220,23 @@ import pandas as pd
 
 def plot_opening_statistics(cleaned_df, output_dir):
     # Group by 'eco' and 'my_win_or_lose' to count occurrences
+
+    print("Checking for NaN values...")
+    print(f"NaN values in 'my_time_left': {cleaned_df['my_time_left'].isna().sum()}")
+    print(f"NaN values in 'my_win_or_lose': {cleaned_df['my_win_or_lose'].isna().sum()}")
+    print(f"NaN values in 'time_class': {cleaned_df['time_class'].isna().sum()}")
+    
+    # Print unique values for each column to inspect the data
+    '''print("\nUnique values in 'my_time_left':")
+    print(cleaned_df['my_time_left'].unique())
+    
+    print("\nUnique values in 'my_win_or_lose':")
+    print(cleaned_df['my_win_or_lose'].unique())
+    
+    print("\nUnique values in 'time_class':")
+    print(cleaned_df['time_class'].unique())'''
+
+    
     opening_stats = cleaned_df.groupby(['eco', 'my_win_or_lose']).size().unstack(fill_value=0)
 
     # Calculate total games per opening
@@ -1133,6 +1247,11 @@ def plot_opening_statistics(cleaned_df, output_dir):
 
     # Normalize the stats to get win, draw, and loss rates
     top_10_openings_normalized = top_10_openings.div(top_10_openings['total'], axis=0).drop(columns=['total'])
+
+    # Ensure 'win', 'draw', and 'lose' columns exist
+    for col in ['win', 'draw', 'lose']:
+        if col not in top_10_openings_normalized.columns:
+            top_10_openings_normalized[col] = 0
 
     # Plot the stacked bar chart
     fig, ax = plt.subplots(figsize=(12, 8))
@@ -1162,7 +1281,7 @@ def plot_opening_statistics(cleaned_df, output_dir):
     plt.legend(title='Outcome', loc='upper right')
     plt.tight_layout()
 
-    # Show the plot
+    # Save and show the plot
     plt.savefig(f"{output_dir}Openings_GameOutcome.png")
     plt.show()
 
@@ -1182,7 +1301,7 @@ def plot_time_control_statistics(cleaned_df, output_dir):
     n_rows = (len(time_controls) + n_cols - 1) // n_cols  # Calculate number of rows dynamically
 
     # Set up the subplots
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(n_cols * 8, n_rows * 8))  # Adjust figsize as needed
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(n_cols * 8, n_rows * 8))
     axes = axes.flatten()  # Flatten the axes array to make indexing easier
 
     # Define custom colors: Green for win, Red for loss, Gray for draw
@@ -1196,38 +1315,53 @@ def plot_time_control_statistics(cleaned_df, output_dir):
         # Count the occurrences of 'my_win_or_lose' for that time_control
         win_loss_counts = time_control_data['my_win_or_lose'].value_counts()
 
-        # Ensure 'draw' is included if it's missing in the data for that time_control
-        if 'draw' not in win_loss_counts:
-            win_loss_counts['draw'] = 0
+
+        # Ensure 'win', 'lose', and 'draw' are included even if missing
+        for result in ['win', 'lose', 'draw']:
+            if result not in win_loss_counts:
+                win_loss_counts[result] = 0
+
+        # Sort by expected order
+        win_loss_counts = win_loss_counts[['win', 'lose', 'draw']]
+
+        # Skip empty data (all counts zero)
+        if win_loss_counts.sum() == 0:
+            print(f"Debugging: Skipping {time_control} as all counts are zero.")
+            continue
 
         # Define colors based on outcomes
         colors = [color_map[result] for result in win_loss_counts.index]
 
         # Create labels with both count and percentage
-        total_games = len(time_control_data)
+        total_games = win_loss_counts.sum()
         labels = [f'{result} - {count} games' for result, count in zip(win_loss_counts.index, win_loss_counts)]
-        # Add total games count at the bottom of the chart
         label_text = f'Total: {total_games} games'
 
         # Plot a pie chart for the current time_control
         ax = axes[i]  # Use the i-th axis in the flattened axes array
-        wedges, texts, autotexts = ax.pie(win_loss_counts, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
+        wedges, texts, autotexts = ax.pie(
+            win_loss_counts, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors
+        )
 
-        # Set title
+        # Set title and aspect ratio
         ax.set_title(f'{time_control} Win/Loss/Draw Distribution')
-
-        # Adjust the label text position for the pie chart
-        ax.axis('equal')  # Equal aspect ratio ensures that pie chart is drawn as a circle.
+        ax.axis('equal')  # Ensures pie chart is circular
 
         # Add total games label below the pie chart
         ax.text(0, -1.4, label_text, ha='center', va='center', fontsize=12, color='black')
 
-    # Adjust layout for better spacing between charts
+    # Hide unused subplots (for empty time_controls)
+    for j in range(len(time_controls), len(axes)):
+        fig.delaxes(axes[j])
+
+    # Adjust layout for better spacing
     plt.tight_layout()
 
-    # Display the pie charts
+    # Save and display the pie charts
+    print("Debugging: Saving and displaying the pie charts.")
     plt.savefig(f"{output_dir}TimeControl_Pi_GameOutcome.png")
     plt.show()
+
 
 
 
@@ -1604,37 +1738,57 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+
 def plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir):
+    # Ensure necessary columns exist and are numeric
+    if 'my_rating' not in cleaned_df or 'opp_rating' not in cleaned_df or 'my_win_or_lose' not in cleaned_df:
+        print("Error: Missing one of the necessary columns.")
+        return
+    
     # Create a new column for rating difference
     cleaned_df['rating_difference'] = cleaned_df['my_rating'] - cleaned_df['opp_rating']
-
+    
     # Filter out rows where rating difference or my_win_or_lose is missing
     filtered_data = cleaned_df[['rating_difference', 'my_win_or_lose']].dropna()
+    
+    # Check if filtered data is empty
+    if filtered_data.empty:
+        print("Error: No valid data available after dropping missing values.")
+        return
 
     # Standardize the rating_difference column
     scaler = StandardScaler()
     filtered_data['scaled_rating_difference'] = scaler.fit_transform(filtered_data[['rating_difference']])
-
+    
     # Set plot size
     plt.figure(figsize=(10, 6))
-
+    
     # Create a boxplot for scaled rating difference by game outcome with wider boxes
     sns.boxplot(x='my_win_or_lose', y='scaled_rating_difference', data=filtered_data, palette='Set2', width=0.6)
-
+    
     # Customize the plot
     plt.title('Scaled Rating Difference vs. Game Outcome')
     plt.xlabel('Game Outcome')
     plt.ylabel('Scaled Rating Difference (Player - Opponent)')
-
+    
     # Adjust the y-axis limits to emphasize a specific range
     plt.ylim(-3, 3)  # You can change these values to whatever makes sense for your data
-
+    
     plt.grid(True, linestyle='--', alpha=0.7)
-
+    
+    # Ensure output directory exists
+    import os
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
     # Display the plot
     plt.tight_layout()
     plt.savefig(f"{output_dir}RatingDiff_GameOutcome_BoxPlot.png")  # Save the plot
     plt.show()
+
 
 
 
@@ -1645,7 +1799,24 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def plot_game_outcome_by_time_left(cleaned_df, output_dir):
-    # Ensure 'time_left' is sorted
+        # Ensure 'time_left' is sorted
+        # Check for NaN values and print them
+    print("Checking for NaN values...")
+    print(f"NaN values in 'my_time_left': {cleaned_df['my_time_left'].isna().sum()}")
+    print(f"NaN values in 'my_win_or_lose': {cleaned_df['my_win_or_lose'].isna().sum()}")
+    print(f"NaN values in 'time_class': {cleaned_df['time_class'].isna().sum()}")
+    
+    # Print unique values for each column to inspect the data
+    # print("\nUnique values in 'my_time_left':")
+    # print(cleaned_df['my_time_left'].unique())
+    
+    # print("\nUnique values in 'my_win_or_lose':")
+    # print(cleaned_df['my_win_or_lose'].unique())
+    
+    # print("\nUnique values in 'time_class':")
+    # print(cleaned_df['time_class'].unique())
+
+    
     cleaned_df = cleaned_df.sort_values('my_time_left')
 
     # Define time controls
@@ -1806,6 +1977,48 @@ def plot_game_count_heatmap_by_castling(cleaned_df, output_dir):
 # In[30]:
 
 
+def plot_rating_progression_over_time(cleaned_df, output_dir):
+    """
+    This function generates a plot of rating progression over time for different time classes.
+    It filters the data for non-null ratings and plots the rating for each time class.
+    """
+    # Ensure 'date' is in datetime format
+    cleaned_df['date'] = pd.to_datetime(cleaned_df['date'])
+
+    # Filter rows where 'my_rating' exists
+    rating_data = cleaned_df[~cleaned_df['my_rating'].isna()]
+
+    # Get unique time_classes
+    time_classes = rating_data['time_class'].unique()
+
+    # Plot rating over time for each time_class
+    plt.figure(figsize=(12, 6))
+
+    for time_class in time_classes:
+        # Filter data for the current time_class
+        time_class_data = rating_data[rating_data['time_class'] == time_class]
+        
+        # Plot rating over time for the current time_class
+        plt.plot(time_class_data['date'], time_class_data['my_rating'], marker='o', linestyle='-', label=time_class)
+
+    # Customize the plot
+    plt.title('Rating Over Time for Different Time Controls')
+    plt.xlabel('Date')
+    plt.ylabel('Rating')
+    plt.xticks(rotation=45)
+    plt.grid(True)
+    plt.legend(title='Time Class')
+
+    # Display the plot
+    plt.tight_layout()
+    plt.savefig(f"{output_dir}RatingProgressionOverTime.png")  # Save the plot
+    plt.show()
+
+
+
+# In[31]:
+
+
 import time
 import sys
 
@@ -1818,14 +2031,21 @@ def drop_columns(df):
         print(df.columns)
     return df
 
+
 def main(username):
     global testing_df
-    print("My Chesslyzer!!!")
+    print("Chesslyzer booting...!!!")
     
     start_time = time.time()
     
     df = fetch_and_process_game_data(username)
     cleaned_df = clean_dataframe(df, username)
+    cleaned_df = cleaned_df[cleaned_df['rules'] == 'chess']
+    #print(cleaned_df['my_num_moves'].head())
+    #print(cleaned_df['my_moves'].head())
+    
+
+    
     statistics = total_statistics(cleaned_df)
     
     more_statistics = collect_statistics(cleaned_df)
@@ -1833,8 +2053,15 @@ def main(username):
 
 
     flag_statistics = get_flag_statistics(cleaned_df)
-    #for stat, value in more_statistics.items():
-        #print(f"{stat}: {value}")
+
+    
+    for stat, value in statistics.items():
+        print(f"{stat}: {value}")
+    for stat, value in flag_statistics.items():
+        print(f"{stat}: {value}")
+    for stat, value in more_statistics.items():
+        print(f"{stat}: {value}")
+
 
     final_df = drop_columns(cleaned_df)
     final_df.to_csv(f'{username}.csv', index=False)
@@ -1858,7 +2085,9 @@ def main(username):
     plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
     plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
 
+    plot_rating_progression_over_time(cleaned_df, output_dir)
 
+        
     testing_df = final_df.copy()
     
     end_time = time.time()
@@ -1867,12 +2096,13 @@ def main(username):
 
 # Boilerplate to run main when executed directly (for testing or debugging)
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
+    '''if len(sys.argv) > 1:
         username = sys.argv[1]  # Get username from command line arguments
         main(username)
     else:
-        print("Usage: python chesslytics.py <username>")
-    #main(username)
+        print("Usage: python chesslytics.py <username>")'''
+    username = "joebruin"
+    main(username)
 
 
 
@@ -1888,7 +2118,7 @@ if __name__ == "__main__":
 
 
 
-# In[31]:
+# In[32]:
 
 
 import os
@@ -1919,8 +2149,19 @@ def combine_images_to_pdf(input_dir="images", output_file="combined_images.pdf")
 combine_images_to_pdf(input_dir='images', output_file=f'images/{username}_combined_output.pdf')
 
 
-# In[ ]:
+# In[34]:
 
 
 ### current problems, people with little games or no games, a lot of empty stuff such as eco 
+### no value for either time_control or my_win_or_lose i think (or the time_control or my_win_or_lose fields are missing/NaN.)
+
+#time left and game count
+
+#goals to organize all the visualization functions and the extraction functions into another notebook
+
+
+# In[ ]:
+
+
+
 

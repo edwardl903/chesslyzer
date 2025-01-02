@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Dashboard Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3c4e68;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4c8bf5;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #4c8bf5;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4078d4;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #loadingMessage {
+            color: #ffa500;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 1.1rem;
+        }
+
+        .success {
+            color: #2ecc71;
+            font-size: 1.1rem;
+        }
+
+        /* Smooth background color transition */
+        .result p {
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chess CSV Generator</h1>
+    
+    <div class="form-container">
+        <label for="username">Enter your Chess.com Username:</label>
+        <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required>
+        <button id="submitBtn">Generate CSV</button>
+    </div>
+
+    <div id="loadingMessage">Generating CSV...</div>
+
+    <div class="result" id="result">
+        <!-- This is where we will display the CSV download link -->
+    </div>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const loadingMessage = document.getElementById('loadingMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!username) {
+                alert('Please enter a username.');
+                return;
+            }
+
+            // Show loading message and disable the button
+            loadingMessage.style.display = 'block';
+            submitBtn.disabled = true;
+
+            // Make the POST request to the Flask API
+            fetch('https://chesslyzer.vercel.app/api/generate', {  // Use your live backend URL here
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: username }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();  // Return CSV as a blob
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                // Hide loading message and enable the button again
+                loadingMessage.style.display = 'none';
+                submitBtn.disabled = false;
+
+                if (data instanceof Blob) {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(data);
+                    link.download = `${username}.csv`;  // Suggested filename
+                    link.click();
+                    document.getElementById('result').innerHTML = `
+                        <p class="success">CSV file generated successfully! Downloading...</p>
+                    `;
+                } else if (data.error) {
+                    document.getElementById('result').innerHTML = `
+                        <p class="error">${data.error}</p>
+                    `;
+                }
+            })
+            .catch(error => {
+                loadingMessage.style.display = 'none';
+                submitBtn.disabled = false;
+                document.getElementById('result').innerHTML = `
+                    <p class="error">Failed to fetch the CSV. Please try again later.</p>
+                `;
+            });
+        });
+    </script>
+
+</body>
+</html>
