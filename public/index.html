@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Dashboard Generator</title>
+    <title>ChessLytics - Chess Wrapped 2024!</title>
     <!-- Link to external CSS -->
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
 
-    <h1>Chess CSV Generator</h1>
+    <h1>ChessLytics - Chess Wrapped 2024!</h1>
     
     <div class="form-container">
         <label for="username">Enter your Chess.com Username:</label>
         <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required>
-        <button id="submitBtn">Generate CSV</button>
+        <button id="submitBtn">Generate Chess Analytics</button>
     </div>
 
-    <div id="loadingMessage" style="display: none;">Generating CSV...</div>
+    <div id="loadingMessage" style="display: none;">Generating Chess Analytics...</div>
 
     <div class="result" id="result">
         <!-- This is where we will display the CSV download link and images -->
@@ -28,6 +28,7 @@
             const username = document.getElementById('username').value;
             const loadingMessage = document.getElementById('loadingMessage');
             const submitBtn = document.getElementById('submitBtn');
+            const resultContainer = document.getElementById('result');
             
             if (!username) {
                 alert('Please enter a username.');
@@ -37,6 +38,10 @@
             // Show loading message and disable the button
             loadingMessage.style.display = 'block';
             submitBtn.disabled = true;
+    
+            // Reset the result section before generating new data
+            resultContainer.innerHTML = ''; // Clear previous results
+            resultContainer.style.display = 'none'; // Hide results section until new results are fetched
     
             // Make the POST request to the Flask API
             fetch('http://127.0.0.1:5000/generate', {
@@ -52,6 +57,9 @@
                 loadingMessage.style.display = 'none';
                 submitBtn.disabled = false;
     
+                // Show the result container
+                resultContainer.style.display = 'block';
+    
                 if (data.images) {
                     // Display images in a grid layout
                     const imagesContainer = document.getElementById('result');
@@ -66,7 +74,7 @@
                     });
                     imagesContainer.appendChild(imageGrid);
                 } else if (data.error) {
-                    document.getElementById('result').innerHTML = `
+                    resultContainer.innerHTML = `
                         <p class="error">${data.error}</p>
                     `;
                 }
@@ -74,10 +82,14 @@
             .catch(error => {
                 loadingMessage.style.display = 'none';
                 submitBtn.disabled = false;
-                document.getElementById('result').innerHTML = `
-                    <p class="error">Failed to fetch the CSV. Please try again later.</p>
+                resultContainer.style.display = 'block';
+                resultContainer.innerHTML = `
+                    <p class="error">Failed to fetch the data. Please try again later.</p>
                 `;
             });
+    
+            // Reset the username input field after submission
+            document.getElementById('username').value = '';
         });
     </script>
 

@@ -1181,7 +1181,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)  # Rotate x-axis labels for better visibility
     plt.savefig(f"{output_dir}image_1.png")
-    plt.show()
+    #plt.show()
 
     # Plotting the frequency of games by weekday
     plt.figure(figsize=(10, 6))
@@ -1191,7 +1191,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)
     plt.savefig(f"{output_dir}image_2.png")
-    plt.show()
+    #plt.show()
 
     # Plotting the frequency of games by hour
     plt.figure(figsize=(10, 6))
@@ -1201,7 +1201,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)
     plt.savefig(f"{output_dir}image_3.png")
-    plt.show()
+    #plt.show()
 
 
 
@@ -1282,8 +1282,8 @@ def plot_opening_statistics(cleaned_df, output_dir):
     plt.tight_layout()
 
     # Save and show the plot
-    plt.savefig(f"{output_dir}Openings_GameOutcome.png")
-    plt.show()
+    plt.savefig(f"{output_dir}image_4.png")
+    #plt.show()
 
 
 
@@ -1359,8 +1359,8 @@ def plot_time_control_statistics(cleaned_df, output_dir):
 
     # Save and display the pie charts
     print("Debugging: Saving and displaying the pie charts.")
-    plt.savefig(f"{output_dir}TimeControl_Pi_GameOutcome.png")
-    plt.show()
+    #plt.savefig(f"{output_dir}image_5.png")
+    #plt.show()
 
 
 
@@ -1380,16 +1380,25 @@ def plot_time_class_statistics(cleaned_df, output_dir):
     n_rows = 1  # All in one row
     fig, axes = plt.subplots(n_rows, n_cols, figsize=(n_cols * 8, 8))  # Adjust figsize as needed
 
+    # Define new color palette
+    win_color = '#66b3ff'  # Soft blue for win
+    lose_color = '#ff6666'  # Soft red for loss
+    draw_color = '#ffcc99'  # Soft orange for draw
+
     # Loop through each time_class and plot the pie chart
     for i, time_class in enumerate(time_classes):
         # Filter the DataFrame for the current time_class
         time_class_data = cleaned_df[cleaned_df['time_class'] == time_class]
         
-        # Count the occurrences of 'my_win_or_lose' for that time_class
+        # Count the occurrences of 'my_win_or_lose' for that time_class (including 'draw')
         win_loss_counts = time_class_data['my_win_or_lose'].value_counts()
-        
-        # Define custom colors (green for win, red for loss)
-        colors = ['green' if result == 'win' else 'red' for result in win_loss_counts.index]
+
+        # Make sure all outcomes (win, loss, draw) are represented
+        outcomes = ['win', 'lose', 'draw']
+        win_loss_counts = win_loss_counts.reindex(outcomes, fill_value=0)
+
+        # Define custom colors (subtle, elegant shades)
+        colors = [win_color, lose_color, draw_color]
         
         # Create labels with both count and percentage
         total_games = len(time_class_data)
@@ -1402,7 +1411,7 @@ def plot_time_class_statistics(cleaned_df, output_dir):
         wedges, texts, autotexts = ax.pie(win_loss_counts, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
         
         # Set title  
-        ax.set_title(f'{time_class} Win/Loss Distribution')
+        ax.set_title(f'{time_class} Win/Loss/Draw Distribution')
         
         # Adjust the label text position for the pie chart
         ax.axis('equal')  # Equal aspect ratio ensures that pie chart is drawn as a circle.
@@ -1413,9 +1422,9 @@ def plot_time_class_statistics(cleaned_df, output_dir):
     # Adjust layout for better spacing between charts
     plt.tight_layout()
 
-    # Display the pie charts side by side
-    plt.savefig(f"{output_dir}GameOutcome_TimeClass_PiCharts.png")
-    plt.show()
+    # Save the pie charts as an image
+    plt.savefig(f"{output_dir}image_5.png")
+    #plt.show()
 
 
 # In[ ]:
@@ -1474,8 +1483,8 @@ def plot_game_outcome_by_hour(cleaned_df, output_dir):
 
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}GameOutcome_HourofDay1.png")
-    plt.show()
+    #plt.savefig(f"{output_dir}GameOutcome_HourofDay1.png")
+    #plt.show()
 
     # Calculate total games and win percentages for each hour
     hourly_totals = hourly_wins.add(hourly_losses, fill_value=0).add(hourly_draws, fill_value=0)
@@ -1504,8 +1513,8 @@ def plot_game_outcome_by_hour(cleaned_df, output_dir):
     fig.tight_layout()  # Ensure everything fits without overlap
 
     # Show the plot
-    plt.savefig(f"{output_dir}GameOutcome_HourofDay2.png")
-    plt.show()
+    plt.savefig(f"{output_dir}image_6.png")
+    #plt.show()
 
 
 # In[18]:
@@ -1559,8 +1568,8 @@ def plot_game_outcome_by_day(cleaned_df, output_dir):
 
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}GameOutcome_DayofWeek.png")
-    plt.show()
+    plt.savefig(f"{output_dir}image_7.png")
+    #plt.show()
 
 
 # In[19]:
@@ -1605,8 +1614,8 @@ def plot_game_outcome_by_month(cleaned_df, output_dir):
 
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}GameOutcome_ByMonth.png")
-    plt.show()
+    plt.savefig(f"{output_dir}image_8.png")
+    #plt.show()
 
 
 # In[ ]:
@@ -1646,8 +1655,8 @@ def plot_win_percentage_vs_opp_rating(cleaned_df, output_dir):
     plt.xticks(rotation=45)
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(f"{output_dir}GameOutcome_OppRating.png")
-    plt.show()
+    plt.savefig(f"{output_dir}image_9.png")
+    #plt.show()
 
 
 # In[21]:
@@ -1675,8 +1684,8 @@ def plot_moves_vs_game_outcome(cleaned_df, output_dir):
 
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}Moves_GameOutcome_Scatterplot.png")  # Save the plot
-    plt.show()
+    plt.savefig(f"{output_dir}image_10.png")  # Save the plot
+    #plt.show()
 
 
 
@@ -1726,8 +1735,8 @@ def plot_win_rate_vs_num_moves(cleaned_df, output_dir):
     plt.tight_layout()
 
     # Display the plot
-    plt.savefig(f"{output_dir}WinRate_NumOfMoves.png")  # Save the plot
-    plt.show()
+    plt.savefig(f"{output_dir}image_11.png")  # Save the plot
+    #plt.show()
 
 
 
@@ -1786,8 +1795,8 @@ def plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir):
     
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}RatingDiff_GameOutcome_BoxPlot.png")  # Save the plot
-    plt.show()
+    plt.savefig(f"{output_dir}image_12.png")  # Save the plot
+    #plt.show()
 
 
 
@@ -1868,8 +1877,8 @@ def plot_game_outcome_by_time_left(cleaned_df, output_dir):
         plt.legend(title='Outcome', loc='best')
         plt.grid(axis='y', linestyle='--', alpha=0.7)
         plt.tight_layout()
-        plt.savefig(f"{output_dir}TimeLeft_GameOutcome_BoxPlot_{time_control}.png")  # Save the plot
-        plt.show()
+        plt.savefig(f"{output_dir}image_13.png")  # Save the plot
+        #plt.show()
 
 
 
@@ -1936,9 +1945,9 @@ def plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir):
     plt.xlabel('Opponent Castling Frequency')
     plt.ylabel('My Castling Frequency')
     plt.tight_layout()
-    plt.savefig(f"{output_dir}Heatmap_WinRatio_CastlingFrequencies.png")  # Save the plot
+    plt.savefig(f"{output_dir}image_14.png")  # Save the plot
 
-    plt.show()
+    #plt.show()
 
 
 # In[29]:
@@ -1969,9 +1978,9 @@ def plot_game_count_heatmap_by_castling(cleaned_df, output_dir):
     plt.xlabel('Opponent Castling Frequency')
     plt.ylabel('My Castling Frequency')
     plt.tight_layout()
-    plt.savefig(f"{output_dir}Heatmap_GameCount_CastlingFrequencies.png")  # Save the plot
+    plt.savefig(f"{output_dir}image_15.png")  # Save the plot
 
-    plt.show()
+    #plt.show()
 
 
 # In[30]:
@@ -2011,8 +2020,8 @@ def plot_rating_progression_over_time(cleaned_df, output_dir):
 
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}RatingProgressionOverTime.png")  # Save the plot
-    plt.show()
+    plt.savefig(f"{output_dir}image_16.png")  # Save the plot
+    #plt.show()
 
 
 
@@ -2065,27 +2074,26 @@ def main(username):
 
     final_df = drop_columns(cleaned_df)
     final_df.to_csv(f'csv/{username}.csv', index=False)
-    
+
+    plot_rating_progression_over_time(cleaned_df, output_dir)
     plot_game_statistics(final_df, output_dir)
-    #plot_opening_statistics(cleaned_df, output_dir)
+    plot_opening_statistics(cleaned_df, output_dir)
     #plot_time_control_statistics(cleaned_df, output_dir)
-    #plot_time_class_statistics(cleaned_df, output_dir)
-    #plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
+    plot_time_class_statistics(cleaned_df, output_dir)
+    plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
     
-    #plot_game_outcome_by_hour(cleaned_df, output_dir)
-    #plot_game_outcome_by_day(cleaned_df, output_dir)
-    #plot_game_outcome_by_month(cleaned_df, output_dir)
+    plot_game_outcome_by_hour(cleaned_df, output_dir)
+    plot_game_outcome_by_day(cleaned_df, output_dir)
+    plot_game_outcome_by_month(cleaned_df, output_dir)
 
-    #plot_win_percentage_vs_opp_rating(cleaned_df, output_dir)
-    #plot_moves_vs_game_outcome(cleaned_df, output_dir)
-    #plot_win_rate_vs_num_moves(cleaned_df, output_dir)
-    #plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
+    plot_win_percentage_vs_opp_rating(cleaned_df, output_dir)
+    plot_moves_vs_game_outcome(cleaned_df, output_dir)
+    plot_win_rate_vs_num_moves(cleaned_df, output_dir)
+    plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
 
-    #plot_game_outcome_by_time_left(cleaned_df, output_dir)
-    #plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
-    #plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
-
-    #plot_rating_progression_over_time(cleaned_df, output_dir)
+    plot_game_outcome_by_time_left(cleaned_df, output_dir)
+    plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
+    plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
 
         
     testing_df = final_df.copy()
