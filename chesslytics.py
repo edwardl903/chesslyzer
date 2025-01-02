@@ -2096,13 +2096,13 @@ def main(username):
 
 # Boilerplate to run main when executed directly (for testing or debugging)
 if __name__ == "__main__":
-    '''if len(sys.argv) > 1:
+    if len(sys.argv) > 1:
         username = sys.argv[1]  # Get username from command line arguments
         main(username)
     else:
-        print("Usage: python chesslytics.py <username>")'''
-    username = "joebruin"
-    main(username)
+        print("Usage: python chesslytics.py <username>")
+    #username = "joebruin"
+    #main(username)
 
 
 

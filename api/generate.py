@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Enable CORS for all routes
-CORS(app)
+CORS(app, origins=["http://127.0.0.1:5500"])  # Only allow requests from this specific origin
 
 @app.route('/generate', methods=['POST'])
 def generate_csv():
@@ -36,4 +36,4 @@ def generate_csv():
         return jsonify({"error": "Failed to generate CSV"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
