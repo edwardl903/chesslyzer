@@ -1,8 +1,8 @@
 python -m venv venv
 source venv/bin/activate
 
-# just a reminder i had to pip install python-chess
-# I also had to homebrew install stockfish
+# pip install python-chess
+# homebrew install stockfish for evaluations (? not for this project)
 
 # pip install sklearn
 
@@ -15,3 +15,8 @@ source venv/bin/activate
 # cd to frontend and then run vercel --prod # to deploy to production chesslyzer.vercel.app
 
 #to run this locally, just python the flask server (python generate.py)
+
+#data_processing.py, visualization.py, analytics.py
+#next step to split my chesslytics.py into those 3 to make stat extraction easier
+
+# pip install -r requirements.txt
