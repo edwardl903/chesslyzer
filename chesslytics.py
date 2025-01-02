@@ -233,7 +233,7 @@ def fetch_all_games_for_last_year(username, game_filter=None):
 import os  # Add this import at the top
 
 # Ensure the directory exists
-output_dir = 'images/'
+output_dir = 'static/images/'
 os.makedirs(output_dir, exist_ok=True)
 
 
@@ -1180,7 +1180,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     plt.xlabel('Month')
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)  # Rotate x-axis labels for better visibility
-    plt.savefig(f"{output_dir}Frequency_Year.png")
+    plt.savefig(f"{output_dir}image_1.png")
     plt.show()
 
     # Plotting the frequency of games by weekday
@@ -1190,7 +1190,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     plt.xlabel('Weekday')
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)
-    plt.savefig(f"{output_dir}Frequency_Months.png")
+    plt.savefig(f"{output_dir}image_2.png")
     plt.show()
 
     # Plotting the frequency of games by hour
@@ -1200,7 +1200,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     plt.xlabel('Hour of Day')
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)
-    plt.savefig(f"{output_dir}Frequency_Hours.png")
+    plt.savefig(f"{output_dir}image_3.png")
     plt.show()
 
 
@@ -2064,28 +2064,28 @@ def main(username):
 
 
     final_df = drop_columns(cleaned_df)
-    final_df.to_csv(f'{username}.csv', index=False)
+    final_df.to_csv(f'csv/{username}.csv', index=False)
     
     plot_game_statistics(final_df, output_dir)
-    plot_opening_statistics(cleaned_df, output_dir)
-    plot_time_control_statistics(cleaned_df, output_dir)
-    plot_time_class_statistics(cleaned_df, output_dir)
-    plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
+    #plot_opening_statistics(cleaned_df, output_dir)
+    #plot_time_control_statistics(cleaned_df, output_dir)
+    #plot_time_class_statistics(cleaned_df, output_dir)
+    #plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
     
-    plot_game_outcome_by_hour(cleaned_df, output_dir)
-    plot_game_outcome_by_day(cleaned_df, output_dir)
-    plot_game_outcome_by_month(cleaned_df, output_dir)
+    #plot_game_outcome_by_hour(cleaned_df, output_dir)
+    #plot_game_outcome_by_day(cleaned_df, output_dir)
+    #plot_game_outcome_by_month(cleaned_df, output_dir)
 
-    plot_win_percentage_vs_opp_rating(cleaned_df, output_dir)
-    plot_moves_vs_game_outcome(cleaned_df, output_dir)
-    plot_win_rate_vs_num_moves(cleaned_df, output_dir)
-    plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
+    #plot_win_percentage_vs_opp_rating(cleaned_df, output_dir)
+    #plot_moves_vs_game_outcome(cleaned_df, output_dir)
+    #plot_win_rate_vs_num_moves(cleaned_df, output_dir)
+    #plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
 
-    plot_game_outcome_by_time_left(cleaned_df, output_dir)
-    plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
-    plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
+    #plot_game_outcome_by_time_left(cleaned_df, output_dir)
+    #plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
+    #plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
 
-    plot_rating_progression_over_time(cleaned_df, output_dir)
+    #plot_rating_progression_over_time(cleaned_df, output_dir)
 
         
     testing_df = final_df.copy()
@@ -2126,7 +2126,7 @@ from PIL import Image
 Image.MAX_IMAGE_PIXELS = None  # Disable the limit
 
 
-def combine_images_to_pdf(input_dir="images", output_file="combined_images.pdf"):
+def combine_images_to_pdf(input_dir="static/images", output_file="combined_images.pdf"):
     # Get all PNG files in the specified directory
     png_files = sorted([os.path.join(input_dir, f) for f in os.listdir(input_dir) if f.endswith('.png')], key=os.path.getctime)
     
@@ -2146,10 +2146,10 @@ def combine_images_to_pdf(input_dir="images", output_file="combined_images.pdf")
     print(f"Combined PDF saved as {output_file}")
 
 # Usage: Just call the function with the images directory and desired output file name
-combine_images_to_pdf(input_dir='images', output_file=f'images/{username}_combined_output.pdf')
+combine_images_to_pdf(input_dir='static/images', output_file=f'pdf/{username}_ChessLytics.pdf')
 
 
-# In[34]:
+# In[33]:
 
 
 ### current problems, people with little games or no games, a lot of empty stuff such as eco 
