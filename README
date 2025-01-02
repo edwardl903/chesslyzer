@@ -11,3 +11,7 @@ source venv/bin/activate
 # I want to make a drop columns function
 
 # gotta drop pgn
+
+# cd to frontend and then run vercel --prod # to deploy to production chesslyzer.vercel.app
+
+#to run this locally, just python the flask server (python generate.py)

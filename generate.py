@@ -11,7 +11,7 @@ CORS(app)
 # Static directory setup
 @app.route('/')
 def serve_index():
-    return send_from_directory('static', 'index.html')
+    return send_from_directory('public', 'index.html') # public/index.html
 
 @app.route('/generate', methods=['POST'])
 def generate_csv():
@@ -39,6 +39,7 @@ def generate_csv():
         })
 
     except subprocess.CalledProcessError as e:
+        print(f"Error: {e.stderr}")
         return jsonify({"error": "Failed to generate CSV"}), 500
 
 # Start the Flask app
