@@ -3,25 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChessLytics - Chess Wrapped 2024!</title>
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="static/styles.css">
+    <title>ChessLytics - Chess Wrapped 2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+   
 </head>
 <body>
+    <div class="macbook-container">
+        <!-- Main Container for MacBook Pro -->
+        <div class="background-rectangle"></div>
+        <div class="image-container"></div>
+        
+        <div class="frame-16">
+            <div class="frame-19">
+                <h1>ChessLytics - Chess Wrapped 2024!</h1>
+                <p>Enter your Chess.com username:</p>
+            </div>
+            
+            <div class="frame-15">
+                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required />
+            </div>
 
-    <h1>ChessLytics - Chess Wrapped 2024!</h1>
-    
-    <div class="form-container">
-        <label for="username">Enter your Chess.com Username:</label>
-        <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required>
-        <button id="submitBtn">Generate Chess Analytics</button>
+            <div class="frame-14">
+                <button id="submitBtn">Generate Chess Analytics</button>
+            </div>
+
+            <div id="loadingMessage" style="display: none;">Generating Chess Analytics...</div>
+
+            <div class="result" id="result" style="display: none;">
+                <!-- This is where we will display the CSV download link and images -->
+            </div>
+        </div>
     </div>
 
-    <div id="loadingMessage" style="display: none;">Generating Chess Analytics...</div>
-
-    <div class="result" id="result">
-        <!-- This is where we will display the CSV download link and images -->
-    </div>
+</body>
+</html>
 
     <script>
         document.getElementById('submitBtn').addEventListener('click', function() {
@@ -34,15 +50,15 @@
                 alert('Please enter a username.');
                 return;
             }
-    
+
             // Show loading message and disable the button
             loadingMessage.style.display = 'block';
             submitBtn.disabled = true;
-    
+
             // Reset the result section before generating new data
             resultContainer.innerHTML = ''; // Clear previous results
             resultContainer.style.display = 'none'; // Hide results section until new results are fetched
-    
+
             // Make the POST request to the Flask API
             fetch('http://127.0.0.1:5000/generate', {
                 method: 'POST',
@@ -56,30 +72,22 @@
                 // Hide loading message and enable the button again
                 loadingMessage.style.display = 'none';
                 submitBtn.disabled = false;
-    
+
                 // Show the result container
                 resultContainer.style.display = 'block';
-    
-                if (data.images) {
-                    // Display images in a grid layout
-                    const imagesContainer = document.getElementById('result');
-                    imagesContainer.innerHTML = ''; // Clear previous images if any
-                    const imageGrid = document.createElement('div');
-                    imageGrid.classList.add('image-grid');
-                    data.images.forEach(imagePath => {
-                        const imgElement = document.createElement('img');
-                        imgElement.src = 'http://127.0.0.1:5000' + imagePath;
-                        imgElement.alt = "Generated Image";
-                        imageGrid.appendChild(imgElement);
-                    });
-                    imagesContainer.appendChild(imageGrid);
-                } 
-                // Display the JSON data
+
                 if (data.total_time_spent) {
                     const statsContainer = document.createElement('div');
                     statsContainer.innerHTML = `
                         <h2>Your Chess Analytics</h2>
-                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                        <p><strong>Total Time Spent:</strong> ${data.total_time_spent.total_time}</p>
+                        <p><strong>Total Games Played:</strong> ${data.total_games}</p>
+                        <p><strong>Total Wins:</strong> ${data.total_win_draw_loss.win}</p>
+                        <p><strong>Total Draws:</strong> ${data.total_win_draw_loss.draw}</p>
+                        <p><strong>Total Losses:</strong> ${data.total_win_draw_loss.lose}</p>
+                        <p><strong>Longest Winning Streak:</strong> ${data.longest_winning_streak}</p>
+                        <p><strong>Longest Losing Streak:</strong> ${data.longest_losing_streak}</p>
+                      
                     `;
                     resultContainer.appendChild(statsContainer);
                 } else if (data.error) {
@@ -96,11 +104,12 @@
                     <p class="error">Failed to fetch the data. Please try again later.</p>
                 `;
             });
-    
+
             // Reset the username input field after submission
             document.getElementById('username').value = '';
         });
     </script>
+    
 
 </body>
 </html>
