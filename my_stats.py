@@ -1,62 +1,3 @@
-def total_statistics(cleaned_df):
-    # Count the occurrences of each type of castling
-    castling_counts = cleaned_df['my_castling'].value_counts()
-
-    # Store the counts in variables
-    kingside_castles = castling_counts.get('kingside', 0)
-    queenside_castles = castling_counts.get('queenside', 0)
-    no_castles = castling_counts.get('none', 0)
-
-    # Count the result occurrences
-    result_counts = cleaned_df['my_result'].value_counts()
-    total_games = len(cleaned_df)
-    total_win = result_counts.get('win', 0)
-    total_checkmated = result_counts.get('checkmated', 0)
-    total_timeout = result_counts.get('timeout', 0)
-    total_timevsinsufficient = result_counts.get('timevsinsufficient', 0)
-    total_resigned = result_counts.get('resigned', 0)
-    total_stalemate = result_counts.get('stalemate', 0)
-    total_repetition = result_counts.get('repetition', 0)
-    total_abandoned = result_counts.get('abandoned', 0)
-    total_insufficient = result_counts.get('insufficient', 0)
-
-    total_draw = total_stalemate + total_repetition + total_timevsinsufficient + total_insufficient
-    total_loss = total_checkmated + total_timeout + total_resigned + total_abandoned
-    total_moves = cleaned_df['my_num_moves'].sum()
-    total_time_spent = cleaned_df['time_spent'].sum()
-    #total_thinking_time_spent = cleaned_df['']
-
-    # Sum the total occurrences of en passant and promotions
-    total_en_passant = cleaned_df['en_passant_count'].sum()
-    total_promotions = cleaned_df['promotion_count'].sum()
-
-    # Prepare the statistics dictionary with total counts only
-    statistics = {
-        'kingside_castles': kingside_castles,
-        'queenside_castles': queenside_castles,
-        'no_castles': no_castles,
-        'total_time_spent': total_time_spent,
-        'total_moves': total_moves,
-        'total_win': total_win,
-        'total_draw': total_draw,
-        'total_loss': total_loss,
-        'total_checkmated': total_checkmated,
-        'total_timeout': total_timeout,
-        'total_timevsinsufficient': total_timevsinsufficient,
-        'total_resigned': total_resigned,
-        'total_stalemate': total_stalemate,
-        'total_repetition': total_repetition,
-        'total_abandoned': total_abandoned,
-        'total_insufficient': total_insufficient,
-        'total_en_passant': total_en_passant,
-        'total_promotions': total_promotions,
-        'total_games': total_games
-    }
-
-    return statistics
-
-
-
 import pandas as pd
 from itertools import groupby
 
@@ -127,7 +68,6 @@ def most_played_opponent(df):
 # Function to collect statistics into a dictionary
 def collect_statistics(df):
     stats = {}
-
     # Opening stats
     win_rates = calculate_win_rates(df)
     games_played = count_games_played(df)
@@ -143,13 +83,7 @@ def collect_statistics(df):
         'draw_percentage': draw_percentage
     }
 
-    # Streaks
-    winning_streak = longest_streak(df['my_win_or_lose'], 'win')
-    losing_streak = longest_streak(df['my_win_or_lose'], 'lose')
-    stats['streaks'] = {
-        'winning_streak': winning_streak,
-        'losing_streak': losing_streak
-    }
+    
 
     # Quickest checkmate
     quickest_win = find_quickest_checkmate(df)
@@ -204,3 +138,78 @@ def get_flag_statistics(cleaned_df):
     }
 
     return flag_statistics
+
+
+
+
+
+def total_statistics(cleaned_df):
+    # Count the occurrences of each type of castling
+    castling_counts = cleaned_df['my_castling'].value_counts()
+
+    # Store the counts in variables
+    kingside_castles = castling_counts.get('kingside', 0)
+    queenside_castles = castling_counts.get('queenside', 0)
+    no_castles = castling_counts.get('none', 0)
+
+
+    variant_counts = cleaned_df['rules'].value_counts()
+    #print(f"Variant counts: {variant_counts}")
+
+    timeclass_counts = cleaned_df['time_class'].value_counts()
+    #print(f"Timeclass counts: {timeclass_counts}")
+
+    timecontrol_counts = cleaned_df['time_control'].value_counts()
+    #print(f"Timeclass counts: {timecontrol_counts}")
+
+    most_played_opps = most_played_opponent(cleaned_df)
+    most_played_opp_username = most_played_opps.iloc[0]['Opponent']
+    most_played_opp_count = most_played_opps.iloc[0]['Games_Played']
+    #print(f"Most Played Opp Username: {most_played_opp_username}")
+    #print(f"Most Played Opp Count: {most_played_opp_count}")
+    
+    win_or_lose_counts = cleaned_df['my_win_or_lose'].value_counts()
+    
+    
+    # Count the result occurrences
+    result_counts = cleaned_df['my_result'].value_counts()
+    total_games = len(cleaned_df)
+    total_win = result_counts.get('win', 0)
+    total_checkmated = result_counts.get('checkmated', 0)
+    total_timeout = result_counts.get('timeout', 0)
+    total_timevsinsufficient = result_counts.get('timevsinsufficient', 0)
+    total_resigned = result_counts.get('resigned', 0)
+    total_stalemate = result_counts.get('stalemate', 0)
+    total_repetition = result_counts.get('repetition', 0)
+    total_abandoned = result_counts.get('abandoned', 0)
+    total_insufficient = result_counts.get('insufficient', 0)
+
+    total_draw = total_stalemate + total_repetition + total_timevsinsufficient + total_insufficient
+    total_loss = total_checkmated + total_timeout + total_resigned + total_abandoned
+    total_moves = cleaned_df['my_num_moves'].sum()
+    total_time_spent = cleaned_df['time_spent'].sum()
+    #total_thinking_time_spent = cleaned_df['']
+
+    # Sum the total occurrences of en passant and promotions
+    total_en_passant = cleaned_df['en_passant_count'].sum()
+    total_promotions = cleaned_df['promotion_count'].sum()
+    # Streaks
+    winning_streak = longest_streak(cleaned_df['my_win_or_lose'], 'win')
+    losing_streak = longest_streak(cleaned_df['my_win_or_lose'], 'lose')
+
+    # Prepare the statistics dictionary with total counts only
+    statistics = {
+        'castling_counts': castling_counts,
+        'total_time_spent': total_time_spent,
+        'total_moves': total_moves,
+        'total_win_draw_loss': win_or_lose_counts,
+        'total_results': result_counts,
+        'total_en_passant': total_en_passant,
+        'total_promotions': total_promotions,
+        'total_games': total_games,
+        'longest_winning_streak': winning_streak,
+        'longest_losing_streak': losing_streak,
+        'most_played_opponent': most_played_opp_username
+    }
+
+    return statistics
