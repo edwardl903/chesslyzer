@@ -73,6 +73,15 @@
                         imageGrid.appendChild(imgElement);
                     });
                     imagesContainer.appendChild(imageGrid);
+                } 
+                // Display the JSON data
+                if (data.total_time_spent) {
+                    const statsContainer = document.createElement('div');
+                    statsContainer.innerHTML = `
+                        <h2>Your Chess Analytics</h2>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                    resultContainer.appendChild(statsContainer);
                 } else if (data.error) {
                     resultContainer.innerHTML = `
                         <p class="error">${data.error}</p>

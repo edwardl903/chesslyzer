@@ -272,7 +272,7 @@ def extract_moves_and_timestamps(game_data):
 def format_single_time_control(time_control):
     """
     Formats the time control into a user-friendly string.
-    Handles cases with very short time controls like 1 second games.
+    Handles cases with very short time controls like 1-second games or unlimited time.
     
     Args:
         time_control (str): Time control string in the format "base+increment" (e.g., "60+1").
@@ -280,6 +280,12 @@ def format_single_time_control(time_control):
     Returns:
         str: Formatted time control string.
     """
+    if not time_control or not isinstance(time_control, str):
+        return "Invalid time control"
+    
+    if time_control == "-":
+        return "Unlimited"
+    
     if '/' in time_control:
         # Handle Chess.com's daily format like "1/259200"
         parts = time_control.split('/')
@@ -288,11 +294,14 @@ def format_single_time_control(time_control):
             return f"{days:.1f} day(s) per move"
         else:
             return f"Unrecognized format: {time_control}"
-    if '+' in time_control:
-        base, increment = map(int, time_control.split('+'))
-    else:
-        #print(f"Testing Time_Control Value {time_control}")
-        base, increment = int(time_control), 0
+    
+    try:
+        if '+' in time_control:
+            base, increment = map(int, time_control.split('+'))
+        else:
+            base, increment = int(time_control), 0
+    except ValueError:
+        return f"Unrecognized format: {time_control}"
 
     # Convert base time to minutes and seconds
     minutes = base // 60
@@ -463,7 +472,7 @@ def clean_dataframe(df, username):
     def convert_time_class_to_seconds(time_class):
         """
         Converts a time control string into total seconds.
-        Handles formats like '5+5' (base + increment), '5m + 0s', and Chess.com's daily formats like '1/259200'.
+        Handles formats like '5+5' (base + increment), '5m + 0s', '8m 20s + 0s', and Chess.com's daily formats like '1/259200'.
         
         Args:
             time_class (str): The time control string.
@@ -471,18 +480,48 @@ def clean_dataframe(df, username):
         Returns:
             float or str: Total seconds for the base time or "Weird" if unrecognized.
         """
-        if 'm' in time_class and '+' in time_class:
-            # Handle formats like '5m + 0s'
+        if '+' in time_class:
             try:
+                # Split by the '+' symbol into base time and increment time
                 base_part, increment_part = time_class.split('+')
-                base_minutes = int(base_part.replace('m', '').strip())
-                increment_seconds = int(increment_part.replace('s', '').strip())
-                return base_minutes * 60 + increment_seconds
+
+                # Handle base part (minutes and/or seconds)
+                base_minutes = 0
+                base_seconds = 0
+                if 'm' in base_part and 's' in base_part:
+                    # Handle case where both minutes and seconds are in the base part (e.g., '8m 20s')
+                    parts = base_part.split()
+                    for part in parts:
+                        if 'm' in part:
+                            base_minutes = int(part.replace('m', '').strip())
+                        elif 's' in part:
+                            base_seconds = int(part.replace('s', '').strip())
+                    base_seconds += base_minutes * 60  # Convert minutes to seconds
+                elif 'm' in base_part:
+                    base_minutes = int(base_part.replace('m', '').strip())
+                    base_seconds = base_minutes * 60
+                elif 's' in base_part:
+                    base_seconds = int(base_part.replace('s', '').strip())
+                else:
+                    base_seconds = int(base_part.strip())
+
+                # Handle increment part (minutes or seconds)
+                increment_seconds = 0
+                if 'm' in increment_part:
+                    increment_minutes = int(increment_part.replace('m', '').strip())
+                    increment_seconds = increment_minutes * 60
+                elif 's' in increment_part:
+                    increment_seconds = int(increment_part.replace('s', '').strip())
+                else:
+                    increment_seconds = int(increment_part.strip())
+
+                # Return total time in seconds
+                return base_seconds + increment_seconds
             except ValueError:
                 return "Weird"
         
+        # Handle Chess.com's daily format like '1/259200'
         if '/' in time_class:
-            # Handle Chess.com's daily format
             parts = time_class.split('/')
             if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
                 base_days = int(parts[0]) / (int(parts[1]) / 86400)  # Convert fraction to days in seconds
@@ -490,16 +529,9 @@ def clean_dataframe(df, username):
             else:
                 return "Weird"
         
-        if '+' in time_class:
-            # Handle formats like '5+5'
-            try:
-                base_minutes = int(time_class.split('+')[0].strip())
-                return base_minutes * 60
-            except ValueError:
-                return "Weird"
-        
-        # Default case for unrecognized formats
+        # Return "Weird" if no valid format is matched
         return "Weird"
+
 
     # Calculate time-related columns
     cleaned_df['my_time_left'] = np.where(
@@ -517,8 +549,10 @@ def clean_dataframe(df, username):
 
         # Add a safe calculation for ratios, only if time_control is valid
     def safe_time_left_ratio(row, col_name):
+        
         time_control_seconds = convert_time_class_to_seconds(row['time_control'])
         if time_control_seconds == "Weird" or time_control_seconds == 0:
+            print(f"Printing Row: {row['link']} and its time_control {row['time_control']} and also print time_control_seconds {time_control_seconds}")
             return np.nan  # Return NaN for invalid or unrecognized time controls
         return row[col_name] / time_control_seconds
     

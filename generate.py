@@ -4,6 +4,7 @@ import subprocess
 import os
 import glob
 import time
+import json
 
 app = Flask(__name__)
 
@@ -35,23 +36,42 @@ def generate_csv():
 
         # Call the chesslytics.py script to generate the CSV and images
         result = subprocess.run(
-            ["python", "chesslytics.py", username],
+            ["python", "testing.py", username],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
         )
 
-        # Generate unique image paths with cache-busting query strings
-        image_paths = []
-        timestamp = int(time.time())  # Get current timestamp to ensure unique filenames
-        for i in range(1, 17):  # Assuming 16 images are generated
-            image_paths.append(f"/static/images/image_{i}.png?t={timestamp}")
+        # Assuming the script writes the statistics JSON file to 'json/{username}_statistics.json'
+        statistics_path = f'json/{username}_statistics.json'
+        if os.path.exists(statistics_path):
+            with open(statistics_path, 'r') as f:
+                statistics = json.load(f)
+            
+            # Generate unique image paths with cache-busting query strings
+            image_paths = []
+            timestamp = int(time.time())  # Get current timestamp to ensure unique filenames
+            for i in range(1, 17):  # Assuming 16 images are generated
+                image_paths.append(f"/static/images/image_{i}.png?t={timestamp}")
 
-        # Return JSON response with image paths (with query strings to avoid cache)
-        return jsonify({
-            "images": image_paths
-        })
+            # Return JSON response with statistics and image paths
+            return jsonify({
+                "images": image_paths,
+                "total_time_spent": statistics['total_time_spent'],
+                "total_moves": statistics['total_moves'],
+                "total_win_draw_loss": statistics['total_win_draw_loss'],
+                "total_results": statistics['total_results'],
+                "total_en_passant": statistics['total_en_passant'],
+                "total_promotions": statistics['total_promotions'],
+                "total_games": statistics['total_games'],
+                "longest_winning_streak": statistics['longest_winning_streak'],
+                "longest_losing_streak": statistics['longest_losing_streak'],
+                "most_played_opponent": statistics['most_played_opponent']
+            })
+
+        else:
+            return jsonify({"error": "Failed to find generated statistics file."}), 500
 
     except subprocess.CalledProcessError as e:
         print(f"Error: {e.stderr}")

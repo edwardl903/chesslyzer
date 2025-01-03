@@ -1,0 +1,43 @@
+{
+    "castling_counts": {
+        "none": 542,
+        "kingside": 332,
+        "queenside": 219
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 2.0,
+        "hours": 13.0,
+        "minutes": 22.0,
+        "seconds": 20.0,
+        "total_time": "2 days 13 hours 22 minutes 20 seconds",
+        "total_time_in_days": 2.56,
+        "total_time_in_hours": 61.37,
+        "total_time_in_minutes": 3682.33,
+        "total_time_in_seconds": 220940.0,
+        "percentage_of_year": 0.7
+    },
+    "total_moves": 38397,
+    "total_win_draw_loss": {
+        "lose": 532,
+        "win": 508,
+        "draw": 53
+    },
+    "total_results": {
+        "win": 508,
+        "checkmated": 309,
+        "timeout": 196,
+        "timevsinsufficient": 27,
+        "resigned": 23,
+        "stalemate": 16,
+        "repetition": 7,
+        "abandoned": 4,
+        "insufficient": 3
+    },
+    "total_en_passant": 0,
+    "total_promotions": 66,
+    "total_games": 1093,
+    "longest_winning_streak": 6,
+    "longest_losing_streak": 7,
+    "most_played_opponent": "EdwardL903"
+}

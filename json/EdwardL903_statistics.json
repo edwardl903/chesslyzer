@@ -1,0 +1,44 @@
+{
+    "castling_counts": {
+        "kingside": 1012,
+        "none": 151,
+        "queenside": 52
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 4.0,
+        "hours": 4.0,
+        "minutes": 14.0,
+        "seconds": 7.0,
+        "total_time": "4 days 4 hours 14 minutes 7 seconds",
+        "total_time_in_days": 4.18,
+        "total_time_in_hours": 100.24,
+        "total_time_in_minutes": 6014.12,
+        "total_time_in_seconds": 360847.0,
+        "percentage_of_year": 1.14
+    },
+    "total_moves": 45582,
+    "total_win_draw_loss": {
+        "lose": 595,
+        "win": 550,
+        "draw": 70
+    },
+    "total_results": {
+        "win": 550,
+        "checkmated": 277,
+        "resigned": 164,
+        "timeout": 101,
+        "abandoned": 46,
+        "repetition": 26,
+        "timevsinsufficient": 20,
+        "stalemate": 13,
+        "insufficient": 11,
+        "agreed": 7
+    },
+    "total_en_passant": 0,
+    "total_promotions": 98,
+    "total_games": 1215,
+    "longest_winning_streak": 9,
+    "longest_losing_streak": 9,
+    "most_played_opponent": "nicholasholleran"
+}

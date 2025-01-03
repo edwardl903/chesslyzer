@@ -1,0 +1,44 @@
+{
+    "castling_counts": {
+        "kingside": 2113,
+        "none": 377,
+        "queenside": 288
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 10.0,
+        "hours": 17.0,
+        "minutes": 1.0,
+        "seconds": 15.0,
+        "total_time": "10 days 17 hours 1 minutes 15 seconds",
+        "total_time_in_days": 10.71,
+        "total_time_in_hours": 257.02,
+        "total_time_in_minutes": 15421.25,
+        "total_time_in_seconds": 925275.0,
+        "percentage_of_year": 2.93
+    },
+    "total_moves": 103802,
+    "total_win_draw_loss": {
+        "win": 1694,
+        "lose": 989,
+        "draw": 95
+    },
+    "total_results": {
+        "win": 1694,
+        "timeout": 568,
+        "checkmated": 399,
+        "timevsinsufficient": 42,
+        "repetition": 34,
+        "resigned": 16,
+        "stalemate": 13,
+        "insufficient": 6,
+        "agreed": 5,
+        "abandoned": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 375,
+    "total_games": 2778,
+    "longest_winning_streak": 25,
+    "longest_losing_streak": 8,
+    "most_played_opponent": "Gerberbaby3"
+}

@@ -64,6 +64,55 @@ def most_played_opponent(df):
     return most_played_opponent
 
 
+def convert_seconds_to_time_units(total_seconds):
+    # Define time constants
+    seconds_per_day = 86400
+    seconds_per_year = 31536000  # Considering a non-leap year
+    seconds_per_hour = 3600
+    seconds_per_minute = 60
+
+    # Calculate years, days, and remaining seconds
+    years = total_seconds // seconds_per_year
+    total_seconds %= seconds_per_year  # Remaining seconds after extracting years
+
+    days = total_seconds // seconds_per_day
+    remaining_seconds = total_seconds % seconds_per_day  # Remaining seconds after extracting days
+
+    # Convert remaining seconds to hours, minutes, and seconds
+    hours = remaining_seconds // seconds_per_hour
+    remaining_seconds %= seconds_per_hour
+
+    minutes = remaining_seconds // seconds_per_minute
+    seconds = remaining_seconds % seconds_per_minute
+
+    # Calculate total time in a human-readable format
+    total_time = f"{int(days)} days {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds"
+
+    # Calculate the total time in just days, hours, minutes, and seconds
+    total_time_in_days = float(days + (hours / 24) + (minutes / 1440) + (seconds / 86400))
+    total_time_in_hours = float(days * 24 + hours + (minutes / 60) + (seconds / 3600))
+    total_time_in_minutes = float(days * 1440 + hours * 60 + minutes + (seconds / 60))
+    total_time_in_seconds = float(total_seconds)  # Remaining seconds after all the calculations
+
+    # Calculate percentage of time spent playing chess in a year
+    percentage_of_year = (total_time_in_seconds / seconds_per_year) * 100
+
+    # Return the result as a dictionary with the total time and percentage
+    return {
+        'years': round(float(years), 2),
+        'days': round(float(days), 2),
+        'hours': round(float(hours), 2),
+        'minutes': round(float(minutes), 2),
+        'seconds': round(float(seconds), 2),
+        'total_time': total_time,  # Total time in a human-readable string
+        'total_time_in_days': round(total_time_in_days, 2),  # Total time in just days
+        'total_time_in_hours': round(total_time_in_hours, 2),  # Total time in just hours
+        'total_time_in_minutes': round(total_time_in_minutes, 2),  # Total time in just minutes
+        'total_time_in_seconds': round(total_time_in_seconds, 2),  # Total time in just seconds
+        'percentage_of_year': round(percentage_of_year, 2)  # Percentage of time spent playing chess in the year
+    }
+
+
 
 # Function to collect statistics into a dictionary
 def collect_statistics(df):
@@ -152,7 +201,6 @@ def total_statistics(cleaned_df):
     queenside_castles = castling_counts.get('queenside', 0)
     no_castles = castling_counts.get('none', 0)
 
-
     variant_counts = cleaned_df['rules'].value_counts()
     #print(f"Variant counts: {variant_counts}")
 
@@ -163,6 +211,7 @@ def total_statistics(cleaned_df):
     #print(f"Timeclass counts: {timecontrol_counts}")
 
     most_played_opps = most_played_opponent(cleaned_df)
+    #print(f"Printing Most Played Oppoentns DF: {most_played_opps}")
     most_played_opp_username = most_played_opps.iloc[0]['Opponent']
     most_played_opp_count = most_played_opps.iloc[0]['Games_Played']
     #print(f"Most Played Opp Username: {most_played_opp_username}")
@@ -187,7 +236,10 @@ def total_statistics(cleaned_df):
     total_draw = total_stalemate + total_repetition + total_timevsinsufficient + total_insufficient
     total_loss = total_checkmated + total_timeout + total_resigned + total_abandoned
     total_moves = cleaned_df['my_num_moves'].sum()
+
+
     total_time_spent = cleaned_df['time_spent'].sum()
+    time_dict = convert_seconds_to_time_units(total_time_spent)
     #total_thinking_time_spent = cleaned_df['']
 
     # Sum the total occurrences of en passant and promotions
@@ -199,16 +251,16 @@ def total_statistics(cleaned_df):
 
     # Prepare the statistics dictionary with total counts only
     statistics = {
-        'castling_counts': castling_counts,
-        'total_time_spent': total_time_spent,
-        'total_moves': total_moves,
-        'total_win_draw_loss': win_or_lose_counts,
-        'total_results': result_counts,
-        'total_en_passant': total_en_passant,
-        'total_promotions': total_promotions,
-        'total_games': total_games,
-        'longest_winning_streak': winning_streak,
-        'longest_losing_streak': losing_streak,
+        'castling_counts': castling_counts.to_dict(), #to dict() so we can turn from panda series to dict
+        'total_time_spent': time_dict,
+        'total_moves': int(total_moves),
+        'total_win_draw_loss': win_or_lose_counts.to_dict(),
+        'total_results': result_counts.to_dict(),
+        'total_en_passant': int(total_en_passant),
+        'total_promotions': int(total_promotions),
+        'total_games': int(total_games),
+        'longest_winning_streak': int(winning_streak),
+        'longest_losing_streak': int(losing_streak),
         'most_played_opponent': most_played_opp_username
     }
 
