@@ -446,7 +446,7 @@ def clean_dataframe(df, username):
             cleaned_df.at[index, 'opp_rating'] = row['black_rating']
             cleaned_df.at[index, 'opp_result'] = row['black_result']
             cleaned_df.at[index, 'opp_metamoves'] = row['black_metamoves']
-            cleaned_df.at[index, 'my_win_or_lose'] = 'win' if row['white_result'] == 'win' else 'draw' if row['white_result'] in ['draw', 'stalemate', 'repetition', 'insufficient', 'timevsinsufficient'] else 'lose'
+            cleaned_df.at[index, 'my_win_or_lose'] = 'win' if row['white_result'] == 'win' else 'draw' if row['white_result'] in ['draw', 'stalemate', 'repetition', 'insufficient', 'timevsinsufficient', 'agreed'] else 'lose'
 
         elif row['black_username'].lower() == username.lower():
             cleaned_df.at[index, 'my_username'] = row['black_username']
@@ -458,7 +458,7 @@ def clean_dataframe(df, username):
             cleaned_df.at[index, 'opp_rating'] = row['white_rating']
             cleaned_df.at[index, 'opp_result'] = row['white_result']
             cleaned_df.at[index, 'opp_metamoves'] = row['white_metamoves']
-            cleaned_df.at[index, 'my_win_or_lose'] = 'win' if row['black_result'] == 'win' else 'draw' if row['black_result'] in ['draw', 'stalemate', 'repetition', 'insufficient', 'timevsinsufficient'] else 'lose'
+            cleaned_df.at[index, 'my_win_or_lose'] = 'win' if row['black_result'] == 'win' else 'draw' if row['black_result'] in ['draw', 'stalemate', 'repetition', 'insufficient', 'timevsinsufficient', 'agreed'] else 'lose'
         else:
             print(f"BIG FUCKING Error: username '{username}' not found in either white or black columns at index {index}")
             print(f"White Username: {row['white_username']}, Black Username: {row['black_username']}, Game Link: {row['link']}")

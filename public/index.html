@@ -16,7 +16,7 @@
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: -1;"></div>
 
     <!-- Content Container -->
-    <div style="position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div id="contentContainer" style="position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <!-- Adjusted Main Container for Background and Elements -->        
         <div style="max-width: 900px; padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 32px;">
             <!-- Image Above Title -->
@@ -34,23 +34,23 @@
 
             <!-- Input Section -->
             <div style="width: 100%; max-width: 580px; padding: 28px; background: #EEEED5; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 620px; height: 32px; font-family: 'League Spartan', sans-serif; font-size: 30px; text-align: center; color: #2D6056;"> <!-- Reduced by 3px -->
+                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 620px; height: 32px; font-family: 'League Spartan', sans-serif; font-size: 30px; text-align: center; color: #2D6056;">
             </div>
 
             <!-- Button Section -->
             <div style="width: 100%; max-width: 580px; padding: 28px; border-radius: 10px; border: 5px #EEEED5 solid; display: flex; justify-content: center; align-items: center;">
-                <button id="submitBtn" style="width: 380px; height: 32px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 30px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;"> <!-- Reduced by 3px -->
+                <button id="submitBtn" style="width: 380px; height: 32px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 30px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;">
                     Generate Chess Analytics
                 </button>
             </div>
 
             <!-- Loading Message and Result Section -->
-            <div id="loadingMessage" style="display: none; text-align: center; font-size: 14px; color: #007bff; margin-top: 16px;"> <!-- Reduced by 3px -->
+            <div id="loadingMessage" style="display: none; font-family: 'League Spartan', sans-serif; font-weight: 700; text-align: center; font-size: 14px; color: white; margin-top: 10px;">
                 Generating Chess Analytics...
             </div>
-            <div class="result" id="result" style="display: none; margin-top: 24px; text-align: center; width: 100%;">
-                <!-- Dynamic Results Populated Here -->
-            </div>
+            <div class="result" id="result" style="display: none; margin-top: 24px; text-align: center; width: 100%; z-index: 10;">
+    <!-- Dynamic Results Populated Here -->
+</div>
         </div>
     </div>
 </body>
@@ -60,66 +60,120 @@
 
 
     <script>
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
-            const loadingMessage = document.getElementById('loadingMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const resultContainer = document.getElementById('result');
+    document.getElementById('submitBtn').addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    const loadingMessage = document.getElementById('loadingMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const resultContainer = document.getElementById('result');
+    const contentContainer = document.getElementById('contentContainer');  // Reference to the content container
 
-            if (!username) {
-                alert('Please enter a username.');
-                return;
-            }
+    if (!username) {
+        alert('Please enter a username.');
+        return;
+    }
 
-            loadingMessage.style.display = 'block';
-            submitBtn.disabled = true;
+    // Show the loading message
+    loadingMessage.style.display = 'block';
+    submitBtn.disabled = true;
 
-            resultContainer.innerHTML = '';
-            resultContainer.style.display = 'none';
+    // Clear the result container and hide it initially
+    resultContainer.innerHTML = '';
+    resultContainer.style.display = 'none';
 
-            fetch('http://127.0.0.1:5000/generate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username: username }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                loadingMessage.style.display = 'none';
-                submitBtn.disabled = false;
-                resultContainer.style.display = 'block';
+    // Fetch data from the backend
+    fetch('http://127.0.0.1:5000/generate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: username }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Received data:', data); // Log the data to verify if it's correct
+        console.log(data.highest);
+        loadingMessage.style.display = 'none';  // Hide loading message
+        submitBtn.disabled = false;
 
-                if (data.total_time_spent) {
-                    const statsContainer = document.createElement('div');
-                    statsContainer.innerHTML = `
-                        <h2>Your Chess Analytics</h2>
-                        <p><strong>Total Time Spent:</strong> ${data.total_time_spent.total_time}</p>
-                        <p><strong>Total Games Played:</strong> ${data.total_games}</p>
-                        <p><strong>Total Wins:</strong> ${data.total_win_draw_loss.win}</p>
-                        <p><strong>Total Draws:</strong> ${data.total_win_draw_loss.draw}</p>
-                        <p><strong>Total Losses:</strong> ${data.total_win_draw_loss.lose}</p>
-                        <p><strong>Longest Winning Streak:</strong> ${data.longest_winning_streak}</p>
-                        <p><strong>Longest Losing Streak:</strong> ${data.longest_losing_streak}</p>
-                    `;
-                    resultContainer.appendChild(statsContainer);
-                } else if (data.error) {
-                    resultContainer.innerHTML = `
-                        <p class="error">${data.error}</p>
-                    `;
-                }
-            })
-            .catch(error => {
-                loadingMessage.style.display = 'none';
-                submitBtn.disabled = false;
-                resultContainer.style.display = 'block';
-                resultContainer.innerHTML = `
-                    <p class="error">Failed to fetch the data. Please try again later.</p>
-                `;
-            });
+        if (data.total_time_spent) {
+            // Show the result container
+            console.log(data); // Check the structure of 'data'
 
-            document.getElementById('username').value = '';
-        });
+            resultContainer.style.display = 'block';
+
+            // Create a stats container to display analytics data
+            const statsContainer = document.createElement('div');
+            statsContainer.innerHTML = `
+                <h2>Your Chess Analytics</h2>
+                <p><strong>Total Time Spent:</strong> ${data.total_time_spent.total_time}</p>
+                <p><strong>Total Time (in days):</strong> ${data.total_time_spent.total_time_in_days.toFixed(2)}</p>
+                <p><strong>Total Time (in hours):</strong> ${data.total_time_spent.total_time_in_hours.toFixed(2)}</p>
+                <p><strong>Total Time (in minutes):</strong> ${data.total_time_spent.total_time_in_minutes.toFixed(2)}</p>
+                <p><strong>Total Time (in seconds):</strong> ${data.total_time_spent.total_time_in_seconds}</p>
+                <p><strong>Percentage of Year:</strong> ${data.total_time_spent.percentage_of_year.toFixed(2)}%</p>
+
+                <p><strong>Total Games Played:</strong> ${data.total_games}</p>
+                <p><strong>Total Wins:</strong> ${data.total_win_draw_loss.win}</p>
+                <p><strong>Total Draws:</strong> ${data.total_win_draw_loss.draw}</p>
+                <p><strong>Total Losses:</strong> ${data.total_win_draw_loss.lose}</p>
+
+
+                <p><strong>Total En Passant:</strong> ${data.total_en_passant}</p>
+                <p><strong>Total Promotions:</strong> ${data.total_promotions}</p>
+
+                <p><strong>Longest Winning Streak:</strong> ${data.longest_winning_streak}</p>
+                <p><strong>Longest Losing Streak:</strong> ${data.longest_losing_streak}</p>
+
+                <p><strong>Most Played Opponent:</strong> ${data.most_played_opponent}</p>
+
+                <h3>Other Results</h3>
+                <p><strong>Total Wins:</strong> ${data.total_results.win}</p>
+                <p><strong>Total Checkmated:</strong> ${data.total_results.checkmated}</p>
+                <p><strong>Total Resigned:</strong> ${data.total_results.resigned}</p>
+                <p><strong>Total Timeout:</strong> ${data.total_results.timeout}</p>
+                <p><strong>Total Abandoned:</strong> ${data.total_results.abandoned}</p>
+                <p><strong>Total Repetition:</strong> ${data.total_results.repetition}</p>
+                <p><strong>Total Time vs Insufficient:</strong> ${data.total_results.timevsinsufficient}</p>
+                <p><strong>Total Stalemate:</strong> ${data.total_results.stalemate}</p>
+                <p><strong>Total Insufficient Material:</strong> ${data.total_results.insufficient}</p>
+                <p><strong>Total Agreed:</strong> ${data.total_results.agreed}</p>     
+                <h3>Highest Rating</h3>
+                <p><strong>Highest Rating Achieved:</strong> ${data.highest_rating.rating}</p>
+                <p><strong>Time Control:</strong> ${data.highest_rating.time_control}</p>
+                <p><strong>Achieved On:</strong> ${data.highest_rating.date}</p>
+                <p><strong>Most Time Spent On A Single Day:</strong> ${data.most_time_spent_day_dict.date}</p>
+                <p><strong>Time Spent:</strong> ${data.most_time_spent_day_dict.time_spent}</p>
+                
+   
+                
+            `;
+            resultContainer.appendChild(statsContainer);
+
+            // Hide the input and button sections
+            /*contentContainer.querySelector('div:nth-child(0)').style.display = 'none';  // Hide the first div (image + title)*/
+            /*contentContainer.querySelector('div:nth-child(2)').style.display = 'none';  // Hide the second div (input and button)*/
+        } else if (data.error) {
+            // Handle the error message
+            resultContainer.innerHTML = `
+                <p class="error">${data.error}</p>
+            `;
+            resultContainer.style.display = 'block';  // Show the result container even for error
+        }
+    })
+    .catch(error => {
+        loadingMessage.style.display = 'none';  // Hide loading message
+        submitBtn.disabled = false;
+
+        // Show error in the result container
+        resultContainer.style.display = 'block';
+        resultContainer.innerHTML = `
+            <p class="error">Failed to fetch the data. Please try again later.</p>
+        `;
+    });
+
+    document.getElementById('username').value = '';
+});
+
     </script>
 </body>
 </html>

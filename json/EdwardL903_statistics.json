@@ -19,9 +19,9 @@
     },
     "total_moves": 45582,
     "total_win_draw_loss": {
-        "lose": 595,
+        "lose": 588,
         "win": 550,
-        "draw": 70
+        "draw": 77
     },
     "total_results": {
         "win": 550,
@@ -40,5 +40,14 @@
     "total_games": 1215,
     "longest_winning_streak": 9,
     "longest_losing_streak": 9,
-    "most_played_opponent": "nicholasholleran"
+    "most_played_opponent": "nicholasholleran",
+    "highest_rating": {
+        "rating": 2083,
+        "time_control": "10m + 0s",
+        "date": "2024.02.06"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.12.18",
+        "time_spent": "0 days 4 hours 28 minutes 42 seconds"
+    }
 }

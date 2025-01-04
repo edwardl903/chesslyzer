@@ -1,0 +1,53 @@
+{
+    "castling_counts": {
+        "none": 2387,
+        "kingside": 393,
+        "queenside": 351
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 4.0,
+        "hours": 2.0,
+        "minutes": 58.0,
+        "seconds": 56.0,
+        "total_time": "4 days 2 hours 58 minutes 56 seconds",
+        "total_time_in_days": 4.12,
+        "total_time_in_hours": 98.98,
+        "total_time_in_minutes": 5938.93,
+        "total_time_in_seconds": 356336.0,
+        "percentage_of_year": 1.13
+    },
+    "total_moves": 108038,
+    "total_win_draw_loss": {
+        "lose": 1491,
+        "win": 1443,
+        "draw": 197
+    },
+    "total_results": {
+        "win": 1443,
+        "checkmated": 1146,
+        "timeout": 301,
+        "timevsinsufficient": 95,
+        "stalemate": 78,
+        "abandoned": 31,
+        "repetition": 13,
+        "resigned": 13,
+        "insufficient": 10,
+        "agreed": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 139,
+    "total_games": 3131,
+    "longest_winning_streak": 11,
+    "longest_losing_streak": 9,
+    "most_played_opponent": "tormaa",
+    "highest_rating": {
+        "rating": 918,
+        "time_control": "1m + 0s",
+        "date": "2024.11.01"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.11.03",
+        "time_spent": "0 days 10 hours 7 minutes 16 seconds"
+    }
+}

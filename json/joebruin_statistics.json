@@ -20,8 +20,8 @@
     "total_moves": 103802,
     "total_win_draw_loss": {
         "win": 1694,
-        "lose": 989,
-        "draw": 95
+        "lose": 984,
+        "draw": 100
     },
     "total_results": {
         "win": 1694,
@@ -40,5 +40,14 @@
     "total_games": 2778,
     "longest_winning_streak": 25,
     "longest_losing_streak": 8,
-    "most_played_opponent": "Gerberbaby3"
+    "most_played_opponent": "Gerberbaby3",
+    "highest_rating": {
+        "rating": 2251,
+        "time_control": "1m + 0s",
+        "date": "2024.08.17"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.02.03",
+        "time_spent": "0 days 3 hours 53 minutes 24 seconds"
+    }
 }

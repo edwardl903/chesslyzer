@@ -1,0 +1,43 @@
+{
+    "castling_counts": {
+        "kingside": 98,
+        "none": 67,
+        "queenside": 20
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 1.0,
+        "hours": 11.0,
+        "minutes": 23.0,
+        "seconds": 46.0,
+        "total_time": "1 days 11 hours 23 minutes 46 seconds",
+        "total_time_in_days": 1.47,
+        "total_time_in_hours": 35.4,
+        "total_time_in_minutes": 2123.77,
+        "total_time_in_seconds": 127426.0,
+        "percentage_of_year": 0.4
+    },
+    "total_moves": 5340,
+    "total_win_draw_loss": {
+        "lose": 99,
+        "win": 77,
+        "draw": 9
+    },
+    "total_results": {
+        "win": 77,
+        "checkmated": 48,
+        "timeout": 42,
+        "resigned": 7,
+        "repetition": 4,
+        "stalemate": 3,
+        "abandoned": 2,
+        "timevsinsufficient": 1,
+        "insufficient": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 14,
+    "total_games": 185,
+    "longest_winning_streak": 4,
+    "longest_losing_streak": 10,
+    "most_played_opponent": "brian120488"
+}

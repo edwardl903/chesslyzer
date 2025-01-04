@@ -193,7 +193,18 @@ def get_flag_statistics(cleaned_df):
 
 
 def total_statistics(cleaned_df):
-    # Count the occurrences of each type of castling
+
+    # Find the day with the most time spent
+    daily_time_spent = cleaned_df.groupby('date')['time_spent'].sum()
+    most_time_spent_day = daily_time_spent.idxmax()  # The date with the most time spent
+    most_time_spent = int(daily_time_spent.max())  # The maximum time spent on a single day
+    a = convert_seconds_to_time_units(most_time_spent)
+    most_time_spent_day_dict = {
+        'date': most_time_spent_day,
+        'time_spent': a['total_time']  # Convert to readable format
+    }
+
+
     castling_counts = cleaned_df['my_castling'].value_counts()
 
     # Store the counts in variables
@@ -218,9 +229,9 @@ def total_statistics(cleaned_df):
     #print(f"Most Played Opp Count: {most_played_opp_count}")
     
     win_or_lose_counts = cleaned_df['my_win_or_lose'].value_counts()
-    
-    
-    # Count the result occurrences
+
+
+ 
     result_counts = cleaned_df['my_result'].value_counts()
     total_games = len(cleaned_df)
     total_win = result_counts.get('win', 0)
@@ -232,8 +243,9 @@ def total_statistics(cleaned_df):
     total_repetition = result_counts.get('repetition', 0)
     total_abandoned = result_counts.get('abandoned', 0)
     total_insufficient = result_counts.get('insufficient', 0)
+    total_agreed = result_counts.get('agreed', 0)
 
-    total_draw = total_stalemate + total_repetition + total_timevsinsufficient + total_insufficient
+    total_draw = total_stalemate + total_repetition + total_timevsinsufficient + total_insufficient + total_agreed
     total_loss = total_checkmated + total_timeout + total_resigned + total_abandoned
     total_moves = cleaned_df['my_num_moves'].sum()
 
@@ -249,6 +261,12 @@ def total_statistics(cleaned_df):
     winning_streak = longest_streak(cleaned_df['my_win_or_lose'], 'win')
     losing_streak = longest_streak(cleaned_df['my_win_or_lose'], 'lose')
 
+    highest_rating_row = cleaned_df.loc[cleaned_df['my_rating'].idxmax()]
+    highest_rating = highest_rating_row['my_rating']
+    highest_rating_time_control = highest_rating_row['time_control']
+    highest_rating_date = highest_rating_row['date']
+
+
     # Prepare the statistics dictionary with total counts only
     statistics = {
         'castling_counts': castling_counts.to_dict(), #to dict() so we can turn from panda series to dict
@@ -261,7 +279,13 @@ def total_statistics(cleaned_df):
         'total_games': int(total_games),
         'longest_winning_streak': int(winning_streak),
         'longest_losing_streak': int(losing_streak),
-        'most_played_opponent': most_played_opp_username
+        'most_played_opponent': most_played_opp_username,
+        'highest_rating': {
+            'rating': highest_rating,
+            'time_control': highest_rating_time_control,
+            'date': highest_rating_date
+        },
+        'most_time_spent_day_dict' : most_time_spent_day_dict
     }
 
     return statistics

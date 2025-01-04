@@ -20,8 +20,8 @@
     "total_moves": 330890,
     "total_win_draw_loss": {
         "win": 6177,
-        "lose": 894,
-        "draw": 530
+        "lose": 807,
+        "draw": 617
     },
     "total_results": {
         "win": 6177,
@@ -41,5 +41,14 @@
     "total_games": 7601,
     "longest_winning_streak": 68,
     "longest_losing_streak": 6,
-    "most_played_opponent": "DanielNaroditsky"
+    "most_played_opponent": "DanielNaroditsky",
+    "highest_rating": {
+        "rating": 3405,
+        "time_control": "3m + 0s",
+        "date": "2024.02.09"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.01.03",
+        "time_spent": "0 days 7 hours 12 minutes 59 seconds"
+    }
 }

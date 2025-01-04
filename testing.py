@@ -2,8 +2,6 @@ from data_processing import *
 from my_stats import *
 
 import time
-
-import time
 import sys
 import json
 
