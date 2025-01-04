@@ -69,7 +69,8 @@ def generate_csv():
                 "longest_losing_streak": statistics['longest_losing_streak'],
                 "most_played_opponent": statistics['most_played_opponent'],
                 "highest_rating": statistics['highest_rating'],
-                "most_time_spent_day_dict" : statistics['most_time_spent_day_dict']
+                "most_time_spent_day_dict" : statistics['most_time_spent_day_dict'],
+                "my_openings": statistics['my_openings']
             })
 
         else:

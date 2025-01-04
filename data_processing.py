@@ -425,8 +425,21 @@ def clean_dataframe(df, username):
                 keyword_found = keyword
         # If a keyword was found, truncate up to the end of the keyword
         return name[:first_position + len(keyword_found)] if keyword_found else name
+    
+    # Define the function to update 'my_opening' based on color and 'Defense' presence
+    def update_opening(row):
+        if row['my_color'] == 'white':
+            # If white, assign the ECO if it doesn't contain 'Defense'
+            if 'Defense' not in row['eco']:
+                return row['eco']
+        elif row['my_color'] == 'black':
+            # If black, assign the ECO if it contains 'Defense'
+            if 'Defense' in row['eco']:
+                return row['eco']
+        return 'N/A'  # Otherwise, keep it as NaN
 
     cleaned_df['eco'] = cleaned_df['eco'].apply(truncate_eco)
+
 
     columns_to_initialize = [
         'my_username', 'my_rating', 'my_result', 'my_color', 'my_win_or_lose', 'my_metamoves',
@@ -462,6 +475,8 @@ def clean_dataframe(df, username):
         else:
             print(f"BIG FUCKING Error: username '{username}' not found in either white or black columns at index {index}")
             print(f"White Username: {row['white_username']}, Black Username: {row['black_username']}, Game Link: {row['link']}")
+
+    cleaned_df['my_opening'] = cleaned_df.apply(update_opening, axis=1)
 
     def time_string_to_seconds_with_fraction(time_str):
         # Split the string into hours, minutes, and seconds

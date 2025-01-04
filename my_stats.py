@@ -63,6 +63,26 @@ def most_played_opponent(df):
     most_played_opponent.columns = ['Opponent', 'Games_Played']
     return most_played_opponent
 
+def get_first_defense_and_non_defense(my_openings):
+    first_defense = None
+    first_non_defense = None
+    
+    for opening, count in my_openings.items():
+        # Skip the string "N/A"
+        if opening == "N/A":
+            continue
+            
+        if 'Defense' in opening and first_defense is None:
+            first_defense = opening
+        elif 'Defense' not in opening and first_non_defense is None:
+            first_non_defense = opening
+        
+        # Break early once we find both
+        if first_defense and first_non_defense:
+            break
+            
+    return first_defense, first_non_defense
+
 
 def convert_seconds_to_time_units(total_seconds):
     # Define time constants
@@ -263,8 +283,16 @@ def total_statistics(cleaned_df):
 
     highest_rating_row = cleaned_df.loc[cleaned_df['my_rating'].idxmax()]
     highest_rating = highest_rating_row['my_rating']
-    highest_rating_time_control = highest_rating_row['time_control']
+    highest_rating_time_class = highest_rating_row['time_class']
     highest_rating_date = highest_rating_row['date']
+
+    my_openings = cleaned_df['my_opening'].value_counts()
+    #print(my_openings)
+
+    first_defense, first_non_defense = get_first_defense_and_non_defense(my_openings)
+    print(f"First Defense Opening: {first_defense}")
+    print(f"First Non-Defense Opening: {first_non_defense}")
+
 
 
     # Prepare the statistics dictionary with total counts only
@@ -282,10 +310,14 @@ def total_statistics(cleaned_df):
         'most_played_opponent': most_played_opp_username,
         'highest_rating': {
             'rating': highest_rating,
-            'time_control': highest_rating_time_control,
+            'time_control': highest_rating_time_class,
             'date': highest_rating_date
         },
-        'most_time_spent_day_dict' : most_time_spent_day_dict
+        'most_time_spent_day_dict' : most_time_spent_day_dict,
+        'my_openings': {
+            'white_opening': first_non_defense,
+            'black_opening': first_defense
+        }
     }
 
     return statistics

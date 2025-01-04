@@ -50,5 +50,9 @@
     "most_time_spent_day_dict": {
         "date": "2024.01.03",
         "time_spent": "0 days 7 hours 12 minutes 59 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Modern-Defense",
+        "black_opening": "Nimzowitsch-Larsen-Attack"
     }
 }

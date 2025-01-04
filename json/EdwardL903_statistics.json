@@ -43,11 +43,15 @@
     "most_played_opponent": "nicholasholleran",
     "highest_rating": {
         "rating": 2083,
-        "time_control": "10m + 0s",
+        "time_control": "rapid",
         "date": "2024.02.06"
     },
     "most_time_spent_day_dict": {
         "date": "2024.12.18",
         "time_spent": "0 days 4 hours 28 minutes 42 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Reti-Opening",
+        "black_opening": "French-Defense"
     }
 }
