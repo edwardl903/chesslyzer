@@ -18,42 +18,43 @@
     <!-- Content Container -->
     <div style="position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <!-- Adjusted Main Container for Background and Elements -->        
-        <div style="max-width: 900px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 36px;">
+        <div style="max-width: 900px; padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 32px;">
             <!-- Image Above Title -->
-            <img src="/static/gift.png" alt="Chess Image" style="max-width: 200px; margin-bottom: 20px;">
+            <img src="/static/gift2.png" alt="Chess Image" style="max-width: 180px; margin-bottom: -35px;">
             
             <!-- Title and Instructions -->
-            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-weight: 700; word-wrap: break-word;">
-                <div style="font-size: 57px; line-height: 57px;"> <!-- Reduced by 3px -->
+            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-weight: 700; word-wrap: break-word; margin-top: 16px;">
+                <div style="font-size: 54px; line-height: 54px;"> 
                     ChessLytics: Chess Wrapped 2024!
                 </div>
-                <div style="font-size: 33px; font-weight: 400; line-height: 33px;"> <!-- Reduced by 3px -->
+                <div style="font-size: 30px; font-weight: 400; line-height: 30px; margin-top: 16px;"> 
                     Enter your Chess.com username:
                 </div>
             </div>
 
             <!-- Input Section -->
-            <div style="width: 100%; max-width: 603px; padding: 30px; background: #EEEED5; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 650px; height: 36px; font-family: 'League Spartan', sans-serif; font-size: 33px; text-align: center; color: #2D6056;"> <!-- Reduced by 3px -->
+            <div style="width: 100%; max-width: 580px; padding: 28px; background: #EEEED5; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 620px; height: 32px; font-family: 'League Spartan', sans-serif; font-size: 30px; text-align: center; color: #2D6056;"> <!-- Reduced by 3px -->
             </div>
 
             <!-- Button Section -->
-            <div style="width: 100%; max-width: 603px; padding: 30px; border-radius: 10px; border: 5px #EEEED5 solid; display: flex; justify-content: center; align-items: center;">
-                <button id="submitBtn" style="width: 404px; height: 36px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 33px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;"> <!-- Reduced by 3px -->
+            <div style="width: 100%; max-width: 580px; padding: 28px; border-radius: 10px; border: 5px #EEEED5 solid; display: flex; justify-content: center; align-items: center;">
+                <button id="submitBtn" style="width: 380px; height: 32px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 30px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;"> <!-- Reduced by 3px -->
                     Generate Chess Analytics
                 </button>
             </div>
 
             <!-- Loading Message and Result Section -->
-            <div id="loadingMessage" style="display: none; text-align: center; font-size: 17px; color: #007bff; margin-top: 20px;"> <!-- Reduced by 3px -->
+            <div id="loadingMessage" style="display: none; text-align: center; font-size: 14px; color: #007bff; margin-top: 16px;"> <!-- Reduced by 3px -->
                 Generating Chess Analytics...
             </div>
-            <div class="result" id="result" style="display: none; margin-top: 30px; text-align: center; width: 100%;">
+            <div class="result" id="result" style="display: none; margin-top: 24px; text-align: center; width: 100%;">
                 <!-- Dynamic Results Populated Here -->
             </div>
         </div>
     </div>
 </body>
+
 
 
 
