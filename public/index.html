@@ -6,38 +6,57 @@
     <title>ChessLytics - Chess Wrapped 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
-   
 </head>
-<body>
-    <div class="macbook-container">
-        <!-- Main Container for MacBook Pro -->
-        <div class="background-rectangle"></div>
-        <div class="image-container"></div>
-        
-        <div class="frame-16">
-            <div class="frame-19">
-                <h1>ChessLytics - Chess Wrapped 2024!</h1>
-                <p>Enter your Chess.com username:</p>
-            </div>
+
+<body style="margin: 0; padding: 0; position: relative; background-color: #2D6056; background-image: url('/static/background.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <!-- Main Container for Background and Overlay -->
+    <div style="width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: -2;"></div>
+    
+    <!-- Semi-transparent overlay in front of the background -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: -1;"></div>
+
+    <!-- Content Container -->
+    <div style="position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <!-- Adjusted Main Container for Background and Elements -->        
+        <div style="max-width: 900px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 36px;">
+            <!-- Image Above Title -->
+            <img src="/static/gift.png" alt="Chess Image" style="max-width: 200px; margin-bottom: 20px;">
             
-            <div class="frame-15">
-                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required />
+            <!-- Title and Instructions -->
+            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-weight: 700; word-wrap: break-word;">
+                <div style="font-size: 57px; line-height: 57px;"> <!-- Reduced by 3px -->
+                    ChessLytics: Chess Wrapped 2024!
+                </div>
+                <div style="font-size: 33px; font-weight: 400; line-height: 33px;"> <!-- Reduced by 3px -->
+                    Enter your Chess.com username:
+                </div>
             </div>
 
-            <div class="frame-14">
-                <button id="submitBtn">Generate Chess Analytics</button>
+            <!-- Input Section -->
+            <div style="width: 100%; max-width: 603px; padding: 30px; background: #EEEED5; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 650px; height: 36px; font-family: 'League Spartan', sans-serif; font-size: 33px; text-align: center; color: #2D6056;"> <!-- Reduced by 3px -->
             </div>
 
-            <div id="loadingMessage" style="display: none;">Generating Chess Analytics...</div>
+            <!-- Button Section -->
+            <div style="width: 100%; max-width: 603px; padding: 30px; border-radius: 10px; border: 5px #EEEED5 solid; display: flex; justify-content: center; align-items: center;">
+                <button id="submitBtn" style="width: 404px; height: 36px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 33px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;"> <!-- Reduced by 3px -->
+                    Generate Chess Analytics
+                </button>
+            </div>
 
-            <div class="result" id="result" style="display: none;">
-                <!-- This is where we will display the CSV download link and images -->
+            <!-- Loading Message and Result Section -->
+            <div id="loadingMessage" style="display: none; text-align: center; font-size: 17px; color: #007bff; margin-top: 20px;"> <!-- Reduced by 3px -->
+                Generating Chess Analytics...
+            </div>
+            <div class="result" id="result" style="display: none; margin-top: 30px; text-align: center; width: 100%;">
+                <!-- Dynamic Results Populated Here -->
             </div>
         </div>
     </div>
-
 </body>
-</html>
+
+
+
 
     <script>
         document.getElementById('submitBtn').addEventListener('click', function() {
@@ -45,21 +64,18 @@
             const loadingMessage = document.getElementById('loadingMessage');
             const submitBtn = document.getElementById('submitBtn');
             const resultContainer = document.getElementById('result');
-            
+
             if (!username) {
                 alert('Please enter a username.');
                 return;
             }
 
-            // Show loading message and disable the button
             loadingMessage.style.display = 'block';
             submitBtn.disabled = true;
 
-            // Reset the result section before generating new data
-            resultContainer.innerHTML = ''; // Clear previous results
-            resultContainer.style.display = 'none'; // Hide results section until new results are fetched
+            resultContainer.innerHTML = '';
+            resultContainer.style.display = 'none';
 
-            // Make the POST request to the Flask API
             fetch('http://127.0.0.1:5000/generate', {
                 method: 'POST',
                 headers: {
@@ -69,11 +85,8 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Hide loading message and enable the button again
                 loadingMessage.style.display = 'none';
                 submitBtn.disabled = false;
-
-                // Show the result container
                 resultContainer.style.display = 'block';
 
                 if (data.total_time_spent) {
@@ -87,7 +100,6 @@
                         <p><strong>Total Losses:</strong> ${data.total_win_draw_loss.lose}</p>
                         <p><strong>Longest Winning Streak:</strong> ${data.longest_winning_streak}</p>
                         <p><strong>Longest Losing Streak:</strong> ${data.longest_losing_streak}</p>
-                      
                     `;
                     resultContainer.appendChild(statsContainer);
                 } else if (data.error) {
@@ -105,11 +117,8 @@
                 `;
             });
 
-            // Reset the username input field after submission
             document.getElementById('username').value = '';
         });
     </script>
-    
-
 </body>
 </html>

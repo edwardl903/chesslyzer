@@ -1,0 +1,45 @@
+{
+    "castling_counts": {
+        "kingside": 5365,
+        "none": 1416,
+        "queenside": 820
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 20.0,
+        "hours": 14.0,
+        "minutes": 4.0,
+        "seconds": 16.0,
+        "total_time": "20 days 14 hours 4 minutes 16 seconds",
+        "total_time_in_days": 20.59,
+        "total_time_in_hours": 494.07,
+        "total_time_in_minutes": 29644.27,
+        "total_time_in_seconds": 1778656.0,
+        "percentage_of_year": 5.64
+    },
+    "total_moves": 330890,
+    "total_win_draw_loss": {
+        "win": 6177,
+        "lose": 894,
+        "draw": 530
+    },
+    "total_results": {
+        "win": 6177,
+        "resigned": 643,
+        "repetition": 312,
+        "insufficient": 139,
+        "checkmated": 87,
+        "agreed": 87,
+        "timeout": 62,
+        "timevsinsufficient": 57,
+        "stalemate": 22,
+        "50move": 14,
+        "abandoned": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 712,
+    "total_games": 7601,
+    "longest_winning_streak": 68,
+    "longest_losing_streak": 6,
+    "most_played_opponent": "DanielNaroditsky"
+}
