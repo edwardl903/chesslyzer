@@ -326,6 +326,49 @@ def convert_to_est(time_str):
     
     # Return the time in 'HH:MM:SS' format
     return est_time.strftime('%H:%M:%S')
+
+from datetime import datetime, timedelta
+import pandas as pd
+
+def adjust_date_for_timezone(cleaned_df, date_col, time_col, threshold="19:00:00", date_format="%Y.%m.%d", time_format="%H:%M:%S"):
+    """
+    Adjusts the date in a DataFrame based on a time threshold, to account for timezone differences.
+    
+    Parameters:
+        cleaned_df (pd.DataFrame): The DataFrame containing the data.
+        date_col (str): The name of the column containing the dates.
+        time_col (str): The name of the column containing the times.
+        threshold (str): The time threshold in 'HH:MM:SS' format (default is '19:00:00').
+        date_format (str): The format of the date column (default is '%Y.%m.%d').
+        time_format (str): The format of the time column (default is '%H:%M:%S').
+    
+    Returns:
+        pd.DataFrame: The DataFrame with the adjusted date column.
+    """
+    # Define the threshold time for comparison
+    threshold_time = datetime.strptime(threshold, time_format).time()
+    
+    # Ensure the time column is parsed correctly
+    cleaned_df[time_col] = pd.to_datetime(cleaned_df[time_col], format=time_format).dt.time
+    
+    # Convert the date column to datetime
+    cleaned_df[date_col] = pd.to_datetime(cleaned_df[date_col], format=date_format, errors='coerce')
+    
+    # Check for invalid dates
+    if cleaned_df[date_col].isnull().any():
+        raise ValueError(f"Some entries in '{date_col}' could not be converted to datetime. Check the input format.")
+    
+    # Update the date column based on the time threshold
+    cleaned_df[date_col] = cleaned_df.apply(
+        lambda row: row[date_col] - timedelta(days=1) if row[time_col] > threshold_time else row[date_col],
+        axis=1
+    )
+    
+    # Convert the date back to the original format
+    cleaned_df[date_col] = cleaned_df[date_col].dt.strftime(date_format)
+    
+    return cleaned_df
+
     
 def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfish"):
     all_games = fetch_all_games_for_last_year(username) ## change to current year if necessary
@@ -395,6 +438,8 @@ def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfi
 
 import pandas as pd
 import numpy as np
+from datetime import datetime, timedelta
+
 
 def clean_dataframe(df, username):
     """
@@ -408,6 +453,16 @@ def clean_dataframe(df, username):
         pd.DataFrame: The cleaned and processed DataFrame.
     """
     cleaned_df = df.copy()
+
+        # Example usage
+    cleaned_df = adjust_date_for_timezone(
+        cleaned_df=cleaned_df,
+        date_col="date",
+        time_col="start_time_est",
+        threshold="19:00:00",
+        date_format="%Y.%m.%d",
+        time_format="%H:%M:%S"
+    )
 
     # Clean and process the 'eco' column
     cleaned_df['eco'] = cleaned_df['eco'].str.split('/openings/').str[1]
