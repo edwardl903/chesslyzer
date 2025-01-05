@@ -1,0 +1,57 @@
+{
+    "castling_counts": {
+        "none": 381,
+        "kingside": 345,
+        "queenside": 131
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 3.0,
+        "hours": 6.0,
+        "minutes": 26.0,
+        "seconds": 58.0,
+        "total_time": "3 days 6 hours 26 minutes 58 seconds",
+        "total_time_in_days": 3.27,
+        "total_time_in_hours": 78.45,
+        "total_time_in_minutes": 4706.97,
+        "total_time_in_seconds": 282418.0,
+        "percentage_of_year": 0.9
+    },
+    "total_moves": 24642,
+    "total_win_draw_loss": {
+        "win": 432,
+        "lose": 402,
+        "draw": 23
+    },
+    "total_results": {
+        "win": 432,
+        "abandoned": 199,
+        "checkmated": 88,
+        "resigned": 76,
+        "timeout": 39,
+        "repetition": 9,
+        "stalemate": 5,
+        "insufficient": 4,
+        "timevsinsufficient": 4,
+        "agreed": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 68,
+    "total_games": 857,
+    "longest_winning_streak": 6,
+    "longest_losing_streak": 7,
+    "most_played_opponent": "slin11",
+    "highest_rating": {
+        "rating": 1230,
+        "time_control": "blitz",
+        "date": "2024.12.29"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.01.06",
+        "time_spent": "0 days 2 hours 27 minutes 21 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Saragossa-Opening",
+        "black_opening": "Caro-Kann-Defense"
+    }
+}

@@ -39,5 +39,18 @@
     "total_games": 185,
     "longest_winning_streak": 4,
     "longest_losing_streak": 10,
-    "most_played_opponent": "brian120488"
+    "most_played_opponent": "brian120488",
+    "highest_rating": {
+        "rating": 798,
+        "time_control": "blitz",
+        "date": "2024.10.24"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.12.26",
+        "time_spent": "0 days 2 hours 50 minutes 25 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Vienna-Game",
+        "black_opening": "Alekhines-Defense"
+    }
 }

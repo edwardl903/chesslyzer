@@ -39,5 +39,18 @@
     "total_games": 1093,
     "longest_winning_streak": 6,
     "longest_losing_streak": 7,
-    "most_played_opponent": "EdwardL903"
+    "most_played_opponent": "EdwardL903",
+    "highest_rating": {
+        "rating": 1492,
+        "time_control": "bullet",
+        "date": "2024.03.23"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.01.30",
+        "time_spent": "0 days 2 hours 52 minutes 2 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Queens-Gambit",
+        "black_opening": "Scandinavian-Defense"
+    }
 }

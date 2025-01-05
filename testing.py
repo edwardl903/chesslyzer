@@ -1,9 +1,11 @@
 from data_processing import *
 from my_stats import *
+from visualizations import *
 
 import time
 import sys
 import json
+import os
 
 pd.set_option('display.max_rows', None)  # No limit on rows
 def drop_columns(df):
@@ -12,8 +14,12 @@ def drop_columns(df):
         print(df.columns)
     return df
     
+
 def main(username):
     print("Chesslyzer booting...!!!")
+
+    output_dir = 'static/images/'
+    os.makedirs(output_dir, exist_ok=True)  
     
     start_time = time.time()
     df = fetch_and_process_game_data(username)
@@ -41,6 +47,7 @@ def main(username):
         #print(f"{stat}: {value}")
     #for stat, value in more_statistics.items():
         #print(f"{stat}: {value}")
+    call_visualizations(chess_df, output_dir)
 
     final_df = drop_columns(chess_df)
     final_df.to_csv(f'csv/{username}.csv', index=False)

@@ -63,6 +63,7 @@
     const submitBtn = document.getElementById('submitBtn');
     const resultContainer = document.getElementById('result');
     const contentContainer = document.getElementById('contentContainer');  // Reference to the content container
+    
 
     if (!username) {
         alert('Please enter a username.');
@@ -235,12 +236,16 @@
   </div>
 
   <h3 class="section-title">My Openings</h3>
-  <div class="list-container">
-    <ul>
-      <li><span class="stat-label">White Opening:</span> <span class="stat-value">${data.my_openings.white_opening}</span></li>
-      <li><span class="stat-label">Black Opening:</span> <span class="stat-value">${data.my_openings.black_opening}</span></li>
-    </ul>
-  </div>
+    <div class="list-container">
+    <div class="stat-block">
+        <span class="stat-label">White Opening:</span>
+        <span class="stat-value">${data.my_openings.white_opening}</span>
+    </div>
+    <div class="stat-block">
+        <span class="stat-label">Black Opening:</span>
+        <span class="stat-value">${data.my_openings.black_opening}</span>
+    </div>
+    </div>
 </div>
 
 
@@ -248,12 +253,18 @@
    
                 
             `;
+
             resultContainer.appendChild(statsContainer);
 
             // Hide the input and button sections
             /*contentContainer.querySelector('div:nth-child(0)').style.display = 'none';  // Hide the first div (image + title)*/
             /*contentContainer.querySelector('div:nth-child(2)').style.display = 'none';  // Hide the second div (input and button)*/
-        } else if (data.error) {
+        } 
+        /*if (data.images) {
+            const imagesContainers = document.getElementById('result'); 
+            imagesContainer.appendChild(imageGrid);
+        }*/
+        else if (data.error) {
             // Handle the error message
             resultContainer.innerHTML = `
                 <p class="error">${data.error}</p>
