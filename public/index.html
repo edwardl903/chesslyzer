@@ -89,7 +89,6 @@
     .then(response => response.json())
     .then(data => {
         console.log('Received data:', data); // Log the data to verify if it's correct
-        console.log(data.highest);
         loadingMessage.style.display = 'none';  // Hide loading message
         submitBtn.disabled = false;
 
@@ -102,157 +101,159 @@
             // Create a stats container to display analytics data
             const statsContainer = document.createElement('div');
             statsContainer.innerHTML = `
-                <div class="analytics-container">
-  <h2 class="section-title">Your Chess Analytics</h2>
+                                    <div class="analytics-container">
+                    <h2 class="section-title">Your Chess Analytics</h2>
 
-  <div class="stat-block">
-    <span class="stat-label">Total Time Spent:</span>
-    <span class="stat-value">${data.total_time_spent.total_time}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Time (in days):</span>
-    <span class="stat-value">${data.total_time_spent.total_time_in_days.toFixed(2)}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Time (in hours):</span>
-    <span class="stat-value">${data.total_time_spent.total_time_in_hours.toFixed(2)}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Time (in minutes):</span>
-    <span class="stat-value">${data.total_time_spent.total_time_in_minutes.toFixed(2)}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Time (in seconds):</span>
-    <span class="stat-value">${data.total_time_spent.total_time_in_seconds}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Percentage of Year:</span>
-    <span class="stat-value">${data.total_time_spent.percentage_of_year.toFixed(2)}%</span>
-  </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Time Spent:</span>
+                        <span class="stat-value">${data.total_time_spent.total_time}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Time (in days):</span>
+                        <span class="stat-value">${data.total_time_spent.total_time_in_days.toFixed(2)}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Time (in hours):</span>
+                        <span class="stat-value">${data.total_time_spent.total_time_in_hours.toFixed(2)}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Time (in minutes):</span>
+                        <span class="stat-value">${data.total_time_spent.total_time_in_minutes.toFixed(2)}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Time (in seconds):</span>
+                        <span class="stat-value">${data.total_time_spent.total_time_in_seconds}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Percentage of Year:</span>
+                        <span class="stat-value">${data.total_time_spent.percentage_of_year.toFixed(2)}%</span>
+                    </div>
 
-  <div class="stat-block">
-    <span class="stat-label">Total Games Played:</span>
-    <span class="stat-value">${data.total_games}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Wins:</span>
-    <span class="stat-value">${data.total_win_draw_loss.win}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Draws:</span>
-    <span class="stat-value">${data.total_win_draw_loss.draw}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Losses:</span>
-    <span class="stat-value">${data.total_win_draw_loss.lose}</span>
-  </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Games Played:</span>
+                        <span class="stat-value">${data.total_games}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Wins:</span>
+                        <span class="stat-value">${data.total_win_draw_loss.win}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Draws:</span>
+                        <span class="stat-value">${data.total_win_draw_loss.draw}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Losses:</span>
+                        <span class="stat-value">${data.total_win_draw_loss.lose}</span>
+                    </div>
 
-  <div class="stat-block">
-    <span class="stat-label">Total En Passant:</span>
-    <span class="stat-value">${data.total_en_passant}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Promotions:</span>
-    <span class="stat-value">${data.total_promotions}</span>
-  </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total En Passant:</span>
+                        <span class="stat-value">${data.total_en_passant}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Promotions:</span>
+                        <span class="stat-value">${data.total_promotions}</span>
+                    </div>
 
-  <div class="stat-block">
-    <span class="stat-label">Longest Winning Streak:</span>
-    <span class="stat-value">${data.longest_winning_streak}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Longest Losing Streak:</span>
-    <span class="stat-value">${data.longest_losing_streak}</span>
-  </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Longest Winning Streak:</span>
+                        <span class="stat-value">${data.longest_winning_streak}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Longest Losing Streak:</span>
+                        <span class="stat-value">${data.longest_losing_streak}</span>
+                    </div>
 
-  <div class="stat-block">
-    <span class="stat-label">Most Played Opponent:</span>
-    <span class="stat-value">${data.most_played_opponent}</span>
-  </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Most Played Opponent:</span>
+                        <span class="stat-value">${data.most_played_opponent}</span>
+                    </div>
 
-  <h3 class="section-title">Other Results</h3>
-  <div class="stat-block">
-    <span class="stat-label">Total Wins:</span>
-    <span class="stat-value">${data.total_results.win}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Checkmated:</span>
-    <span class="stat-value">${data.total_results.checkmated}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Resigned:</span>
-    <span class="stat-value">${data.total_results.resigned}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Timeout:</span>
-    <span class="stat-value">${data.total_results.timeout}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Abandoned:</span>
-    <span class="stat-value">${data.total_results.abandoned}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Repetition:</span>
-    <span class="stat-value">${data.total_results.repetition}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Time vs Insufficient:</span>
-    <span class="stat-value">${data.total_results.timevsinsufficient}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Stalemate:</span>
-    <span class="stat-value">${data.total_results.stalemate}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Insufficient Material:</span>
-    <span class="stat-value">${data.total_results.insufficient}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Total Agreed:</span>
-    <span class="stat-value">${data.total_results.agreed}</span>
-  </div>
+                    <h3 class="section-title">Other Results</h3>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Wins:</span>
+                        <span class="stat-value">${data.total_results.win}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Checkmated:</span>
+                        <span class="stat-value">${data.total_results.checkmated}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Resigned:</span>
+                        <span class="stat-value">${data.total_results.resigned}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Timeout:</span>
+                        <span class="stat-value">${data.total_results.timeout}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Abandoned:</span>
+                        <span class="stat-value">${data.total_results.abandoned}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Repetition:</span>
+                        <span class="stat-value">${data.total_results.repetition}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Time vs Insufficient:</span>
+                        <span class="stat-value">${data.total_results.timevsinsufficient}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Stalemate:</span>
+                        <span class="stat-value">${data.total_results.stalemate}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Insufficient Material:</span>
+                        <span class="stat-value">${data.total_results.insufficient}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Total Agreed:</span>
+                        <span class="stat-value">${data.total_results.agreed}</span>
+                    </div>
 
-  <h3 class="section-title">Highest Rating</h3>
-  <div class="stat-block">
-    <span class="stat-label">Highest Rating Achieved:</span>
-    <span class="stat-value">${data.highest_rating.rating}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Time Control:</span>
-    <span class="stat-value">${data.highest_rating.time_control}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Achieved On:</span>
-    <span class="stat-value">${data.highest_rating.date}</span>
-  </div>
+                    <h3 class="section-title">Highest Rating</h3>
+                    <div class="stat-block">
+                        <span class="stat-label">Highest Rating Achieved:</span>
+                        <span class="stat-value">${data.highest_rating.rating}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Time Control:</span>
+                        <span class="stat-value">${data.highest_rating.time_control}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Achieved On:</span>
+                        <span class="stat-value">${data.highest_rating.date}</span>
+                    </div>
 
-  <div class="stat-block">
-    <span class="stat-label">Most Time Spent On A Single Day:</span>
-    <span class="stat-value">${data.most_time_spent_day_dict.date}</span>
-  </div>
-  <div class="stat-block">
-    <span class="stat-label">Time Spent:</span>
-    <span class="stat-value">${data.most_time_spent_day_dict.time_spent}</span>
-  </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Most Time Spent On A Single Day:</span>
+                        <span class="stat-value">${data.most_time_spent_day_dict.date}</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-label">Time Spent:</span>
+                        <span class="stat-value">${data.most_time_spent_day_dict.time_spent}</span>
+                    </div>
 
-  <h3 class="section-title">My Openings</h3>
-    <div class="list-container">
-    <div class="stat-block">
-        <span class="stat-label">White Opening:</span>
-        <span class="stat-value">${data.my_openings.white_opening}</span>
-    </div>
-    <div class="stat-block">
-        <span class="stat-label">Black Opening:</span>
-        <span class="stat-value">${data.my_openings.black_opening}</span>
-    </div>
-    </div>
-</div>
+                    <h3 class="section-title">My Openings</h3>
+                        <div class="list-container">
+                        <div class="stat-block">
+                            <span class="stat-label">White Opening:</span>
+                            <span class="stat-value">${data.my_openings.white_opening}</span>
+                        </div>
+                        <div class="stat-block">
+                            <span class="stat-label">Black Opening:</span>
+                            <span class="stat-value">${data.my_openings.black_opening}</span>
+                        </div>
+                        </div>
 
-
-                
-   
-                
-            `;
+                    <!-- Images Container -->
+                    <div id="imagesContainer" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
+                        ${data.images.map(image => `
+                            <img src="${image}" alt="Generated Chess Image" style="width: 100%; border-radius: 8px; object-fit: cover; height: 200px;">
+                        `).join('')}
+                    </div>
+                    </div>`;
+                    
 
             resultContainer.appendChild(statsContainer);
 
@@ -260,17 +261,20 @@
             /*contentContainer.querySelector('div:nth-child(0)').style.display = 'none';  // Hide the first div (image + title)*/
             /*contentContainer.querySelector('div:nth-child(2)').style.display = 'none';  // Hide the second div (input and button)*/
         } 
-        /*if (data.images) {
-            const imagesContainers = document.getElementById('result'); 
-            imagesContainer.appendChild(imageGrid);
-        }*/
-        else if (data.error) {
-            // Handle the error message
-            resultContainer.innerHTML = `
-                <p class="error">${data.error}</p>
-            `;
-            resultContainer.style.display = 'block';  // Show the result container even for error
-        }
+                    
+             
+
+                
+
+            
+
+                else if (data.error) {
+                    // Handle the error message
+                    resultContainer.innerHTML = `
+                        <p class="error">${data.error}</p>
+                    `;
+                    resultContainer.style.display = 'block';  // Show the result container even for error
+                }
     })
     .catch(error => {
         loadingMessage.style.display = 'none';  // Hide loading message

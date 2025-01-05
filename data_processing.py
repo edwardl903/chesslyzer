@@ -390,8 +390,12 @@ def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfi
         start_time = metadata.get('StartTime', None)
         end_time = metadata.get('EndTime', None)
 
+
         start_time_est = convert_to_est(start_time)
         end_time_est = convert_to_est(end_time)
+        start_time_est = pd.to_datetime(start_time_est, format='%H:%M:%S')
+        end_time_est = pd.to_datetime(end_time_est, format='%H:%M:%S')
+  
             
         link = metadata.get('Link', None)
         eco = metadata.get('ECOUrl', None)

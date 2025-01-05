@@ -35,6 +35,7 @@ def generate_csv():
             os.remove(file)
 
         # Call the chesslytics.py script to generate the CSV and images
+        print(f"Running testing.py script for username: {username}")  # Debugging statement
         result = subprocess.run(
             ["python", "testing.py", username],
             check=True,
@@ -50,11 +51,12 @@ def generate_csv():
                 statistics = json.load(f)
             
             # Generate unique image paths with cache-busting query strings
+            print("Processing Images...") 
             image_paths = []
             timestamp = int(time.time())  # Get current timestamp to ensure unique filenames
-            for i in range(1, 17):  # Assuming 16 images are generated
+            for i in range(1, 4):  # Assuming 16 images are generated
                 image_paths.append(f"/static/images/image_{i}.png?t={timestamp}")
-
+            print("Returning statistics and image paths") 
             # Return JSON response with statistics and image paths
             return jsonify({
                 "images": image_paths,

@@ -22,10 +22,14 @@ def plot_game_statistics(cleaned_df, output_dir):
     cleaned_df['weekday'] = cleaned_df['timestamp'].dt.day_name()
 
     # Extract the hour of the day from 'start_time_est'
-    cleaned_df['hour'] = cleaned_df['start_time_est'].str.split(':').str[0].astype(int)
+    print(cleaned_df['start_time_est'].dtype)
+    cleaned_df['start_time_est'] = pd.to_datetime(cleaned_df['start_time_est'], format='%H:%M:%S')
+    cleaned_df['hour'] = cleaned_df['start_time_est'].dt.hour
 
     # 1. Count the frequency of games played each month
     monthly_counts = cleaned_df['month'].value_counts().sort_index()
+    monthly_counts.index = monthly_counts.index.strftime('%b') #indexes it to jan, feb , etc
+
 
     # 2. Count the frequency of games played by weekday
     weekday_counts = cleaned_df['weekday'].value_counts().reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
@@ -855,8 +859,9 @@ def plot_rating_progression_over_time(cleaned_df, output_dir):
 def call_visualizations(cleaned_df, output_dir):
     print("Visualzations have been called")
 
+    plot_game_statistics(cleaned_df, output_dir)
     # plot_rating_progression_over_time(cleaned_df, output_dir)
-    plot_opening_statistics(cleaned_df, output_dir)
+    # plot_opening_statistics(cleaned_df, output_dir)
     print("Visualizations are over")
     #plot_time_class_statistics(cleaned_df, output_dir)
     #plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)

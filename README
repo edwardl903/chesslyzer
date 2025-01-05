@@ -22,3 +22,12 @@ source venv/bin/activate
 # pip install -r requirements.txt
 
 # pip-compile requirements.in
+
+#notes for ed: chesslyticsipynb and chesslytics.py is very old code, please dont touch
+#please fix bugs about the date
+
+
+#**********************************#
+# Overall - Architecture
+# generate.py
+#
