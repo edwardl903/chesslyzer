@@ -1,5 +1,6 @@
 import pandas as pd
 from itertools import groupby
+from data_processing import fetch_player_data
 
 # Function to calculate win rates by opening
 def calculate_win_rates(df):
@@ -241,7 +242,7 @@ def total_statistics(cleaned_df):
     timecontrol_counts = cleaned_df['time_control'].value_counts()
     #print(f"Timeclass counts: {timecontrol_counts}")
 
-    most_played_opps = most_played_opponent(cleaned_df)
+    most_played_opps = most_played_opponent(cleaned_df).head()
     #print(f"Printing Most Played Oppoentns DF: {most_played_opps}")
     most_played_opp_username = most_played_opps.iloc[0]['Opponent']
     most_played_opp_count = most_played_opps.iloc[0]['Games_Played']
@@ -293,10 +294,16 @@ def total_statistics(cleaned_df):
     print(f"First Defense Opening: {first_defense}")
     print(f"First Non-Defense Opening: {first_non_defense}")
 
+    my_username = cleaned_df['my_username'].iloc[0]
+    player_data = fetch_player_data(my_username)
+    print(player_data['avatar'])
+
 
 
     # Prepare the statistics dictionary with total counts only
     statistics = {
+        'my_avatar': player_data['avatar'],
+        'my_username': my_username,
         'castling_counts': castling_counts.to_dict(), #to dict() so we can turn from panda series to dict
         'total_time_spent': time_dict,
         'total_moves': int(total_moves),
@@ -307,7 +314,7 @@ def total_statistics(cleaned_df):
         'total_games': int(total_games),
         'longest_winning_streak': int(winning_streak),
         'longest_losing_streak': int(losing_streak),
-        'most_played_opponent': most_played_opp_username,
+        'most_played_opponent': most_played_opps.to_dict(),
         'highest_rating': {
             'rating': highest_rating,
             'time_control': highest_rating_time_class,
@@ -317,7 +324,9 @@ def total_statistics(cleaned_df):
         'my_openings': {
             'white_opening': first_non_defense,
             'black_opening': first_defense
-        }
+        },
+        'timeclass_counts': timeclass_counts.to_dict(),
+        'timecontrol_counts': timecontrol_counts.to_dict()
     }
 
     return statistics

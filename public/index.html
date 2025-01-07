@@ -35,6 +35,13 @@
     margin: 0 auto;
 }
 
+/* Row 4 - 1 column (just for 1 stat box at the bottom) */
+.row-0 {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column in the fourth row */
+    gap: 30px;
+}
+
 /* Row 1 - 3 columns */
 .row-1 {
     display: grid;
@@ -56,12 +63,6 @@
     gap: 30px;
 }
 
-/* Row 4 - 1 column (just for 1 stat box at the bottom) */
-.row-4 {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 column in the fourth row */
-    gap: 30px;
-}
 
 /* Stat Box styling */
 .stat-box {
@@ -222,20 +223,57 @@
         <div class="background-overlay"></div>
         <div class="background-overlay-second"></div>
         <div class="content-container">
+            <!-- First row with Profile -->
+            <div class="row row-0" style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            gap: 28px;
+            width: 1133.87px;
+            height: 115.46px;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        ">
+            <div class="stat-box" style="
+                padding: 20px;
+                background: none;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+            ">
+                <div class="stat-title" style="
+                    color: #EEEED5;
+                    font-size: 40px;
+                    font-family: 'League Spartan', sans-serif;
+                    font-weight: 500;
+                    line-height: 100%;
+                ">@${data.my_username}'s 2024 CHESS.COM WRAPPED by Chesslytics.xyz</div>
+                    <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px; padding: 20px">
+
+            </div>
+            </div>
             <!-- First row with 3 stat boxes -->
             <div class="row row-1">
                 <div class="stat-box">
-                    <div class="stat-title">FAVORITE TIME CONTROL</div>
-                    <div class="stat-value">Bullet 1|0</div>
-                </div>
-                <div class="stat-box">
                     <div class="stat-title">TOTAL GAMES</div>
-                    <div class="stat-value">384</div>
-                    <div class="stat-details">155 win / 18 draw / 211 lost</div>
+                    <div class="stat-value">${data.total_games}</div>
+                    <div class="stat-details">${data.total_win_draw_loss.win} wins / ${data.total_win_draw_loss.draw} draws / ${data.total_win_draw_loss.lose} losses</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-title">@emazing19’s</div>
-                    <div class="stat-subtitle">2024 CHESS.COM WRAPPED by Chesslytics.xyz</div>
+                    <div class="stat-title">MINUTES PLAYED</div>
+                    <div class="stat-value">${data.total_time_spent.total_time_in_minutes.toFixed(2)}</div>
+                    <div class="stat-details">that’s ${data.total_time_spent.total_time}</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">YOUR HIGHEST RATING</div>
+                    <div class="stat-value">${data.highest_rating.rating}</div>
+                    <div class="stat-details">in ${data.highest_rating.time_control} chess, on ${data.highest_rating.date}</div>
                 </div>
             </div>
 
@@ -243,50 +281,42 @@
             <div class="row row-2">
                 <div class="stat-box">
                     <div class="stat-title">MOST PLAYED OPPONENTS</div>
-                    <div class="stat-opponent">@EdwardL903 - 23 games</div>
-                    <div class="stat-opponent">@ttlai - 14 games</div>
-                    <div class="stat-opponent">@laightning - 8 games</div>
+                    <div class="stat-opponent">@${data.most_played_opponent.Opponent["0"]} (${data.most_played_opponent.Games_Played["0"]} games)</div>
+                    <div class="stat-opponent">@${data.most_played_opponent.Opponent["1"]} (${data.most_played_opponent.Games_Played["1"]} games)</div>
+                    <div class="stat-opponent">@${data.most_played_opponent.Opponent["2"]} (${data.most_played_opponent.Games_Played["2"]} games)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-title">NUMBER OF MOVES MADE</div>
-                    <div class="stat-value">5012</div>
+                    <div class="stat-title">MOST PLAYED OPENINGS</div>
+                    <div class="stat-opening">${data.my_openings.white_opening} - as white</div>
+                    <div class="stat-opening">${data.my_openings.black_opening} - as black</div>
                 </div>
             </div>
 
             <!-- Third row with 5 stat boxes -->
             <div class="row row-3">
                 <div class="stat-box">
-                    <div class="stat-title">MINUTES PLAYED</div>
-                    <div class="stat-value">12,192</div>
-                    <div class="stat-details">that’s 203 hours or 8 days!</div>
+                    <div class="stat-title">FAVORITE TIME CONTROL</div>
+                    <div class="stat-value">${Object.entries(data.timecontrol_counts)[0][0]}</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">NUMBER OF MOVES MADE</div>
+                    <div class="stat-value">${data.total_moves}</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">LONGEST WINNING STREAK</div>
-                    <div class="stat-value">9</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-title">MOST PLAYED OPENINGS</div>
-                    <div class="stat-opening">Queen’s Gambit - as white</div>
-                    <div class="stat-opening">Scandinavian Defense - as black</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-title">YOUR HIGHEST RATING</div>
-                    <div class="stat-value">1410</div>
-                    <div class="stat-details">in bullet chess, on October 24, 2024</div>
+                    <div class="stat-value">${data.longest_winning_streak}</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">LONGEST LOSING STREAK</div>
-                    <div class="stat-value">16</div>
+                    <div class="stat-value">${data.longest_losing_streak}</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">MOST HOURS PLAYED IN ONE DAY</div>
+                    <div class="stat-details">${data.most_time_spent_day_dict.date}: ${data.most_time_spent_day_dict.time_spent}</div>
                 </div>
             </div>
 
             <!-- Fourth row with 1 stat box -->
-            <div class="row row-4">
-                <div class="stat-box">
-                    <div class="stat-title">MOST HOURS PLAYED IN ONE DAY</div>
-                    <div class="stat-value">7</div>
-                </div>
-            </div>
         </div>
     </div>
 `;

@@ -60,6 +60,8 @@ def generate_csv():
             # Return JSON response with statistics and image paths
             return jsonify({
                 "images": image_paths,
+                "my_avatar": statistics['my_avatar'],
+                "my_username": statistics['my_username'],
                 "total_time_spent": statistics['total_time_spent'],
                 "total_moves": statistics['total_moves'],
                 "total_win_draw_loss": statistics['total_win_draw_loss'],
@@ -72,7 +74,9 @@ def generate_csv():
                 "most_played_opponent": statistics['most_played_opponent'],
                 "highest_rating": statistics['highest_rating'],
                 "most_time_spent_day_dict" : statistics['most_time_spent_day_dict'],
-                "my_openings": statistics['my_openings']
+                "my_openings": statistics['my_openings'],
+                "timecontrol_counts": statistics['timecontrol_counts'],
+                "timeclass_counts": statistics['timeclass_counts']
             })
 
         else:

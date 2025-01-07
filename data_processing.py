@@ -374,6 +374,7 @@ def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfi
     all_games = fetch_all_games_for_last_year(username) ## change to current year if necessary
     game_data = []
 
+
     for game in all_games:
 
         if 'pgn' not in game:
