@@ -43,33 +43,8 @@ body {
     align-items: center;
     gap: 32px;
     width: 100%;
-    max-width: 900px;
+    max-width: 1600px;
     max-height: 100vh;  /* Ensure container doesn't exceed viewport height */
     overflow-y: auto;  /* Allow scrolling within this container */
 }
 
-.section-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: #EEEED5;
-}
-
-.stat-block {
-    display: flex;
-    justify-content: space-between;
-    margin: 8px 0;
-    color: #EEEED5;
-}
-
-.stat-label {
-    font-weight: 700;
-}
-
-.stat-value {
-    font-weight: 400;
-}
-
-.list-container ul {
-    padding: 0;
-    list-style-type: none;
-}
