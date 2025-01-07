@@ -12,7 +12,7 @@
 /* General styles for the container */
 .stats-container {
     width: 100%;
-    height: 100vh; /* Full height of the viewport */
+    height: 120vh; /* Full height of the viewport */
     position: relative;
     display: flex;
     justify-content: center; /* Centers horizontally */
@@ -40,6 +40,7 @@
     display: grid;
     grid-template-columns: 1fr; /* 1 column in the fourth row */
     gap: 30px;
+    margin-bottom: 30px;
 }
 
 /* Row 1 - 3 columns */
@@ -254,7 +255,7 @@
                     font-weight: 500;
                     line-height: 100%;
                 ">@${data.my_username}'s 2024 CHESS.COM WRAPPED by Chesslytics.xyz</div>
-                    <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px; padding: 20px">
+                    <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px;">
 
             </div>
             </div>
@@ -268,7 +269,7 @@
                 <div class="stat-box">
                     <div class="stat-title">MINUTES PLAYED</div>
                     <div class="stat-value">${data.total_time_spent.total_time_in_minutes.toFixed(2)}</div>
-                    <div class="stat-details">that’s ${data.total_time_spent.total_time}</div>
+                    <div class="stat-details">that’s ${data.total_time_spent.total_time}!</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">YOUR HIGHEST RATING</div>
@@ -287,8 +288,8 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">MOST PLAYED OPENINGS</div>
-                    <div class="stat-opening">${data.my_openings.white_opening} - as white</div>
-                    <div class="stat-opening">${data.my_openings.black_opening} - as black</div>
+                    <div class="stat-opening">White Opening: ${data.my_openings.white_opening}</div>
+                    <div class="stat-opening">Black Opening: ${data.my_openings.black_opening}</div>
                 </div>
             </div>
 
@@ -312,7 +313,7 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">MOST HOURS PLAYED IN ONE DAY</div>
-                    <div class="stat-details">${data.most_time_spent_day_dict.date}: ${data.most_time_spent_day_dict.time_spent}</div>
+                    <div class="stat-details">${data.most_time_spent_day_dict.date}:<br> ${data.most_time_spent_day_dict.time_spent}</div>
                 </div>
             </div>
 
