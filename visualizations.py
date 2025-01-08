@@ -853,25 +853,25 @@ def plot_rating_progression_over_time(cleaned_df, output_dir):
 
     # Display the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}image_16.png")  # Save the plot
+    plt.savefig(f"{output_dir}image_0.png")  # Save the plot
     #plt.show()
 
 def call_visualizations(cleaned_df, output_dir):
     print("Visualzations have been called")
 
     plot_game_statistics(cleaned_df, output_dir)
-    # plot_rating_progression_over_time(cleaned_df, output_dir)
-    # plot_opening_statistics(cleaned_df, output_dir)
+    plot_rating_progression_over_time(cleaned_df, output_dir)
+    plot_opening_statistics(cleaned_df, output_dir)
     print("Visualizations are over")
-    #plot_time_class_statistics(cleaned_df, output_dir)
-    #plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
-    #plot_game_outcome_by_hour(cleaned_df, output_dir)
-    #plot_game_outcome_by_day(cleaned_df, output_dir)
-    # plot_game_outcome_by_month(cleaned_df, output_dir)
-    # plot_win_percentage_vs_opp_rating(cleaned_df, output_dir)
-    # plot_moves_vs_game_outcome(cleaned_df, output_dir)
-    # plot_win_rate_vs_num_moves(cleaned_df, output_dir)
-    # plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
-    # plot_game_outcome_by_time_left(cleaned_df, output_dir)
-    # plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
-    # plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
+    plot_time_class_statistics(cleaned_df, output_dir)
+    plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
+    plot_game_outcome_by_hour(cleaned_df, output_dir)
+    plot_game_outcome_by_day(cleaned_df, output_dir)
+    plot_game_outcome_by_month(cleaned_df, output_dir)
+    plot_win_percentage_vs_opp_rating(cleaned_df, output_dir)
+    plot_moves_vs_game_outcome(cleaned_df, output_dir)
+    plot_win_rate_vs_num_moves(cleaned_df, output_dir)
+    plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir)
+    plot_game_outcome_by_time_left(cleaned_df, output_dir)
+    plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
+    plot_game_count_heatmap_by_castling(cleaned_df, output_dir)

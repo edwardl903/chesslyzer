@@ -54,9 +54,13 @@ def generate_csv():
             print("Processing Images...") 
             image_paths = []
             timestamp = int(time.time())  # Get current timestamp to ensure unique filenames
-            for i in range(1, 4):  # Assuming 16 images are generated
-                image_paths.append(f"/static/images/image_{i}.png?t={timestamp}")
-            print("Returning statistics and image paths") 
+            for i in range(0, 20):
+                image_path = f"/static/images/image_{i}.png"
+                full_path = os.path.join('./static/images', f"image_{i}.png")
+                if os.path.exists(full_path):
+                    image_paths.append(f"{image_path}?t={timestamp}")
+                else:
+                    print(f"Image {image_path} does not exist, skipping.")
             # Return JSON response with statistics and image paths
             return jsonify({
                 "images": image_paths,
