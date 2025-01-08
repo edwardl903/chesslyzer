@@ -42,16 +42,61 @@ def longest_streak(results, target):
     return streak
 
 # Function to find the quickest checkmate
-def find_quickest_checkmate(df):
-    df['num_moves'] = df['moves'].apply(len)
-    quickest_win = df.loc[(df['my_win_or_lose'] == 'win') & (df['num_moves'] == df['num_moves'].min())]
+def top_quickest_checkmate(df):
+    # Filter for checkmate games
+    checkmate_games = df[df['opp_result'] == 'checkmated']
+    
+    # Find the game with the minimum time spent (handles ties by selecting the first)
+    quickest_win_idx = checkmate_games['time_spent'].idxmin()
+    quickest_win = checkmate_games.loc[quickest_win_idx]
+    
     return quickest_win
 
-# Function to find best game by rating difference
-def find_best_game_by_rating(df):
-    df['rating_diff'] = df['my_rating'] - df['opp_rating']
-    best_game = df.loc[(df['my_win_or_lose'] == 'win') & (df['rating_diff'] == df['rating_diff'].max())]
+# You won with the highest rating difference (you being underdog)
+def top_biggest_victory(df):
+    won_games = df[df['my_win_or_lose'] == 'win']
+    best_game = won_games.loc[won_games['rating_diff'] == won_games['rating_diff'].min()]
+    best_game = best_game.iloc[0]
     return best_game
+
+# You lost, with the highest rating difference (you being the upperdog)
+def top_biggest_upset(df):
+    won_games = df[df['my_win_or_lose'] == 'lose']
+    best_game = won_games.loc[won_games['rating_diff'] == won_games['rating_diff'].max()]
+    best_game = best_game.iloc[0]
+    return best_game
+
+# You won against the highest-rated opponent
+def top_biggest_opponent_won(df):
+    won_games = df[df['my_win_or_lose'] == 'win']
+    highest_rated_opponent = won_games.loc[won_games['opp_rating'] == won_games['opp_rating'].max()]
+    highest_rated_opponent = highest_rated_opponent.iloc[0]
+    return highest_rated_opponent
+
+# Find the longest game (maximum time spent)
+def top_longest_game(df):
+    longest_game = df.loc[df['time_spent'] == df['time_spent'].max()]
+    longest_game = longest_game.iloc[0]
+    return longest_game
+
+# Find the game with the maximum number of moves
+def top_moves_game(df):
+    longest_game = df.loc[df['my_num_moves'] == df['my_num_moves'].max()]
+    longest_game = longest_game.iloc[0]
+    return longest_game
+
+def top_least_time_won(df):
+    won_games = df[df['my_win_or_lose'] == 'win']
+    game_with_least_time = won_games.loc[won_games['my_time_left'] == won_games['my_time_left'].min()]
+    game_with_least_time = game_with_least_time.iloc[0]
+    return game_with_least_time
+
+def top_least_time_lost(df):
+    won_games = df[df['my_win_or_lose'] == 'lose']
+    game_with_least_time = won_games.loc[won_games['opp_time_left'] == won_games['opp_time_left'].min()]
+    game_with_least_time = game_with_least_time.iloc[0]
+    return game_with_least_time
+
 
 # Function to calculate total time spent
 def calculate_total_time_spent(df):
@@ -156,7 +201,7 @@ def collect_statistics(df):
     
 
     # Quickest checkmate
-    quickest_win = find_quickest_checkmate(df)
+    quickest_win = top_quickest_checkmate(df)
     stats['quickest_checkmate'] = quickest_win[['date', 'moves', 'my_rating', 'opp_rating', 'my_num_moves', 'link']]
 
     # Total time spent
@@ -164,7 +209,7 @@ def collect_statistics(df):
     stats['total_time_spent'] = total_time_spent
 
     # Best game by rating difference
-    best_game = find_best_game_by_rating(df)
+    best_game = top_biggest_victory(df)
     stats['best_game_by_rating'] = best_game[['date', 'moves', 'my_rating', 'opp_rating', 'my_num_moves', 'link']]
 
     # Most played opponent
@@ -302,6 +347,23 @@ def total_statistics(cleaned_df):
     
     print(player_data['avatar'])
 
+    biggest_victory = top_biggest_victory(cleaned_df)
+    biggest_upset = top_biggest_upset(cleaned_df)
+    biggest_checkmate = top_quickest_checkmate(cleaned_df)
+    biggest_victory = biggest_victory[['opp_username', 'opp_rating', 'time_class', 'date', 'link']].to_dict()
+    biggest_upset = biggest_upset[['opp_username', 'opp_rating', 'time_class', 'date', 'link']].to_dict()
+    biggest_checkmate = biggest_checkmate[['opp_username', 'opp_rating', 'time_class', 'time_spent', 'my_num_moves', 'date', 'link']].to_dict()
+
+    biggest_opponent = top_biggest_opponent_won(cleaned_df)
+    biggest_longest = top_longest_game(cleaned_df)
+    biggest_moves = top_moves_game(cleaned_df)
+    biggest_opponent = biggest_opponent[['opp_username', 'opp_rating', 'time_class', 'date', 'link']].to_dict()
+    biggest_longest = biggest_longest[['opp_username', 'opp_rating', 'time_class', 'time_spent', 'date', 'link']].to_dict()
+    biggest_moves = biggest_moves[['opp_username', 'opp_rating', 'time_class', 'my_num_moves', 'date', 'link']].to_dict()
+    biggest_least_time_won = top_least_time_won(cleaned_df)
+    biggest_least_time_lost = top_least_time_lost(cleaned_df)
+    biggest_least_time_won =  biggest_least_time_won[['opp_username', 'opp_rating', 'time_class', 'my_time_left', 'date', 'link']].to_dict()
+    biggest_least_time_lost =     biggest_least_time_lost[['opp_username', 'opp_rating', 'time_class', 'opp_time_left', 'date', 'link']].to_dict()
 
 
     # Prepare the statistics dictionary with total counts only
@@ -330,7 +392,17 @@ def total_statistics(cleaned_df):
             'black_opening': first_defense
         },
         'timeclass_counts': timeclass_counts.to_dict(),
-        'timecontrol_counts': timecontrol_counts.to_dict()
+        'timecontrol_counts': timecontrol_counts.to_dict(),
+        'biggest_games': {
+            'victory': biggest_victory,
+            'upset': biggest_upset,
+            'checkmate': biggest_checkmate,
+            'opponent': biggest_opponent,
+            'longest': biggest_longest,
+            'moves': biggest_moves,
+            'least_time_won': biggest_least_time_won,
+            'least_time_lost': biggest_least_time_lost
+        }
     }
 
     return statistics

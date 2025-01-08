@@ -1,0 +1,150 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/83570436.f6a6042b.200x200o.d9720715bf41.jpeg",
+    "my_username": "emazing19",
+    "castling_counts": {
+        "none": 542,
+        "kingside": 332,
+        "queenside": 219
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 2.0,
+        "hours": 13.0,
+        "minutes": 21.0,
+        "seconds": 16.0,
+        "total_time": "2 days 13 hours 21 minutes 16 seconds",
+        "total_time_in_days": 2.56,
+        "total_time_in_hours": 61.35,
+        "total_time_in_minutes": 3681.27,
+        "total_time_in_seconds": 220876.0,
+        "percentage_of_year": 0.7
+    },
+    "total_moves": 38397,
+    "total_win_draw_loss": {
+        "lose": 532,
+        "win": 508,
+        "draw": 53
+    },
+    "total_results": {
+        "win": 508,
+        "checkmated": 309,
+        "timeout": 196,
+        "timevsinsufficient": 27,
+        "resigned": 23,
+        "stalemate": 16,
+        "repetition": 7,
+        "abandoned": 4,
+        "insufficient": 3
+    },
+    "total_en_passant": 0,
+    "total_promotions": 66,
+    "total_games": 1093,
+    "longest_winning_streak": 6,
+    "longest_losing_streak": 7,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "EdwardL903",
+            "1": "TenorioRod",
+            "2": "snowhawk878",
+            "3": "D_N_ZZZ",
+            "4": "ser702yo"
+        },
+        "Games_Played": {
+            "0": 4,
+            "1": 3,
+            "2": 3,
+            "3": 3,
+            "4": 2
+        }
+    },
+    "highest_rating": {
+        "rating": 1492,
+        "time_control": "bullet",
+        "date": "2024.03.22"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.03.22",
+        "time_spent": "0 days 3 hours 9 minutes 34 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Queens-Gambit",
+        "black_opening": "Scandinavian-Defense"
+    },
+    "timeclass_counts": {
+        "bullet": 744,
+        "blitz": 275,
+        "rapid": 74
+    },
+    "timecontrol_counts": {
+        "1m + 0s": 744,
+        "3m + 0s": 267,
+        "10m + 0s": 74,
+        "5m + 0s": 4,
+        "3m + 2s": 2,
+        "5m + 2s": 2
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "meeshly26",
+            "opp_rating": 129,
+            "time_class": "blitz",
+            "date": "2024.08.14",
+            "link": "https://www.chess.com/game/live/117421825641"
+        },
+        "upset": {
+            "opp_username": "EdwardL903",
+            "opp_rating": 1816,
+            "time_class": "blitz",
+            "date": "2024.09.12",
+            "link": "https://www.chess.com/game/live/119929229135"
+        },
+        "checkmate": {
+            "opp_username": "MockingbirdTune",
+            "opp_rating": 1365,
+            "time_class": "bullet",
+            "time_spent": 17,
+            "my_num_moves": 13,
+            "date": "2024.03.01",
+            "link": "https://www.chess.com/game/live/103008599307"
+        },
+        "opponent": {
+            "opp_username": "EdwardL903",
+            "opp_rating": 1816,
+            "time_class": "blitz",
+            "date": "2024.09.12",
+            "link": "https://www.chess.com/game/live/119930390847"
+        },
+        "longest": {
+            "opp_username": "wiegervt",
+            "opp_rating": 1356,
+            "time_class": "rapid",
+            "time_spent": 1230,
+            "date": "2024.01.24",
+            "link": "https://www.chess.com/game/live/99863020985"
+        },
+        "moves": {
+            "opp_username": "ogbobby98",
+            "opp_rating": 1182,
+            "time_class": "blitz",
+            "my_num_moves": 78,
+            "date": "2024.02.20",
+            "link": "https://www.chess.com/game/live/102226474941"
+        },
+        "least_time_won": {
+            "opp_username": "Petrified13Runner",
+            "opp_rating": 1406,
+            "time_class": "bullet",
+            "my_time_left": 0.1,
+            "date": "2024.04.07",
+            "link": "https://www.chess.com/game/live/106286215199"
+        },
+        "least_time_lost": {
+            "opp_username": "profjalbacutler",
+            "opp_rating": 1412,
+            "time_class": "bullet",
+            "opp_time_left": 0.1,
+            "date": "2024.02.23",
+            "link": "https://www.chess.com/game/live/102469179361"
+        }
+    }
+}

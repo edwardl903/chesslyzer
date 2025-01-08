@@ -80,7 +80,8 @@ def generate_csv():
                 "most_time_spent_day_dict" : statistics['most_time_spent_day_dict'],
                 "my_openings": statistics['my_openings'],
                 "timecontrol_counts": statistics['timecontrol_counts'],
-                "timeclass_counts": statistics['timeclass_counts']
+                "timeclass_counts": statistics['timeclass_counts'],
+                "biggest_games": statistics['biggest_games']
             })
 
         else:

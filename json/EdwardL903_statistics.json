@@ -85,5 +85,69 @@
         "2m + 1s": 2,
         "15m + 10s": 2,
         "3m + 2s": 1
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "Nekokaburi",
+            "opp_rating": 2002,
+            "time_class": "blitz",
+            "date": "2024.01.27",
+            "link": "https://www.chess.com/game/live/100113088453"
+        },
+        "upset": {
+            "opp_username": "emazing19",
+            "opp_rating": 1136,
+            "time_class": "blitz",
+            "date": "2024.09.12",
+            "link": "https://www.chess.com/game/live/119930390847"
+        },
+        "checkmate": {
+            "opp_username": "Alexlea444",
+            "opp_rating": 1042,
+            "time_class": "blitz",
+            "time_spent": 15,
+            "my_num_moves": 4,
+            "date": "2024.10.10",
+            "link": "https://www.chess.com/game/live/122342987235"
+        },
+        "opponent": {
+            "opp_username": "mamangcomansawi",
+            "opp_rating": 2175,
+            "time_class": "rapid",
+            "date": "2024.04.13",
+            "link": "https://www.chess.com/game/live/106804785885"
+        },
+        "longest": {
+            "opp_username": "diMaggio317",
+            "opp_rating": 1978,
+            "time_class": "rapid",
+            "time_spent": 1234,
+            "date": "2024.11.03",
+            "link": "https://www.chess.com/game/live/124413568007"
+        },
+        "moves": {
+            "opp_username": "JoaoPantaroto",
+            "opp_rating": 1914,
+            "time_class": "blitz",
+            "my_num_moves": 103,
+            "date": "2024.10.28",
+            "link": "https://www.chess.com/game/live/123912612711"
+        },
+        "least_time_won": {
+            "opp_username": "gttjerusalem",
+            "opp_rating": 1825,
+            "time_class": "bullet",
+            "my_time_left": 0.3,
+            "date": "2024.08.27",
+            "link": "https://www.chess.com/game/live/118558677017"
+        },
+        "least_time_lost": {
+            "opp_username": "Stonks11",
+            "opp_rating": 1977,
+            "time_class": "bullet",
+            "opp_time_left": 0.2,
+            "date": "2024.05.08",
+            "link": "https://www.chess.com/game/live/108969571717"
+        }
     }
 }

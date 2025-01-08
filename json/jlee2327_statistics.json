@@ -84,5 +84,69 @@
         "1m + 0s": 4,
         "1m + 1s": 2,
         "60m + 0s": 1
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "brian120488",
+            "opp_rating": 710,
+            "time_class": "blitz",
+            "date": "2024.12.13",
+            "link": "https://www.chess.com/game/live/127816772023"
+        },
+        "upset": {
+            "opp_username": "XzarDIC",
+            "opp_rating": 304,
+            "time_class": "rapid",
+            "date": "2024.01.05",
+            "link": "https://www.chess.com/game/live/98205336893"
+        },
+        "checkmate": {
+            "opp_username": "Maroillais",
+            "opp_rating": 389,
+            "time_class": "rapid",
+            "time_spent": 42,
+            "my_num_moves": 5,
+            "date": "2024.12.30",
+            "link": "https://www.chess.com/game/live/121804106026"
+        },
+        "opponent": {
+            "opp_username": "DaveyKeh",
+            "opp_rating": 886,
+            "time_class": "rapid",
+            "date": "2024.08.05",
+            "link": "https://www.chess.com/game/live/116614194323"
+        },
+        "longest": {
+            "opp_username": "sandhyapagaakhil",
+            "opp_rating": 531,
+            "time_class": "rapid",
+            "time_spent": 2454,
+            "date": "2024.01.11",
+            "link": "https://www.chess.com/game/live/98769257621"
+        },
+        "moves": {
+            "opp_username": "mhrdd26",
+            "opp_rating": 448,
+            "time_class": "rapid",
+            "my_num_moves": 84,
+            "date": "2024.12.27",
+            "link": "https://www.chess.com/game/live/121733440086"
+        },
+        "least_time_won": {
+            "opp_username": "ChessMasterBobby8008",
+            "opp_rating": 183,
+            "time_class": "blitz",
+            "my_time_left": 8.3,
+            "date": "2024.12.05",
+            "link": "https://www.chess.com/game/live/121280647644"
+        },
+        "least_time_lost": {
+            "opp_username": "sergoVar",
+            "opp_rating": 454,
+            "time_class": "rapid",
+            "opp_time_left": 2.8,
+            "date": "2024.08.14",
+            "link": "https://www.chess.com/game/live/117397838457"
+        }
     }
 }

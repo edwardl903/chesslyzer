@@ -537,6 +537,7 @@ def clean_dataframe(df, username):
             print(f"White Username: {row['white_username']}, Black Username: {row['black_username']}, Game Link: {row['link']}")
 
     cleaned_df['my_opening'] = cleaned_df.apply(update_opening, axis=1)
+    cleaned_df['rating_diff'] = cleaned_df.apply(lambda row: row['my_rating'] - row['opp_rating'], axis=1)
 
     def time_string_to_seconds_with_fraction(time_str):
         # Split the string into hours, minutes, and seconds
