@@ -37,9 +37,11 @@ def plot_game_statistics(cleaned_df, output_dir):
     # 3. Count the frequency of games played by hour
     hourly_counts = cleaned_df['hour'].value_counts().sort_index()
 
+
+
     # Plotting the frequency of games over months
     plt.figure(figsize=(10, 6))
-    sns.barplot(x=monthly_counts.index.astype(str), y=monthly_counts.values)
+    sns.barplot(x=monthly_counts.index.astype(str), y=monthly_counts.values, palette="flare")
     plt.title('Frequency of Games Played Over Months')
     plt.xlabel('Month')
     plt.ylabel('Frequency of Games')
@@ -49,7 +51,7 @@ def plot_game_statistics(cleaned_df, output_dir):
 
     # Plotting the frequency of games by weekday
     plt.figure(figsize=(10, 6))
-    sns.barplot(x=weekday_counts.index, y=weekday_counts.values)
+    sns.barplot(x=weekday_counts.index, y=weekday_counts.values, palette="flare")
     plt.title('Frequency of Games Played by Weekday')
     plt.xlabel('Weekday')
     plt.ylabel('Frequency of Games')
@@ -59,7 +61,7 @@ def plot_game_statistics(cleaned_df, output_dir):
 
     # Plotting the frequency of games by hour
     plt.figure(figsize=(10, 6))
-    sns.barplot(x=hourly_counts.index.astype(str), y=hourly_counts.values)
+    sns.barplot(x=hourly_counts.index.astype(str), y=hourly_counts.values, palette="flare")
     plt.title('Frequency of Games Played by Hour')
     plt.xlabel('Hour of Day')
     plt.ylabel('Frequency of Games')
@@ -135,7 +137,7 @@ def plot_opening_statistics(cleaned_df, output_dir):
         ax.text(idx, 1.02, f'{int(total_games)} games', ha='center', fontsize=10, color='black')
 
     # Customize the plot
-    plt.title('Win/Draw/Loss Rates for Top 10 Most Common Openings (with Game Counts)', pad=50)
+    plt.title('Win/Draw/Loss Rates for Top 10 Most Common Openings (with Game Counts)', pad=20)
     plt.xlabel('Opening')
     plt.ylabel('Rate')
     plt.xticks(rotation=45, ha='right', fontsize=10)  # Rotate x-axis labels for readability
@@ -302,78 +304,51 @@ def plot_time_class_statistics(cleaned_df, output_dir):
 
 
 def plot_game_outcome_by_hour(cleaned_df, output_dir):
-    # Filter rows for wins, losses, and draws
+ # Filter rows for wins
     wins_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'win'].copy()
-    losses_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'lose'].copy()
-    draws_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'draw'].copy()
 
     # Convert 'start_time_est' to datetime and extract the hour
+    cleaned_df['start_time_est'] = pd.to_datetime(cleaned_df['start_time_est'], format='%H:%M:%S')
     wins_data['start_time_est'] = pd.to_datetime(wins_data['start_time_est'], format='%H:%M:%S')
-    losses_data['start_time_est'] = pd.to_datetime(losses_data['start_time_est'], format='%H:%M:%S')
-    draws_data['start_time_est'] = pd.to_datetime(draws_data['start_time_est'], format='%H:%M:%S')
 
     # Extract the hour from the 'start_time_est' column
+    cleaned_df['hour'] = cleaned_df['start_time_est'].dt.hour
     wins_data['hour'] = wins_data['start_time_est'].dt.hour
-    losses_data['hour'] = losses_data['start_time_est'].dt.hour
-    draws_data['hour'] = draws_data['start_time_est'].dt.hour
 
-    # Group by hour and count the wins, losses, and draws
+    # Group by hour and count total games and wins
+    hourly_totals = cleaned_df.groupby('hour').size()
     hourly_wins = wins_data.groupby('hour').size()
-    hourly_losses = losses_data.groupby('hour').size()
-    hourly_draws = draws_data.groupby('hour').size()
 
-    # Combine the wins, losses, and draws into a single DataFrame for easier plotting
-    hourly_counts = pd.DataFrame({
-        'wins': hourly_wins,
-        'losses': hourly_losses,
-        'draws': hourly_draws
-    }).fillna(0)  # Fill missing values with 0 (some hours may have no wins, losses, or draws)
-
-    # Plot the side-by-side bar chart with improved color scheme
-    ax = hourly_counts.plot(kind='bar', width=0.8, color=['#2ca02c', '#ff7f0e', '#1f77b4'], position=0)
-
-    # Customize the plot for better visual appeal
-    plt.title('Wins, Losses, and Draws by Hour of the Day', fontsize=16)
-    plt.xlabel('Hour of the Day', fontsize=12)
-    plt.ylabel('Number of Wins, Losses, and Draws', fontsize=12)
-    plt.xticks(range(0, 24), fontsize=10)  # Show every hour on the x-axis
-    plt.yticks(fontsize=10)
-    plt.grid(True, axis='y', linestyle='--', alpha=0.7)
-
-    # Display the plot
-    plt.tight_layout()
-    #plt.savefig(f"{output_dir}GameOutcome_HourofDay1.png")
-    #plt.show()
-
-    # Calculate total games and win percentages for each hour
-    hourly_totals = hourly_wins.add(hourly_losses, fill_value=0).add(hourly_draws, fill_value=0)
+    # Calculate win percentage
     hourly_win_percentage = (hourly_wins / hourly_totals) * 100
+    hourly_win_percentage = hourly_win_percentage.fillna(0)  # Replace NaN with 0% for hours without wins
 
-    # Create the plot with dual axes
+    # Create the plot
     fig, ax1 = plt.subplots(figsize=(10, 6))
 
-    # Plot the win percentage on the first axis as a bar chart
-    ax1.bar(hourly_win_percentage.index, hourly_win_percentage, width=0.4, color='#1f77b4', label='Win Percentage')
+    # Plot the total games as a bar chart
+    ax1.bar(hourly_totals.index, hourly_totals, color='#ff6347', width=0.4, label='Total Games')
     ax1.set_xlabel('Hour of the Day (EST)', fontsize=12)
-    ax1.set_ylabel('Win Percentage (%)', color='#1f77b4', fontsize=12)
-    ax1.set_ylim(0, 100)  # Percentage ranges from 0 to 100
-    ax1.tick_params(axis='y', labelcolor='#1f77b4')
-    ax1.set_xticks(range(0, 24))  # Show every hour on the x-axis
+    ax1.set_ylabel('Total Games (Record Count)', color='#ff6347', fontsize=12)
+    ax1.tick_params(axis='y', labelcolor='#ff6347')
     ax1.grid(True, axis='y', linestyle='--', alpha=0.7)
+    ax1.set_xticks(range(0, 24))
 
-    # Create a second axis to plot the total games (record count) as a line chart
+    # Create a second axis to plot the win percentage as a line chart
     ax2 = ax1.twinx()
-    ax2.plot(hourly_totals.index, hourly_totals, color='#ff6347', marker='o', label='Total Games', linewidth=2)
-    ax2.set_ylabel('Total Games (Record Count)', color='#ff6347', fontsize=12)
-    ax2.tick_params(axis='y', labelcolor='#ff6347')
+    ax2.plot(hourly_win_percentage.index, hourly_win_percentage, color='#1f77b4', marker='o', label='Win Percentage', linewidth=2)
+    ax2.set_ylabel('Win Percentage (%)', color='#1f77b4', fontsize=12)
+    ax2.tick_params(axis='y', labelcolor='#1f77b4')
+    ax2.set_ylim(0, 100)  # Percentage ranges from 0 to 100
 
-    # Add a title and display the plot
-    plt.title('Win Percentage, Total Games, and Draws by Hour of the Day', fontsize=16)
+    # Add a title and legend
+    plt.title('Win Percentage and Total Games by Hour of the Day', fontsize=16)
     fig.tight_layout()  # Ensure everything fits without overlap
 
-    # Show the plot
+    # Save the plot
     plt.savefig(f"{output_dir}image_6.png")
     #plt.show()
+
 
 
 # In[18]:
@@ -383,50 +358,50 @@ def plot_game_outcome_by_day(cleaned_df, output_dir):
     # Ensure 'date' is in datetime format
     cleaned_df['date'] = pd.to_datetime(cleaned_df['date'])
 
-    # Filter rows for wins, losses, and draws
+    # Filter rows for wins
     wins_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'win'].copy()
-    losses_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'lose'].copy()
-    draws_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'draw'].copy()
 
     # Extract the day of the week from the 'date' column
-    wins_data['day_of_week'] = wins_data['date'].dt.day_name()  # Get day name (e.g., 'Monday')
-    losses_data['day_of_week'] = losses_data['date'].dt.day_name()  # Get day name (e.g., 'Monday')
-    draws_data['day_of_week'] = draws_data['date'].dt.day_name()  # Get day name (e.g., 'Monday')
+    cleaned_df['day_of_week'] = cleaned_df['date'].dt.day_name()
+    wins_data['day_of_week'] = wins_data['date'].dt.day_name()
 
-    # Group by day of the week and count the wins, losses, and draws
-    hourly_wins = wins_data.groupby('day_of_week').size()
-    hourly_losses = losses_data.groupby('day_of_week').size()
-    hourly_draws = draws_data.groupby('day_of_week').size()
+    # Group by day of the week and count total games and wins
+    daily_totals = cleaned_df.groupby('day_of_week').size()
+    daily_wins = wins_data.groupby('day_of_week').size()
 
-    # Reorder days of the week to ensure proper ordering in the plot
+    # Calculate win percentage
+    daily_win_percentage = (daily_wins / daily_totals) * 100
+    daily_win_percentage = daily_win_percentage.fillna(0)  # Replace NaN with 0% for days without wins
+
+    # Reorder days of the week for proper ordering in the plot
     days_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    daily_totals = daily_totals.reindex(days_order)
+    daily_win_percentage = daily_win_percentage.reindex(days_order)
 
-    # Create a DataFrame combining wins, losses, and draws
-    hourly_counts = pd.DataFrame({
-        'wins': hourly_wins,
-        'losses': hourly_losses,
-        'draws': hourly_draws
-    }).fillna(0)  # Fill missing values with 0 (some days may have no wins, losses, or draws)
+    # Create the plot
+    fig, ax1 = plt.subplots(figsize=(10, 6))
 
-    # Reorder the rows based on the days of the week to ensure the correct order
-    hourly_counts = hourly_counts.reindex(days_order)
+    # Plot the total games as a bar chart
+    ax1.bar(daily_totals.index, daily_totals, color='#ff6347', width=0.4, label='Total Games')
+    ax1.set_xlabel('Day of the Week', fontsize=12)
+    ax1.set_ylabel('Total Games (Record Count)', color='#ff6347', fontsize=12)
+    ax1.tick_params(axis='y', labelcolor='#ff6347')
+    ax1.grid(True, axis='y', linestyle='--', alpha=0.7)
 
-    # Plot the side-by-side bar chart with improved color scheme
-    ax = hourly_counts.plot(kind='bar', width=0.8, color=['#2ca02c', '#ff7f0e', '#1f77b4'], position=0)
+    # Create a second axis to plot the win percentage as a line chart
+    ax2 = ax1.twinx()
+    ax2.plot(daily_win_percentage.index, daily_win_percentage, color='#1f77b4', marker='o', label='Win Percentage', linewidth=2)
+    ax2.set_ylabel('Win Percentage (%)', color='#1f77b4', fontsize=12)
+    ax2.tick_params(axis='y', labelcolor='#1f77b4')
+    ax2.set_ylim(0, 100)  # Percentage ranges from 0 to 100
 
-    # Customize the plot for better visual appeal
-    plt.title('Wins, Losses, and Draws by Day of the Week', fontsize=16)
-    plt.xlabel('Day of the Week', fontsize=12)
-    plt.ylabel('Number of Wins, Losses, and Draws', fontsize=12)
-    plt.xticks(rotation=45, fontsize=10)  # Rotate x-axis labels for readability
-    plt.yticks(fontsize=10)
-    plt.grid(True, axis='y', linestyle='--', alpha=0.7)
+    # Add a title and legend
+    plt.title('Win Percentage and Total Games by Day of the Week', fontsize=16)
+    fig.tight_layout()  # Ensure everything fits without overlap
 
-    # Display the plot
-    plt.tight_layout()
+    # Save the plot
     plt.savefig(f"{output_dir}image_7.png")
     #plt.show()
-
 
 # In[19]:
 
@@ -435,41 +410,45 @@ def plot_game_outcome_by_month(cleaned_df, output_dir):
     # Ensure 'date' is in datetime format
     cleaned_df['date'] = pd.to_datetime(cleaned_df['date'])
 
-    # Filter rows for wins, losses, and draws
+    # Filter rows for wins
     wins_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'win'].copy()
-    losses_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'lose'].copy()
-    draws_data = cleaned_df[cleaned_df['my_win_or_lose'] == 'draw'].copy()
 
     # Extract the month from the 'date' column
+    cleaned_df['month'] = cleaned_df['date'].dt.month
     wins_data['month'] = wins_data['date'].dt.month
-    losses_data['month'] = losses_data['date'].dt.month
-    draws_data['month'] = draws_data['date'].dt.month
 
-    # Group by month and count the wins, losses, and draws
+    # Group by month and count total games and wins
+    monthly_totals = cleaned_df.groupby('month').size()
     monthly_wins = wins_data.groupby('month').size()
-    monthly_losses = losses_data.groupby('month').size()
-    monthly_draws = draws_data.groupby('month').size()
 
-    # Create a DataFrame combining wins, losses, and draws
-    monthly_counts = pd.DataFrame({
-        'wins': monthly_wins,
-        'losses': monthly_losses,
-        'draws': monthly_draws
-    }).fillna(0)  # Fill missing values with 0 (some months may have no wins, losses, or draws)
+    # Calculate win percentage
+    monthly_win_percentage = (monthly_wins / monthly_totals) * 100
+    monthly_win_percentage = monthly_win_percentage.fillna(0)  # Replace NaN with 0% for months without wins
 
-    # Plot the side-by-side bar chart with improved color scheme
-    ax = monthly_counts.plot(kind='bar', width=0.8, color=['#2ca02c', '#ff7f0e', '#1f77b4'], position=0)
+    # Create the plot
+    fig, ax1 = plt.subplots(figsize=(10, 6))
 
-    # Customize the plot for better visual appeal
-    plt.title('Wins, Losses, and Draws by Month', fontsize=16)
-    plt.xlabel('Month', fontsize=12)
-    plt.ylabel('Number of Wins, Losses, and Draws', fontsize=12)
-    plt.xticks(range(12), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], fontsize=10)  # Month names
-    plt.yticks(fontsize=10)
-    plt.grid(True, axis='y', linestyle='--', alpha=0.7)
+    # Plot the total games as a bar chart
+    ax1.bar(monthly_totals.index, monthly_totals, color='#ff6347', width=0.4, label='Total Games')
+    ax1.set_xlabel('Month', fontsize=12)
+    ax1.set_ylabel('Total Games (Record Count)', color='#ff6347', fontsize=12)
+    ax1.tick_params(axis='y', labelcolor='#ff6347')
+    ax1.grid(True, axis='y', linestyle='--', alpha=0.7)
+    ax1.set_xticks(range(1, 13))
+    ax1.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
-    # Display the plot
-    plt.tight_layout()
+    # Create a second axis to plot the win percentage as a line chart
+    ax2 = ax1.twinx()
+    ax2.plot(monthly_win_percentage.index, monthly_win_percentage, color='#1f77b4', marker='o', label='Win Percentage', linewidth=2)
+    ax2.set_ylabel('Win Percentage (%)', color='#1f77b4', fontsize=12)
+    ax2.tick_params(axis='y', labelcolor='#1f77b4')
+    ax2.set_ylim(0, 100)  # Percentage ranges from 0 to 100
+
+    # Add a title and legend
+    plt.title('Win Percentage and Total Games by Month', fontsize=16)
+    fig.tight_layout()  # Ensure everything fits without overlap
+
+    # Save the plot
     plt.savefig(f"{output_dir}image_8.png")
     #plt.show()
 
@@ -856,6 +835,65 @@ def plot_rating_progression_over_time(cleaned_df, output_dir):
     plt.savefig(f"{output_dir}image_0.png")  # Save the plot
     #plt.show()
 
+
+def plot_game_count_vs_time_spent_by_type(cleaned_df, output_dir):
+    """
+    Plot game count vs time spent (in seconds), categorized by game type (Blitz, Rapid, Bullet),
+    with time spent divided into 1-minute bins.
+    
+    Parameters:
+        cleaned_df (DataFrame): A cleaned DataFrame with 'time_spent' (in seconds) and 'game_type' columns.
+        output_dir (str): Directory to save the output image.
+    """
+    # Ensure the 'time_spent' column is numeric (in seconds)
+    cleaned_df['time_spent'] = pd.to_numeric(cleaned_df['time_spent'], errors='coerce')
+    cleaned_df = cleaned_df.dropna(subset=['time_spent'])  # Drop rows with missing 'time_spent'
+
+    # Define time bins in seconds (e.g., 0-60 seconds, 60-120 seconds, etc.)
+    bins = [0, 60, 120, 180, 240, 300, 600, 900, 1200, 1800, 2400, 3000]
+    labels = ['0-1 min', '1-2 min', '2-3 min', '3-4 min', '4-5 min', '5-10 min', '10-15 min', '15-20 min', '20-30 min', '30-40 min', '40-50 min']
+
+    # Create a new column with the binned time spent values (in seconds)
+    cleaned_df['time_spent_bins'] = pd.cut(cleaned_df['time_spent'], bins=bins, labels=labels, right=False)
+
+    # Filter for specific game types
+    time_class = ['blitz', 'rapid', 'bullet']
+    filtered_df = cleaned_df[cleaned_df['time_class'].isin(time_class)]
+
+    # Group by time spent bin and game type, then count the games
+    game_counts = filtered_df.groupby(['time_spent_bins', 'time_class']).size().unstack(fill_value=0)
+
+    # Create the plot
+    fig, ax = plt.subplots(figsize=(12, 7))
+
+    # Plot bars for each game type
+    bar_width = 0.25  # Width of each bar
+    x_positions = game_counts.index
+    x_indices = range(len(x_positions))
+
+    ax.bar([x - bar_width for x in x_indices], game_counts['blitz'], width=bar_width, label='Blitz', color='#1f77b4')
+    ax.bar(x_indices, game_counts['rapid'], width=bar_width, label='Rapid', color='#ff7f0e')
+    ax.bar([x + bar_width for x in x_indices], game_counts['bullet'], width=bar_width, label='Bullet', color='#2ca02c')
+
+    # Customize the plot
+    ax.set_title('Game Count vs Time Spent by Game Type', fontsize=16)
+    ax.set_xlabel('Time Spent per Game (Binned in Minutes)', fontsize=12)
+    ax.set_ylabel('Number of Games Played', fontsize=12)
+    ax.set_xticks(x_indices)
+    ax.set_xticklabels(x_positions, fontsize=10)
+
+    # Set y-tick font size
+    ax.tick_params(axis='y', labelsize=10)
+
+    # Add grid and legend
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+    ax.legend(title='Game Type', fontsize=10)
+
+    # Save the plot
+    plt.tight_layout()
+    plt.savefig(f"{output_dir}image_16.png")
+    #plt.show()
+
 def call_visualizations(cleaned_df, output_dir):
     print("Visualzations have been called")
 
@@ -875,3 +913,4 @@ def call_visualizations(cleaned_df, output_dir):
     plot_game_outcome_by_time_left(cleaned_df, output_dir)
     plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir)
     plot_game_count_heatmap_by_castling(cleaned_df, output_dir)
+    plot_game_count_vs_time_spent_by_type(cleaned_df, output_dir)
