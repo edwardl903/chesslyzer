@@ -43,8 +43,87 @@ body {
     align-items: center;
     gap: 32px;
     width: 100%;
-    /*max-width: 1600px;*/
     max-height: 100vh;  /* Ensure container doesn't exceed viewport height */
     overflow-y: auto;  /* Allow scrolling within this container */
+    min-height: 100%;  /* Ensure the container takes at least the full height */
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+    /* Content Layout */
+    #contentContainer {
+        padding: 16px;
+    }
+
+    .row-0, .row-1, .row-2, .row-3 {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Stat Box Styling */
+    .stat-box, .stat-box2 {
+        width: 100%;
+        padding: 16px;
+        margin: 0 auto;
+    }
+
+    /* Title and Input Sections */
+    .stat-title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    /* Avatar Styling */
+    .stat-box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Adjust Button */
+    #submitBtn {
+        width: 100%;
+        font-size: 24px;
+        padding: 12px;
+    }
+
+    /* Adjust Result Section */
+    .result {
+        margin-top: 16px;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further Adjustments for Smaller Screens */
+    .stat-title {
+        font-size: 18px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .stat-opponent, .stat-opening {
+        font-size: 18px;
+    }
+
+    .stat-box img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Increase padding and spacing for readability */
+    #contentContainer, .result {
+        padding: 16px;
+    }
+
+    #submitBtn {
+        font-size: 22px;
+    }
+}
