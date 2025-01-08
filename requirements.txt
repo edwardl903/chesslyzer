@@ -10,6 +10,8 @@ certifi==2024.12.14
     # via requests
 charset-normalizer==3.4.1
     # via requests
+chess==1.11.1
+    # via python-chess
 click==8.1.8
     # via flask
 contourpy==1.3.1
@@ -63,6 +65,8 @@ pillow==11.1.0
     # via matplotlib
 pyparsing==3.2.1
     # via matplotlib
+python-chess==1.999
+    # via -r requirements.in
 python-dateutil==2.9.0.post0
     # via
     #   matplotlib
