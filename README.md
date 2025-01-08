@@ -47,6 +47,7 @@ python generate.py
 
 
 5. **Project Architecture**
+
 Backend (generate.py):
 The Flask server is responsible for handling requests from the frontend. It runs the testing.py script, which interacts with three main Python scripts: data_processing.py, my_stats.py, and visualizations.py.
 
