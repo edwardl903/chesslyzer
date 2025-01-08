@@ -296,6 +296,10 @@ def total_statistics(cleaned_df):
 
     my_username = cleaned_df['my_username'].iloc[0]
     player_data = fetch_player_data(my_username)
+    #print(player_data['avatar'])
+    if 'avatar' not in player_data:
+        player_data['avatar'] = '/static/default-avatar.jpg'
+    
     print(player_data['avatar'])
 
 

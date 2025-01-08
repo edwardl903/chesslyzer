@@ -43,7 +43,7 @@ body {
     align-items: center;
     gap: 32px;
     width: 100%;
-    max-width: 1600px;
+    /*max-width: 1600px;*/
     max-height: 100vh;  /* Ensure container doesn't exceed viewport height */
     overflow-y: auto;  /* Allow scrolling within this container */
 }

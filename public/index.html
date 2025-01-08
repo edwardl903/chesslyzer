@@ -320,6 +320,14 @@
             <!-- Fourth row with 1 stat box -->
         </div>
     </div>
+
+    <!-- Images Container -->
+    <div id="imagesContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        ${data.images.map(image => `
+            <img src="${image}" alt="Generated Chess Image" style="width: 100%; border-radius: 8px; object-fit: cover; height: 300px;">
+        `).join('')}
+    </div>
+                   
 `;
 
     resultContainer.appendChild(statsContainer);

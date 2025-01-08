@@ -1,0 +1,88 @@
+{
+    "my_avatar": "/static/default-avatar.jpg",
+    "my_username": "jlee2327",
+    "castling_counts": {
+        "kingside": 100,
+        "none": 68,
+        "queenside": 21
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 1.0,
+        "hours": 12.0,
+        "minutes": 19.0,
+        "seconds": 21.0,
+        "total_time": "1 days 12 hours 19 minutes 21 seconds",
+        "total_time_in_days": 1.51,
+        "total_time_in_hours": 36.32,
+        "total_time_in_minutes": 2179.35,
+        "total_time_in_seconds": 130761.0,
+        "percentage_of_year": 0.41
+    },
+    "total_moves": 5426,
+    "total_win_draw_loss": {
+        "lose": 102,
+        "win": 78,
+        "draw": 9
+    },
+    "total_results": {
+        "win": 78,
+        "checkmated": 49,
+        "timeout": 43,
+        "resigned": 8,
+        "repetition": 4,
+        "stalemate": 3,
+        "abandoned": 2,
+        "timevsinsufficient": 1,
+        "insufficient": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 14,
+    "total_games": 189,
+    "longest_winning_streak": 4,
+    "longest_losing_streak": 10,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "brian120488",
+            "1": "Shadowforce124",
+            "2": "cindyyoon",
+            "3": "marcusykim",
+            "4": "DaveyKeh"
+        },
+        "Games_Played": {
+            "0": 33,
+            "1": 4,
+            "2": 4,
+            "3": 3,
+            "4": 2
+        }
+    },
+    "highest_rating": {
+        "rating": 798,
+        "time_control": "blitz",
+        "date": "2024.10.23"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.12.26",
+        "time_spent": "0 days 3 hours 15 minutes 49 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Vienna-Game",
+        "black_opening": "French-Defense"
+    },
+    "timeclass_counts": {
+        "rapid": 108,
+        "blitz": 75,
+        "bullet": 6
+    },
+    "timecontrol_counts": {
+        "10m + 0s": 72,
+        "5m + 0s": 37,
+        "15m + 10s": 35,
+        "3m + 2s": 27,
+        "3m + 0s": 11,
+        "1m + 0s": 4,
+        "1m + 1s": 2,
+        "60m + 0s": 1
+    }
+}
