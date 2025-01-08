@@ -5,3 +5,6 @@ pandas
 scikit-learn
 seaborn
 requests
+gunicorn==20.0.4
+flask-cors
+python-chess
