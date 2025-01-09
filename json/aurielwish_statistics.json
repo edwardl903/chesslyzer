@@ -1,0 +1,148 @@
+{
+    "my_avatar": "/static/default-avatar.jpg",
+    "my_username": "aurielwish",
+    "castling_counts": {
+        "kingside": 353,
+        "none": 106,
+        "queenside": 41
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 4.0,
+        "hours": 0.0,
+        "minutes": 24.0,
+        "seconds": 6.0,
+        "total_time": "4 days 0 hours 24 minutes 6 seconds",
+        "total_time_in_days": 4.02,
+        "total_time_in_hours": 96.4,
+        "total_time_in_minutes": 5784.1,
+        "total_time_in_seconds": 347046.0,
+        "percentage_of_year": 1.1
+    },
+    "total_moves": 19415,
+    "total_win_draw_loss": {
+        "win": 254,
+        "lose": 211,
+        "draw": 35
+    },
+    "total_results": {
+        "win": 254,
+        "resigned": 130,
+        "checkmated": 66,
+        "repetition": 13,
+        "stalemate": 10,
+        "abandoned": 8,
+        "timeout": 7,
+        "insufficient": 7,
+        "timevsinsufficient": 3,
+        "agreed": 2
+    },
+    "total_en_passant": 0,
+    "total_promotions": 59,
+    "total_games": 500,
+    "longest_winning_streak": 9,
+    "longest_losing_streak": 6,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "Daryac1234",
+            "1": "LeoniMarj",
+            "2": "Dllschad12",
+            "3": "maltzmeister",
+            "4": "alli2344"
+        },
+        "Games_Played": {
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "3": 2,
+            "4": 2
+        }
+    },
+    "highest_rating": {
+        "rating": 1706,
+        "time_control": "rapid",
+        "date": "2024.06.07"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.01.23",
+        "time_spent": "0 days 2 hours 18 minutes 6 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Queens-Gambit",
+        "black_opening": "Caro-Kann-Defense"
+    },
+    "timeclass_counts": {
+        "rapid": 451,
+        "blitz": 49
+    },
+    "timecontrol_counts": {
+        "10m + 0s": 451,
+        "5m + 0s": 42,
+        "3m + 2s": 6,
+        "3m + 0s": 1
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "Masterschifu",
+            "opp_rating": 1676,
+            "time_class": "rapid",
+            "date": "2024.02.08",
+            "link": "https://www.chess.com/game/live/101114506989"
+        },
+        "upset": {
+            "opp_username": "u28149709",
+            "opp_rating": 1535,
+            "time_class": "rapid",
+            "date": "2024.02.12",
+            "link": "https://www.chess.com/game/live/101457714603"
+        },
+        "checkmate": {
+            "opp_username": "wasey2",
+            "opp_rating": 705,
+            "time_class": "blitz",
+            "time_spent": 134,
+            "my_num_moves": 11,
+            "date": "2024.02.13",
+            "link": "https://www.chess.com/game/live/101541675833"
+        },
+        "opponent": {
+            "opp_username": "Rose5928",
+            "opp_rating": 1761,
+            "time_class": "rapid",
+            "date": "2024.05.29",
+            "link": "https://www.chess.com/game/live/110764325067"
+        },
+        "longest": {
+            "opp_username": "aaaandyyyyyy",
+            "opp_rating": 1528,
+            "time_class": "rapid",
+            "time_spent": 1248,
+            "date": "2024.01.26",
+            "link": "https://www.chess.com/game/live/100060998327"
+        },
+        "moves": {
+            "opp_username": "Ratamala",
+            "opp_rating": 1507,
+            "time_class": "rapid",
+            "my_num_moves": 107,
+            "date": "2024.01.17",
+            "link": "https://www.chess.com/game/live/99254137133"
+        },
+        "least_time_won": {
+            "opp_username": "lou_prn",
+            "opp_rating": 517,
+            "time_class": "blitz",
+            "my_time_left": 0.6,
+            "date": "2024.01.22",
+            "link": "https://www.chess.com/game/live/95996708406"
+        },
+        "least_time_lost": {
+            "opp_username": "Delamonthe",
+            "opp_rating": 1660,
+            "time_class": "rapid",
+            "opp_time_left": 1.5,
+            "date": "2024.05.17",
+            "link": "https://www.chess.com/game/live/109662625149"
+        }
+    }
+}

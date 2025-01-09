@@ -46,6 +46,9 @@ def top_quickest_checkmate(df):
     # Filter for checkmate games
     checkmate_games = df[df['opp_result'] == 'checkmated']
     
+    if checkmate_games.empty:
+        return None  # No checkmate games
+    
     # Find the game with the minimum time spent (handles ties by selecting the first)
     quickest_win_idx = checkmate_games['time_spent'].idxmin()
     quickest_win = checkmate_games.loc[quickest_win_idx]
@@ -55,47 +58,82 @@ def top_quickest_checkmate(df):
 # You won with the highest rating difference (you being underdog)
 def top_biggest_victory(df):
     won_games = df[df['my_win_or_lose'] == 'win']
+    
+    if won_games.empty:
+        return None  # No wins found
+    
     best_game = won_games.loc[won_games['rating_diff'] == won_games['rating_diff'].min()]
-    best_game = best_game.iloc[0]
-    return best_game
+    if best_game.empty:
+        return None  # Just in case no match
+    return best_game.iloc[0]
 
 # You lost, with the highest rating difference (you being the upperdog)
 def top_biggest_upset(df):
-    won_games = df[df['my_win_or_lose'] == 'lose']
-    best_game = won_games.loc[won_games['rating_diff'] == won_games['rating_diff'].max()]
-    best_game = best_game.iloc[0]
-    return best_game
+    lost_games = df[df['my_win_or_lose'] == 'lose']
+    
+    if lost_games.empty:
+        return None  # No losses found
+    
+    best_game = lost_games.loc[lost_games['rating_diff'] == lost_games['rating_diff'].max()]
+    if best_game.empty:
+        return None  # Just in case no match
+    return best_game.iloc[0]
 
 # You won against the highest-rated opponent
 def top_biggest_opponent_won(df):
     won_games = df[df['my_win_or_lose'] == 'win']
+    
+    if won_games.empty:
+        return None  # No wins found
+    
     highest_rated_opponent = won_games.loc[won_games['opp_rating'] == won_games['opp_rating'].max()]
-    highest_rated_opponent = highest_rated_opponent.iloc[0]
-    return highest_rated_opponent
+    if highest_rated_opponent.empty:
+        return None  # Just in case no match
+    return highest_rated_opponent.iloc[0]
 
 # Find the longest game (maximum time spent)
 def top_longest_game(df):
+    if df.empty:
+        return None  # No games found
+    
     longest_game = df.loc[df['time_spent'] == df['time_spent'].max()]
-    longest_game = longest_game.iloc[0]
-    return longest_game
+    if longest_game.empty:
+        return None  # Just in case no match
+    return longest_game.iloc[0]
 
 # Find the game with the maximum number of moves
 def top_moves_game(df):
+    if df.empty:
+        return None  # No games found
+    
     longest_game = df.loc[df['my_num_moves'] == df['my_num_moves'].max()]
-    longest_game = longest_game.iloc[0]
-    return longest_game
+    if longest_game.empty:
+        return None  # Just in case no match
+    return longest_game.iloc[0]
 
 def top_least_time_won(df):
     won_games = df[df['my_win_or_lose'] == 'win']
+    
+    if won_games.empty:
+        return None  # No wins found
+    
     game_with_least_time = won_games.loc[won_games['my_time_left'] == won_games['my_time_left'].min()]
-    game_with_least_time = game_with_least_time.iloc[0]
-    return game_with_least_time
+    if game_with_least_time.empty:
+        return None  # Just in case no match
+    return game_with_least_time.iloc[0]
 
 def top_least_time_lost(df):
-    won_games = df[df['my_win_or_lose'] == 'lose']
-    game_with_least_time = won_games.loc[won_games['opp_time_left'] == won_games['opp_time_left'].min()]
-    game_with_least_time = game_with_least_time.iloc[0]
-    return game_with_least_time
+    lost_games = df[df['my_win_or_lose'] == 'lose']
+    
+    if lost_games.empty:
+        return None  # No losses found
+    
+    game_with_least_time = lost_games.loc[lost_games['opp_time_left'] == lost_games['opp_time_left'].min()]
+    if game_with_least_time.empty:
+        return None  # Just in case no match
+    return game_with_least_time.iloc[0]
+
+
 
 
 # Function to calculate total time spent

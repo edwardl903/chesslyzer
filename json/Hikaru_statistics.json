@@ -88,5 +88,69 @@
         "3m + 2s": 10,
         "10m + 0s": 9,
         "30s + 0s": 1
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "Firouzja2003",
+            "opp_rating": 3271,
+            "time_class": "bullet",
+            "date": "2024.06.13",
+            "link": "https://www.chess.com/game/live/112044198963"
+        },
+        "upset": {
+            "opp_username": "lwandile592",
+            "opp_rating": 781,
+            "time_class": "rapid",
+            "date": "2024.06.23",
+            "link": "https://www.chess.com/game/live/112917586785"
+        },
+        "checkmate": {
+            "opp_username": "Goi_Manne",
+            "opp_rating": 2469,
+            "time_class": "bullet",
+            "time_spent": 19,
+            "my_num_moves": 10,
+            "date": "2024.01.27",
+            "link": "https://www.chess.com/game/live/100122095751"
+        },
+        "opponent": {
+            "opp_username": "DanielNaroditsky",
+            "opp_rating": 3321,
+            "time_class": "bullet",
+            "date": "2024.02.10",
+            "link": "https://www.chess.com/game/live/101329438343"
+        },
+        "longest": {
+            "opp_username": "Sam_ChessMood",
+            "opp_rating": 2644,
+            "time_class": "rapid",
+            "time_spent": 1660,
+            "date": "2024.01.31",
+            "link": "https://www.chess.com/game/live/100469605017"
+        },
+        "moves": {
+            "opp_username": "Jospem",
+            "opp_rating": 3106,
+            "time_class": "bullet",
+            "my_num_moves": 184,
+            "date": "2024.07.25",
+            "link": "https://www.chess.com/game/live/115682907071"
+        },
+        "least_time_won": {
+            "opp_username": "Atanejhad",
+            "opp_rating": 2532,
+            "time_class": "blitz",
+            "my_time_left": 0.0,
+            "date": "2024.06.25",
+            "link": "https://www.chess.com/game/live/113088030745"
+        },
+        "least_time_lost": {
+            "opp_username": "HamedWafa4",
+            "opp_rating": 2723,
+            "time_class": "blitz",
+            "opp_time_left": 0.0,
+            "date": "2024.04.23",
+            "link": "https://www.chess.com/game/live/107638351425"
+        }
     }
 }

@@ -1,0 +1,154 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/33945736.eb0c3771.200x200o.cf06060d2143.png",
+    "my_username": "GothamChess",
+    "castling_counts": {
+        "kingside": 575,
+        "none": 190,
+        "queenside": 187
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 4.0,
+        "hours": 14.0,
+        "minutes": 27.0,
+        "seconds": 33.0,
+        "total_time": "4 days 14 hours 27 minutes 33 seconds",
+        "total_time_in_days": 4.6,
+        "total_time_in_hours": 110.46,
+        "total_time_in_minutes": 6627.55,
+        "total_time_in_seconds": 397653.0,
+        "percentage_of_year": 1.26
+    },
+    "total_moves": 41498,
+    "total_win_draw_loss": {
+        "win": 560,
+        "lose": 326,
+        "draw": 66
+    },
+    "total_results": {
+        "win": 560,
+        "resigned": 166,
+        "timeout": 113,
+        "checkmated": 47,
+        "repetition": 40,
+        "insufficient": 19,
+        "agreed": 3,
+        "50move": 2,
+        "timevsinsufficient": 2
+    },
+    "total_en_passant": 0,
+    "total_promotions": 98,
+    "total_games": 952,
+    "longest_winning_streak": 10,
+    "longest_losing_streak": 4,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "Sanan_Sjugirov",
+            "1": "Mackster23",
+            "2": "MightyGMpretender",
+            "3": "CaspiIsrael",
+            "4": "CalmdownCalabreso"
+        },
+        "Games_Played": {
+            "0": 9,
+            "1": 8,
+            "2": 8,
+            "3": 7,
+            "4": 6
+        }
+    },
+    "highest_rating": {
+        "rating": 2875,
+        "time_control": "blitz",
+        "date": "2024.10.08"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.10.08",
+        "time_spent": "0 days 4 hours 3 minutes 1 seconds"
+    },
+    "my_openings": {
+        "white_opening": "English-Opening",
+        "black_opening": "Scandinavian-Defense"
+    },
+    "timeclass_counts": {
+        "blitz": 903,
+        "rapid": 35,
+        "bullet": 14
+    },
+    "timecontrol_counts": {
+        "3m + 1s": 681,
+        "3m + 0s": 213,
+        "10m + 0s": 29,
+        "1m + 0s": 14,
+        "10m + 10s": 4,
+        "5m + 2s": 4,
+        "3m + 2s": 3,
+        "3m + 3s": 2,
+        "10m + 5s": 1,
+        "15m + 10s": 1
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "lachesisQ",
+            "opp_rating": 3164,
+            "time_class": "blitz",
+            "date": "2024.10.01",
+            "link": "https://www.chess.com/game/live/121534884369"
+        },
+        "upset": {
+            "opp_username": "sbouchet",
+            "opp_rating": 2442,
+            "time_class": "blitz",
+            "date": "2024.10.15",
+            "link": "https://www.chess.com/game/live/122766267409"
+        },
+        "checkmate": {
+            "opp_username": "Olivier_Huet",
+            "opp_rating": 811,
+            "time_class": "blitz",
+            "time_spent": 100,
+            "my_num_moves": 31,
+            "date": "2024.09.28",
+            "link": "https://www.chess.com/game/live/121287591963"
+        },
+        "opponent": {
+            "opp_username": "lachesisQ",
+            "opp_rating": 3164,
+            "time_class": "blitz",
+            "date": "2024.10.01",
+            "link": "https://www.chess.com/game/live/121534884369"
+        },
+        "longest": {
+            "opp_username": "GMHess",
+            "opp_rating": 2450,
+            "time_class": "rapid",
+            "time_spent": 2958,
+            "date": "2024.03.05",
+            "link": "https://www.chess.com/game/live/103410740751"
+        },
+        "moves": {
+            "opp_username": "JERO-8914",
+            "opp_rating": 2402,
+            "time_class": "blitz",
+            "my_num_moves": 132,
+            "date": "2024.05.14",
+            "link": "https://www.chess.com/game/live/109437704023"
+        },
+        "least_time_won": {
+            "opp_username": "Lennis93",
+            "opp_rating": 2747,
+            "time_class": "blitz",
+            "my_time_left": 0.8,
+            "date": "2024.10.15",
+            "link": "https://www.chess.com/game/live/122772834367"
+        },
+        "least_time_lost": {
+            "opp_username": "TacticalJesus",
+            "opp_rating": 2679,
+            "time_class": "blitz",
+            "opp_time_left": 0.4,
+            "date": "2024.09.10",
+            "link": "https://www.chess.com/game/live/119731284645"
+        }
+    }
+}
