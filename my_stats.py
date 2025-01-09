@@ -385,24 +385,52 @@ def total_statistics(cleaned_df):
     
     print(player_data['avatar'])
 
-    biggest_victory = top_biggest_victory(cleaned_df)
-    biggest_upset = top_biggest_upset(cleaned_df)
-    biggest_checkmate = top_quickest_checkmate(cleaned_df)
-    biggest_victory = biggest_victory[['opp_username', 'opp_rating', 'time_class', 'date', 'link']].to_dict()
-    biggest_upset = biggest_upset[['opp_username', 'opp_rating', 'time_class', 'date', 'link']].to_dict()
-    biggest_checkmate = biggest_checkmate[['opp_username', 'opp_rating', 'time_class', 'time_spent', 'my_num_moves', 'date', 'link']].to_dict()
+    def safe_to_dict(result, columns):
+        """Converts a result to a dictionary if it's not None."""
+        if result is not None:
+            return result[columns].to_dict()
+        return {"error": "No data found."}
 
-    biggest_opponent = top_biggest_opponent_won(cleaned_df)
-    biggest_longest = top_longest_game(cleaned_df)
-    biggest_moves = top_moves_game(cleaned_df)
-    biggest_opponent = biggest_opponent[['opp_username', 'opp_rating', 'time_class', 'date', 'link']].to_dict()
-    biggest_longest = biggest_longest[['opp_username', 'opp_rating', 'time_class', 'time_spent', 'date', 'link']].to_dict()
-    biggest_moves = biggest_moves[['opp_username', 'opp_rating', 'time_class', 'my_num_moves', 'date', 'link']].to_dict()
-    biggest_least_time_won = top_least_time_won(cleaned_df)
-    biggest_least_time_lost = top_least_time_lost(cleaned_df)
-    biggest_least_time_won =  biggest_least_time_won[['opp_username', 'opp_rating', 'time_class', 'my_time_left', 'date', 'link']].to_dict()
-    biggest_least_time_lost =     biggest_least_time_lost[['opp_username', 'opp_rating', 'time_class', 'opp_time_left', 'date', 'link']].to_dict()
+    # Call functions and safely handle results
+    biggest_victory = safe_to_dict(
+        top_biggest_victory(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'date', 'link']
+    )
 
+    biggest_upset = safe_to_dict(
+        top_biggest_upset(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'date', 'link']
+    )
+
+    biggest_checkmate = safe_to_dict(
+        top_quickest_checkmate(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'time_spent', 'my_num_moves', 'date', 'link']
+    )
+
+    biggest_opponent = safe_to_dict(
+        top_biggest_opponent_won(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'date', 'link']
+    )
+
+    biggest_longest = safe_to_dict(
+        top_longest_game(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'time_spent', 'date', 'link']
+    )
+
+    biggest_moves = safe_to_dict(
+        top_moves_game(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'my_num_moves', 'date', 'link']
+    )
+
+    biggest_least_time_won = safe_to_dict(
+        top_least_time_won(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'my_time_left', 'date', 'link']
+    )
+
+    biggest_least_time_lost = safe_to_dict(
+        top_least_time_lost(cleaned_df),
+        ['opp_username', 'opp_rating', 'time_class', 'opp_time_left', 'date', 'link']
+    )
 
     # Prepare the statistics dictionary with total counts only
     statistics = {

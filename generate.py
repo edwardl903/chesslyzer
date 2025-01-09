@@ -89,7 +89,7 @@ def generate_csv():
 
     except subprocess.CalledProcessError as e:
         print(f"Error: {e.stderr}")
-        return jsonify({"error": "Failed to Generate - Sorry!"}), 500
+        return jsonify({"error": "Failed to Generate - Sorry! Please contact us!"}), 500
 
 # Start the Flask app
 if __name__ == "__main__":

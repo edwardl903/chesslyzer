@@ -459,6 +459,9 @@ def clean_dataframe(df, username):
     """
     cleaned_df = df.copy()
 
+    if cleaned_df.empty:
+        return cleaned_df
+
         # Example usage
     cleaned_df = adjust_date_for_timezone(
         cleaned_df=cleaned_df,

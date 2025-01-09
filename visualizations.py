@@ -784,8 +784,14 @@ def plot_game_count_heatmap_by_castling(cleaned_df, output_dir):
 
     # Plot the heatmap
     plt.figure(figsize=(10, 6))
-    sns.heatmap(heatmap_data, annot=True, cmap='Blues', fmt='d', linewidths=.5, cbar_kws={'label': 'Number of Games'})
-
+    sns.heatmap(
+        heatmap_data, 
+        annot=True, 
+        cmap='Blues', 
+        fmt='.0f',  # Display as whole numbers
+        linewidths=.5, 
+        cbar_kws={'label': 'Number of Games'}
+    )
     plt.title('Game Count Heatmap Based on Castling Frequencies')
     plt.xlabel('Opponent Castling Frequency')
     plt.ylabel('My Castling Frequency')
@@ -840,11 +846,14 @@ def plot_game_count_vs_time_spent_by_type(cleaned_df, output_dir):
     """
     Plot game count vs time spent (in seconds), categorized by game type (Blitz, Rapid, Bullet),
     with time spent divided into 1-minute bins.
-    
+
     Parameters:
         cleaned_df (DataFrame): A cleaned DataFrame with 'time_spent' (in seconds) and 'game_type' columns.
         output_dir (str): Directory to save the output image.
     """
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
     # Ensure the 'time_spent' column is numeric (in seconds)
     cleaned_df['time_spent'] = pd.to_numeric(cleaned_df['time_spent'], errors='coerce')
     cleaned_df = cleaned_df.dropna(subset=['time_spent'])  # Drop rows with missing 'time_spent'
@@ -862,6 +871,14 @@ def plot_game_count_vs_time_spent_by_type(cleaned_df, output_dir):
 
     # Group by time spent bin and game type, then count the games
     game_counts = filtered_df.groupby(['time_spent_bins', 'time_class']).size().unstack(fill_value=0)
+
+    # Ensure all time classes are present in the DataFrame
+    for game_type in time_class:
+        if game_type not in game_counts.columns:
+            game_counts[game_type] = 0
+
+    # Sort the columns to ensure consistent order
+    game_counts = game_counts[time_class]
 
     # Create the plot
     fig, ax = plt.subplots(figsize=(12, 7))
@@ -891,8 +908,9 @@ def plot_game_count_vs_time_spent_by_type(cleaned_df, output_dir):
 
     # Save the plot
     plt.tight_layout()
-    plt.savefig(f"{output_dir}image_16.png")
+    plt.savefig(f"{output_dir}/image_16.png")
     #plt.show()
+
 
 def call_visualizations(cleaned_df, output_dir):
     print("Visualzations have been called")

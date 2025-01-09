@@ -1,0 +1,118 @@
+{
+    "my_avatar": "/static/default-avatar.jpg",
+    "my_username": "KevinsCookie",
+    "castling_counts": {
+        "kingside": 3,
+        "none": 3,
+        "queenside": 1
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 0.0,
+        "hours": 1.0,
+        "minutes": 20.0,
+        "seconds": 25.0,
+        "total_time": "0 days 1 hours 20 minutes 25 seconds",
+        "total_time_in_days": 0.06,
+        "total_time_in_hours": 1.34,
+        "total_time_in_minutes": 80.42,
+        "total_time_in_seconds": 4825.0,
+        "percentage_of_year": 0.02
+    },
+    "total_moves": 136,
+    "total_win_draw_loss": {
+        "win": 6,
+        "draw": 1
+    },
+    "total_results": {
+        "win": 6,
+        "agreed": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 0,
+    "total_games": 7,
+    "longest_winning_streak": 4,
+    "longest_losing_streak": 0,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "kevinlol456"
+        },
+        "Games_Played": {
+            "0": 7
+        }
+    },
+    "highest_rating": {
+        "rating": 928,
+        "time_control": "rapid",
+        "date": "2024.12.23"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.12.23",
+        "time_spent": "0 days 1 hours 20 minutes 25 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Englund-Gambit",
+        "black_opening": "Scandinavian-Defense"
+    },
+    "timeclass_counts": {
+        "rapid": 7
+    },
+    "timecontrol_counts": {
+        "10m + 0s": 7
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "kevinlol456",
+            "opp_rating": 508,
+            "time_class": "rapid",
+            "date": "2024.12.23",
+            "link": "https://www.chess.com/game/live/128686425239"
+        },
+        "upset": {
+            "error": "No data found."
+        },
+        "checkmate": {
+            "opp_username": "kevinlol456",
+            "opp_rating": 469,
+            "time_class": "rapid",
+            "time_spent": 754,
+            "my_num_moves": 32,
+            "date": "2024.12.23",
+            "link": "https://www.chess.com/game/live/128688761571"
+        },
+        "opponent": {
+            "opp_username": "kevinlol456",
+            "opp_rating": 508,
+            "time_class": "rapid",
+            "date": "2024.12.23",
+            "link": "https://www.chess.com/game/live/128683987499"
+        },
+        "longest": {
+            "opp_username": "kevinlol456",
+            "opp_rating": 508,
+            "time_class": "rapid",
+            "time_spent": 1171,
+            "date": "2024.12.23",
+            "link": "https://www.chess.com/game/live/128686425239"
+        },
+        "moves": {
+            "opp_username": "kevinlol456",
+            "opp_rating": 508,
+            "time_class": "rapid",
+            "my_num_moves": 35,
+            "date": "2024.12.23",
+            "link": "https://www.chess.com/game/live/128686425239"
+        },
+        "least_time_won": {
+            "opp_username": "kevinlol456",
+            "opp_rating": 508,
+            "time_class": "rapid",
+            "my_time_left": 23.3,
+            "date": "2024.12.23",
+            "link": "https://www.chess.com/game/live/128686425239"
+        },
+        "least_time_lost": {
+            "error": "No data found."
+        }
+    }
+}
