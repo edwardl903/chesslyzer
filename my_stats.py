@@ -13,11 +13,15 @@ def last_three_games_rating_by_time_control(cleaned_df):
         # Filter the dataframe for the current time control
         time_control_df = cleaned_df[cleaned_df['time_class'] == time_control]
 
-        # Sort the filtered dataframe by 'date' to get the most recent games
-        last_three_games = time_control_df.sort_values(by='date', ascending=False).head(1)
+        if not time_control_df.empty:
+            # Sort the filtered dataframe by 'date' to get the most recent game
+            last_game = time_control_df.sort_values(by='date', ascending=False).head(1)
 
-        # Extract the ratings for the last 3 games
-        ratings = last_three_games[['date', 'my_rating']].to_dict(orient='records')
+            # Extract the rating and date of the last game
+            ratings = last_game[['date', 'my_rating']].to_dict(orient='records')
+        else:
+            # If there are no games, provide a default value
+            ratings = [{'date': 'N/A', 'my_rating': 'N/A'}]
 
         # Store the result in the dictionary
         last_three_ratings[time_control] = ratings

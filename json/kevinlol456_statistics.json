@@ -74,8 +74,14 @@
         "blitz": 2
     },
     "timecontrol_counts": {
-        "10m + 0s": 26,
-        "3m + 0s": 2
+        "Time_Control": {
+            "0": "10m + 0s",
+            "1": "3m + 0s"
+        },
+        "Games_Played": {
+            "0": 26,
+            "1": 2
+        }
     },
     "biggest_games": {
         "victory": {
@@ -134,5 +140,25 @@
             "date": "2024.12.23",
             "link": "https://www.chess.com/game/live/128686425239"
         }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.12.24",
+                "my_rating": 229
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.12.30",
+                "my_rating": 414
+            }
+        ],
+        "bullet": [
+            {
+                "date": "N/A",
+                "my_rating": "N/A"
+            }
+        ]
     }
 }
