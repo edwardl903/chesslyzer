@@ -147,6 +147,11 @@ def most_played_opponent(df):
     most_played_opponent.columns = ['Opponent', 'Games_Played']
     return most_played_opponent
 
+def most_played_time_class(df):
+    most_played_time_class = df['time_control'].value_counts().reset_index()
+    most_played_time_class.columns = ['Time_Control', 'Games_Played']
+    return most_played_time_class
+
 def get_first_defense_and_non_defense(my_openings):
     first_defense = None
     first_non_defense = None
@@ -320,9 +325,13 @@ def total_statistics(cleaned_df):
     #print(f"Variant counts: {variant_counts}")
 
     timeclass_counts = cleaned_df['time_class'].value_counts()
+
+    
+    
     #print(f"Timeclass counts: {timeclass_counts}")
 
-    timecontrol_counts = cleaned_df['time_control'].value_counts()
+    timecontrol_counts = most_played_time_class(cleaned_df)
+
     #print(f"Timeclass counts: {timecontrol_counts}")
 
     most_played_opps = most_played_opponent(cleaned_df).head()

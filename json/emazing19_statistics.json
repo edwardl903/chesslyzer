@@ -76,27 +76,37 @@
         "rapid": 74
     },
     "timecontrol_counts": {
-        "1m + 0s": 744,
-        "3m + 0s": 267,
-        "10m + 0s": 74,
-        "5m + 0s": 4,
-        "3m + 2s": 2,
-        "5m + 2s": 2
+        "Time_Control": {
+            "0": "1m + 0s",
+            "1": "3m + 0s",
+            "2": "10m + 0s",
+            "3": "5m + 0s",
+            "4": "3m + 2s",
+            "5": "5m + 2s"
+        },
+        "Games_Played": {
+            "0": 744,
+            "1": 267,
+            "2": 74,
+            "3": 4,
+            "4": 2,
+            "5": 2
+        }
     },
     "biggest_games": {
         "victory": {
-            "opp_username": "meeshly26",
-            "opp_rating": 129,
-            "time_class": "blitz",
-            "date": "2024.08.14",
-            "link": "https://www.chess.com/game/live/117421825641"
-        },
-        "upset": {
             "opp_username": "EdwardL903",
             "opp_rating": 1816,
             "time_class": "blitz",
             "date": "2024.09.12",
-            "link": "https://www.chess.com/game/live/119929229135"
+            "link": "https://www.chess.com/game/live/119930390847"
+        },
+        "upset": {
+            "opp_username": "Klee4505",
+            "opp_rating": 521,
+            "time_class": "blitz",
+            "date": "2024.08.14",
+            "link": "https://www.chess.com/game/live/117421232763"
         },
         "checkmate": {
             "opp_username": "MockingbirdTune",
