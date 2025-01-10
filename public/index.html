@@ -447,6 +447,9 @@ const biggestGamesRow = `
 
     statsContainer.querySelector('#imagesContainer').insertAdjacentHTML('beforebegin', biggestGamesRow);
     resultContainer.appendChild(statsContainer);
+    // Smooth scroll to the stats section
+    statsContainer.scrollIntoView({ behavior: 'smooth' });
+
 }
                     
              

@@ -1,0 +1,143 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/42601122.6f5e1904.200x200o.89304ca689fb.jpeg",
+    "my_username": "Mr_Mulligan",
+    "castling_counts": {
+        "kingside": 111,
+        "none": 39,
+        "queenside": 24
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 0.0,
+        "hours": 6.0,
+        "minutes": 35.0,
+        "seconds": 23.0,
+        "total_time": "0 days 6 hours 35 minutes 23 seconds",
+        "total_time_in_days": 0.27,
+        "total_time_in_hours": 6.59,
+        "total_time_in_minutes": 395.38,
+        "total_time_in_seconds": 23723.0,
+        "percentage_of_year": 0.08
+    },
+    "total_moves": 4961,
+    "total_win_draw_loss": {
+        "lose": 88,
+        "win": 86
+    },
+    "total_results": {
+        "win": 86,
+        "checkmated": 32,
+        "timeout": 30,
+        "resigned": 25,
+        "abandoned": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 5,
+    "total_games": 174,
+    "longest_winning_streak": 6,
+    "longest_losing_streak": 7,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "Sumyu5151",
+            "1": "RafaB_94",
+            "2": "NicoCasares55555",
+            "3": "ferterrazas9",
+            "4": "bribolo"
+        },
+        "Games_Played": {
+            "0": 2,
+            "1": 1,
+            "2": 1,
+            "3": 1,
+            "4": 1
+        }
+    },
+    "highest_rating": {
+        "rating": 1083,
+        "time_control": "rapid",
+        "date": "2024.03.29"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.08.15",
+        "time_spent": "0 days 0 hours 23 minutes 54 seconds"
+    },
+    "my_openings": {
+        "white_opening": "English-Opening",
+        "black_opening": "Philidor-Defense"
+    },
+    "timeclass_counts": {
+        "bullet": 159,
+        "rapid": 10,
+        "blitz": 5
+    },
+    "timecontrol_counts": {
+        "1m + 0s": 156,
+        "10m + 0s": 10,
+        "3m + 2s": 5,
+        "1m + 1s": 3
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "scotham1",
+            "opp_rating": 754,
+            "time_class": "bullet",
+            "date": "2024.02.01",
+            "link": "https://www.chess.com/game/live/100580520251"
+        },
+        "upset": {
+            "opp_username": "andrlim",
+            "opp_rating": 585,
+            "time_class": "bullet",
+            "date": "2024.08.04",
+            "link": "https://www.chess.com/game/live/108561533504"
+        },
+        "checkmate": {
+            "opp_username": "NuuBerT",
+            "opp_rating": 603,
+            "time_class": "bullet",
+            "time_spent": 87,
+            "my_num_moves": 26,
+            "date": "2024.08.08",
+            "link": "https://www.chess.com/game/live/108610040578"
+        },
+        "opponent": {
+            "opp_username": "shamanadit",
+            "opp_rating": 1062,
+            "time_class": "rapid",
+            "date": "2024.05.29",
+            "link": "https://www.chess.com/game/live/107504299112"
+        },
+        "longest": {
+            "opp_username": "shamanadit",
+            "opp_rating": 1062,
+            "time_class": "rapid",
+            "time_spent": 920,
+            "date": "2024.05.29",
+            "link": "https://www.chess.com/game/live/107504299112"
+        },
+        "moves": {
+            "opp_username": "shamanadit",
+            "opp_rating": 1062,
+            "time_class": "rapid",
+            "my_num_moves": 61,
+            "date": "2024.05.29",
+            "link": "https://www.chess.com/game/live/107504299112"
+        },
+        "least_time_won": {
+            "opp_username": "BDA374",
+            "opp_rating": 685,
+            "time_class": "bullet",
+            "my_time_left": 0.1,
+            "date": "2024.08.02",
+            "link": "https://www.chess.com/game/live/108529512462"
+        },
+        "least_time_lost": {
+            "opp_username": "LDMJoe",
+            "opp_rating": 707,
+            "time_class": "bullet",
+            "opp_time_left": 0.1,
+            "date": "2024.03.09",
+            "link": "https://www.chess.com/game/live/101466580922"
+        }
+    }
+}
