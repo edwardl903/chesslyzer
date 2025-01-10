@@ -1,0 +1,147 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/217157795.549959af.200x200o.f7ac8b59489f.jpg",
+    "my_username": "The_Wrath_Of_Pawn",
+    "castling_counts": {
+        "kingside": 48,
+        "none": 23,
+        "queenside": 4
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 0.0,
+        "hours": 12.0,
+        "minutes": 38.0,
+        "seconds": 14.0,
+        "total_time": "0 days 12 hours 38 minutes 14 seconds",
+        "total_time_in_days": 0.53,
+        "total_time_in_hours": 12.64,
+        "total_time_in_minutes": 758.23,
+        "total_time_in_seconds": 45494.0,
+        "percentage_of_year": 0.14
+    },
+    "total_moves": 2501,
+    "total_win_draw_loss": {
+        "win": 38,
+        "lose": 34,
+        "draw": 3
+    },
+    "total_results": {
+        "win": 38,
+        "checkmated": 17,
+        "timeout": 10,
+        "resigned": 7,
+        "stalemate": 2,
+        "repetition": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 5,
+    "total_games": 75,
+    "longest_winning_streak": 5,
+    "longest_losing_streak": 5,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "matias-ll",
+            "1": "socialNorm",
+            "2": "AbuBanx7",
+            "3": "Vintrado",
+            "4": "Willacon"
+        },
+        "Games_Played": {
+            "0": 5,
+            "1": 3,
+            "2": 3,
+            "3": 2,
+            "4": 1
+        }
+    },
+    "highest_rating": {
+        "rating": 1295,
+        "time_control": "rapid",
+        "date": "2024.12.29"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.12.16",
+        "time_spent": "0 days 1 hours 44 minutes 59 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Queens-Gambit",
+        "black_opening": "Caro-Kann-Defense"
+    },
+    "timeclass_counts": {
+        "rapid": 53,
+        "blitz": 17,
+        "bullet": 5
+    },
+    "timecontrol_counts": {
+        "10m + 0s": 52,
+        "5m + 0s": 17,
+        "1m + 1s": 2,
+        "1m + 0s": 2,
+        "2m + 1s": 1,
+        "15m + 10s": 1
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "JoncBlaze",
+            "opp_rating": 1260,
+            "time_class": "rapid",
+            "date": "2024.02.09",
+            "link": "https://www.chess.com/game/live/101276545391"
+        },
+        "upset": {
+            "opp_username": "socialNorm",
+            "opp_rating": 479,
+            "time_class": "bullet",
+            "date": "2024.01.05",
+            "link": "https://www.chess.com/game/live/98172557431"
+        },
+        "checkmate": {
+            "opp_username": "ahakazj",
+            "opp_rating": 1256,
+            "time_class": "rapid",
+            "time_spent": 190,
+            "my_num_moves": 11,
+            "date": "2024.02.07",
+            "link": "https://www.chess.com/game/live/101106138537"
+        },
+        "opponent": {
+            "opp_username": "NedShneeb",
+            "opp_rating": 1297,
+            "time_class": "rapid",
+            "date": "2024.12.20",
+            "link": "https://www.chess.com/game/live/128472796541"
+        },
+        "longest": {
+            "opp_username": "Sefer67",
+            "opp_rating": 1341,
+            "time_class": "rapid",
+            "time_spent": 1331,
+            "date": "2024.12.16",
+            "link": "https://www.chess.com/game/live/128147948683"
+        },
+        "moves": {
+            "opp_username": "Thawk49",
+            "opp_rating": 1172,
+            "time_class": "rapid",
+            "my_num_moves": 75,
+            "date": "2024.02.07",
+            "link": "https://www.chess.com/game/live/101100772659"
+        },
+        "least_time_won": {
+            "opp_username": "Willacon",
+            "opp_rating": 1063,
+            "time_class": "blitz",
+            "my_time_left": 0.1,
+            "date": "2024.10.26",
+            "link": "https://www.chess.com/game/live/120326505784"
+        },
+        "least_time_lost": {
+            "opp_username": "Vintrado",
+            "opp_rating": 1174,
+            "time_class": "bullet",
+            "opp_time_left": 9.1,
+            "date": "2024.10.16",
+            "link": "https://www.chess.com/game/live/122849654191"
+        }
+    }
+}
