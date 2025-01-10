@@ -269,7 +269,32 @@
                     font-weight: 500;
                     line-height: 100%;
                 ">@${data.my_username}'s 2024 CHESS.COM WRAPPED by Chesslytics.xyz</div>
-                    <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px;">
+                    <div style="display: flex; align-items: center; margin-top: 20px;">
+                <!-- Avatar on the Left -->
+                <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px; margin-right: 50px; margin-bottom: 20px;">
+                
+                <!-- Stats formatted as row row-1 -->
+                <div class="row row-1" style="display: flex; gap: 35px; flex: 1; margin-bottom: 20px;">
+                    <!-- Blitz Rating -->
+                    <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
+                        <div class="stat-title">BLITZ</div>
+                        <div class="stat-value">${data.last_game_ratings.blitz[0].my_rating}</div>
+                    </div>
+
+                    <!-- Rapid Rating -->
+                    <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
+                        <div class="stat-title">RAPID</div>
+                        <div class="stat-value">${data.last_game_ratings.rapid[0].my_rating}</div>
+                    </div>
+
+                    <!-- Bullet Rating -->
+                    <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
+                        <div class="stat-title">BULLET</div>
+                        <div class="stat-value">${data.last_game_ratings.bullet[0].my_rating}</div>
+                    </div>
+                </div>
+            </div>
+                    
 
             </div>
             </div>

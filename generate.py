@@ -81,7 +81,8 @@ def generate_csv():
                 "my_openings": statistics['my_openings'],
                 "timecontrol_counts": statistics['timecontrol_counts'],
                 "timeclass_counts": statistics['timeclass_counts'],
-                "biggest_games": statistics['biggest_games']
+                "biggest_games": statistics['biggest_games'],
+                'last_game_ratings': statistics['last_game_ratings']
             })
 
         else:

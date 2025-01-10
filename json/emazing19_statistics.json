@@ -156,5 +156,25 @@
             "date": "2024.02.23",
             "link": "https://www.chess.com/game/live/102469179361"
         }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.12.26",
+                "my_rating": 1032
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.12.24",
+                "my_rating": 1351
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2024.12.28",
+                "my_rating": 1342
+            }
+        ]
     }
 }

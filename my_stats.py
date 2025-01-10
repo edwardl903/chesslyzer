@@ -2,6 +2,28 @@ import pandas as pd
 from itertools import groupby
 from data_processing import fetch_player_data
 
+def last_three_games_rating_by_time_control(cleaned_df):
+    # Initialize an empty dictionary to store the ratings for each time control
+    last_three_ratings = {}
+
+    # Define the time controls we are interested in
+    time_controls = ['blitz', 'rapid', 'bullet']
+
+    for time_control in time_controls:
+        # Filter the dataframe for the current time control
+        time_control_df = cleaned_df[cleaned_df['time_class'] == time_control]
+
+        # Sort the filtered dataframe by 'date' to get the most recent games
+        last_three_games = time_control_df.sort_values(by='date', ascending=False).head(1)
+
+        # Extract the ratings for the last 3 games
+        ratings = last_three_games[['date', 'my_rating']].to_dict(orient='records')
+
+        # Store the result in the dictionary
+        last_three_ratings[time_control] = ratings
+
+    return last_three_ratings
+
 # Function to calculate win rates by opening
 def calculate_win_rates(df):
     win_rates = (
@@ -394,6 +416,8 @@ def total_statistics(cleaned_df):
     
     print(player_data['avatar'])
 
+    last_game_ratings = last_three_games_rating_by_time_control(cleaned_df)
+
     def safe_to_dict(result, columns):
         """Converts a result to a dictionary if it's not None."""
         if result is not None:
@@ -476,8 +500,9 @@ def total_statistics(cleaned_df):
             'longest': biggest_longest,
             'moves': biggest_moves,
             'least_time_won': biggest_least_time_won,
-            'least_time_lost': biggest_least_time_lost
-        }
+            'least_time_lost': biggest_least_time_lost,
+        },
+        'last_game_ratings': last_game_ratings
     }
 
     return statistics
