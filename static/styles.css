@@ -8,10 +8,10 @@ html, body {
 body {
     display: flex;
     justify-content: center;
-    align-items: flex-start;  /* Align items at the top */
+    align-items: flex-start; /* Align items at the top */
     height: 100vh;
     position: relative;
-    overflow-y: auto;  /* Allow scrolling if content exceeds viewport height */
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport height */
     background-color: #2D6056;
     background-image: url('/static/background.jpg');
     background-size: cover;
@@ -39,91 +39,125 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;  /* Align items to the top */
+    justify-content: flex-start; /* Align items to the top */
     align-items: center;
     gap: 32px;
     width: 100%;
-    max-height: 100vh;  /* Ensure container doesn't exceed viewport height */
-    overflow-y: auto;  /* Allow scrolling within this container */
-    min-height: 100%;  /* Ensure the container takes at least the full height */
+    max-height: 100vh; /* Ensure container doesn't exceed viewport height */
+    overflow-y: auto; /* Allow scrolling within this container */
+    min-height: 100%; /* Ensure the container takes at least the full height */
+    padding: 16px; /* Ensure padding is responsive */
 }
 
-/* Media Queries */
+.stats-container {
+    width: 100%;
+    height: 120vh; /* Full height of the viewport */
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+.background-overlay, .background-overlay-second {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content-container {
+    width: 100%;
+    position: relative;
+    display: grid;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.row-0, .row-1, .row-2, .row-3 {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.row-0 {
+    grid-template-columns: 1fr;
+}
+
+.row-1 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.row-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.row-3 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.stat-box, .stat-box2 {
+    padding: 20px;
+    background: #EEEED5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.stat-box2 {
+    margin-top: 16px;
+}
+
+.stat-title, .stat-value, .stat-details, .stat-opponent, .stat-opening {
+    color: #0A4345;
+    font-family: 'League Spartan', sans-serif;
+    line-height: 100%;
+}
+
+.stat-title {
+    font-size: 18.26px;
+    font-weight: 400;
+}
+
+.stat-value {
+    font-size: 32.38px;
+    font-weight: 700;
+}
+
+.stat-details, .stat-opponent, .stat-opening {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    /* Content Layout */
-    #contentContainer {
-        padding: 16px;
+    .main-content, #contentContainer, .title, .instructions {
+        padding: 10px; /* Adjust padding */
+        font-size: smaller; /* Adjust font size for readability */
     }
-
-    .row-0, .row-1, .row-2, .row-3 {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    /* Stat Box Styling */
-    .stat-box, .stat-box2 {
-        width: 100%;
-        padding: 16px;
-        margin: 0 auto;
-    }
-
-    /* Title and Input Sections */
-    .stat-title {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .stat-value {
-        font-size: 28px;
-        text-align: center;
-    }
-
-    /* Avatar Styling */
-    .stat-box img {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* Adjust Button */
-    #submitBtn {
-        width: 100%;
-        font-size: 24px;
-        padding: 12px;
-    }
-
-    /* Adjust Result Section */
-    .result {
-        margin-top: 16px;
-        padding: 0 16px;
+    .image-above-title {
+        max-width: 100px; /* Smaller image on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
-    /* Further Adjustments for Smaller Screens */
-    .stat-title {
-        font-size: 18px;
+    body, html, #contentContainer {
+        width: 100%;
+        overflow-x: hidden;  /* Ensures no horizontal scroll */
     }
+    .main-content {
+        width: auto; /* Adjust width to fit screen */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
 
-    .stat-value {
-        font-size: 24px;
-    }
-
-    .stat-opponent, .stat-opening {
-        font-size: 18px;
-    }
-
-    .stat-box img {
-        width: 70px;
-        height: 70px;
-    }
-
-    /* Increase padding and spacing for readability */
-    #contentContainer, .result {
-        padding: 16px;
-    }
-
-    #submitBtn {
-        font-size: 22px;
-    }
+/* Flexible Images */
+img {
+    max-width: 100%;
+    height: auto;
 }

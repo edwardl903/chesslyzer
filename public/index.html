@@ -6,135 +6,6 @@
     <title>ChessLytics - Chess Wrapped 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
-    <style>
-/* Grid layout for the container */
-/* Grid layout for the container */
-/* General styles for the container */
-.stats-container {
-    width: 100%;
-    height: 120vh; /* Full height of the viewport */
-    position: relative;
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-}
-.background-overlay, .background-overlay-second {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.content-container {
-    width: 100%;
-    position: relative;
-    display: grid;
-    gap: 18px;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-/* Row 4 - 1 column (just for 1 stat box at the bottom) */
-.row-0 {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 column in the fourth row */
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-/* Row 1 - 3 columns */
-.row-1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns in the first row */
-    gap: 30px;
-}
-
-/* Row 2 - 2 columns */
-.row-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns in the second row */
-    gap: 30px;
-}
-
-/* Row 3 - 5 columns */
-.row-3 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns in the third row */
-    gap: 30px;
-}
-
-
-/* Stat Box styling */
-.stat-box {
-    padding: 20px;
-    background: #EEEED5;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 16px;
-}
-
-.stat-box2 {
-    padding: 20px;
-    background: #EEEED5;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 16px;
-    margin-top: 16px;
-}
-
-/* Stat Titles */
-.stat-title {
-    color: #0A4345;
-    font-size: 18.26px;
-    font-family: League Spartan;
-    font-weight: 400;
-    line-height: 18.26px;
-}
-
-/* Stat Value */
-.stat-value {
-    color: #0A4345;
-    font-size: 32.38px;
-    font-family: League Spartan;
-    font-weight: 700;
-    line-height: 32.38px;
-}
-
-/* Details / Subtitle */
-.stat-details {
-    color: #0A4345;
-    font-size: 18px;
-    font-family: League Spartan;
-    font-weight: 400;
-    line-height: 18px;
-}
-
-/* Additional styling for the opponents */
-.stat-opponent {
-    color: #0A4345;
-    font-size: 22px;
-    font-family: League Spartan;
-    font-weight: 700;
-    line-height: 22px;
-}
-
-/* Opening names */
-.stat-opening {
-    color: #0A4345;
-    font-size: 22px;
-    font-family: League Spartan;
-    font-weight: 700;
-    line-height: 22px;
-}
-
-    </style>
 </head>
 
 <body>
@@ -173,15 +44,15 @@
 
             <!-- Loading Message and Result Section -->
             <div id="loadingMessage" style="display: none; font-family: 'League Spartan', sans-serif; font-weight: 700; text-align: center; font-size: 14px; color: white; margin-top: 10px;">
-                Generating Chess Analytics...
+                Generating Chess Analytics... Please allow 15-30 seconds.
             </div>
             <div class="result" id="result" style="display: none; margin-top: 24px; text-align: center; width: 100%; z-index: 10;">
                 <!-- Dynamic Results Populated Here -->
             </div>
             <footer style="color: #EEEED5; text-align: center; padding-top: 160px; font-family: 'League Spartan', sans-serif;">
-                <p>&copy; 2025 Edward Lai, Emai Lai, and Thomas Lai. All rights reserved.</p>
-                <p>Designed and Developed by Edward Lai, Emai Lai, and Thomas Lai</p>
-                <p>Contact us: <a href="mailto:EdwardL9039@gmail.com" style="color: #EEEED5; text-decoration: none;">EdwardL9039@gmail.com</a></p>
+                <p>&copy; 2025 Edward Lai and Emai Lai. All rights reserved.</p>
+                <p>Developed by Edward Lai | Designed by Emai Lai</p>
+                <p>Contact us via Email: <a href="mailto:EdwardL9039@gmail.com" style="color: #EEEED5; text-decoration: none;">EdwardL9039@gmail.com</a> or on Chess.com: <a href="https://www.chess.com/member/EdwardL903" style="color: #EEEED5; text-decoration: none;">@EdwardL903</a></p>
             </footer>
         </div>
     </div>
@@ -269,31 +140,33 @@
                     font-weight: 500;
                     line-height: 100%;
                 ">@${data.my_username}'s 2024 CHESS.COM WRAPPED by Chesslytics.xyz</div>
-                    <div style="display: flex; align-items: center; margin-top: 20px;">
-                <!-- Avatar on the Left -->
-                <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px; margin-right: 50px; margin-bottom: 20px;">
-                
-                <!-- Stats formatted as row row-1 -->
-                <div class="row row-1" style="display: flex; gap: 35px; flex: 1; margin-bottom: 20px;">
-                    <!-- Blitz Rating -->
-                    <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
-                        <div class="stat-title">BULLET</div>
-                        <div class="stat-value">${data.last_game_ratings.bullet[0].my_rating}</div>
-                    </div>
+ 
 
-                    <!-- Rapid Rating -->
-                    <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
-                        <div class="stat-title">BLITZ</div>
-                        <div class="stat-value">${data.last_game_ratings.blitz[0].my_rating}</div>
-                    </div>
+                <div class="profile-stats-container" style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <!-- Avatar on the Left -->
+                    <img src="${data.my_avatar}" alt="${data.my_username}'s avatar" style="border-radius: 50%; width: 100px; height: 100px; margin-right: 50px; margin-bottom: 50px;">
 
-                    <!-- Bullet Rating -->
-                    <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
-                        <div class="stat-title">RAPID</div>
-                        <div class="stat-value">${data.last_game_ratings.rapid[0].my_rating}</div>
+                    <!-- Stats formatted as row row-1 -->
+                    <div class="row row-1" style="display: flex; gap: 35px; flex: 1; margin-bottom: 50px;">
+                        <!-- Bullet Rating -->
+                        <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
+                            <div class="stat-title">BULLET</div>
+                            <div class="stat-value">${data.last_game_ratings.bullet[0].my_rating}</div>
+                        </div>
+
+                        <!-- Blitz Rating -->
+                        <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
+                            <div class="stat-title">BLITZ</div>
+                            <div class="stat-value">${data.last_game_ratings.blitz[0].my_rating}</div>
+                        </div>
+
+                        <!-- Rapid Rating -->
+                        <div class="stat-box" style="flex: 1; padding: 20px; border-radius: 8px;">
+                            <div class="stat-title">RAPID</div>
+                            <div class="stat-value">${data.last_game_ratings.rapid[0].my_rating}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
                     
 
             </div>
@@ -446,7 +319,7 @@ const biggestGamesRow = `
     <!-- Row for Least Time Won and Least Time Lost -->
     <div class="row row-2">
         <div class="stat-box2">
-            <div class="stat-title">YOUR LEAST TIME LEFT (Your Victory)</div>
+            <div class="stat-title">MOST INTENSE GAME</div>
             <div class="stat-opponent">@${data.biggest_games.least_time_won.opp_username}</div>
             <div class="stat-details">Rating: ${data.biggest_games.least_time_won.opp_rating} | Time Control: ${data.biggest_games.least_time_won.time_class}</div>
             <div class="stat-details">Time Left: ${data.biggest_games.least_time_won.my_time_left} seconds</div>
@@ -454,7 +327,7 @@ const biggestGamesRow = `
             <a href="${data.biggest_games.least_time_won.link}" target="_blank" class="stat-link">View Game</a>
         </div>
         <div class="stat-box2">
-            <div class="stat-title">OPPONENT'S LEAST TIME LEFT (Your Defeat)</div>
+            <div class="stat-title">MOST DISAPPOINTING GAME</div>
             <div class="stat-opponent">@${data.biggest_games.least_time_lost.opp_username}</div>
             <div class="stat-details">Rating: ${data.biggest_games.least_time_lost.opp_rating} | Time Control: ${data.biggest_games.least_time_lost.time_class}</div>
             <div class="stat-details">Time Left: ${data.biggest_games.least_time_lost.opp_time_left} seconds</div>

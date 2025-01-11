@@ -73,12 +73,22 @@
         "bullet": 5
     },
     "timecontrol_counts": {
-        "10m + 0s": 52,
-        "5m + 0s": 17,
-        "1m + 1s": 2,
-        "1m + 0s": 2,
-        "2m + 1s": 1,
-        "15m + 10s": 1
+        "Time_Control": {
+            "0": "10m + 0s",
+            "1": "5m + 0s",
+            "2": "1m + 1s",
+            "3": "1m + 0s",
+            "4": "2m + 1s",
+            "5": "15m + 10s"
+        },
+        "Games_Played": {
+            "0": 52,
+            "1": 17,
+            "2": 2,
+            "3": 2,
+            "4": 1,
+            "5": 1
+        }
     },
     "biggest_games": {
         "victory": {
@@ -143,5 +153,25 @@
             "date": "2024.10.16",
             "link": "https://www.chess.com/game/live/122849654191"
         }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.10.29",
+                "my_rating": 1062
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.12.29",
+                "my_rating": 1295
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2024.10.16",
+                "my_rating": 981
+            }
+        ]
     }
 }

@@ -1,0 +1,179 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/54932838.64db6eaf.200x200o.26b9d3864366.png",
+    "my_username": "Alexlea444",
+    "castling_counts": {
+        "kingside": 140,
+        "none": 54,
+        "queenside": 11
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 1.0,
+        "hours": 11.0,
+        "minutes": 5.0,
+        "seconds": 40.0,
+        "total_time": "1 days 11 hours 5 minutes 40 seconds",
+        "total_time_in_days": 1.46,
+        "total_time_in_hours": 35.09,
+        "total_time_in_minutes": 2105.67,
+        "total_time_in_seconds": 126340.0,
+        "percentage_of_year": 0.4
+    },
+    "total_moves": 6972,
+    "total_win_draw_loss": {
+        "win": 108,
+        "lose": 91,
+        "draw": 6
+    },
+    "total_results": {
+        "win": 108,
+        "resigned": 50,
+        "checkmated": 32,
+        "timeout": 7,
+        "insufficient": 2,
+        "abandoned": 2,
+        "agreed": 1,
+        "repetition": 1,
+        "stalemate": 1,
+        "timevsinsufficient": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 18,
+    "total_games": 205,
+    "longest_winning_streak": 8,
+    "longest_losing_streak": 12,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "jackliu886",
+            "1": "ACDOR100",
+            "2": "brianelkhoury",
+            "3": "EnPeasant8",
+            "4": "gia195757"
+        },
+        "Games_Played": {
+            "0": 5,
+            "1": 5,
+            "2": 4,
+            "3": 4,
+            "4": 2
+        }
+    },
+    "highest_rating": {
+        "rating": 1616,
+        "time_control": "rapid",
+        "date": "2024.12.19"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.02.03",
+        "time_spent": "0 days 1 hours 37 minutes 9 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Vienna-Game",
+        "black_opening": "Caro-Kann-Defense"
+    },
+    "timeclass_counts": {
+        "rapid": 186,
+        "blitz": 16,
+        "bullet": 3
+    },
+    "timecontrol_counts": {
+        "Time_Control": {
+            "0": "10m + 0s",
+            "1": "5m + 2s",
+            "2": "5m + 0s",
+            "3": "1m + 0s",
+            "4": "3m + 0s"
+        },
+        "Games_Played": {
+            "0": 186,
+            "1": 9,
+            "2": 6,
+            "3": 3,
+            "4": 1
+        }
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "brianelkhoury",
+            "opp_rating": 1408,
+            "time_class": "bullet",
+            "date": "2024.11.15",
+            "link": "https://www.chess.com/game/live/125448524591"
+        },
+        "upset": {
+            "opp_username": "Person_7951436243",
+            "opp_rating": 675,
+            "time_class": "blitz",
+            "date": "2024.10.10",
+            "link": "https://www.chess.com/game/live/122342388203"
+        },
+        "checkmate": {
+            "opp_username": "VnyMVDZ",
+            "opp_rating": 1447,
+            "time_class": "rapid",
+            "time_spent": 120,
+            "my_num_moves": 7,
+            "date": "2024.10.27",
+            "link": "https://www.chess.com/game/live/123791437917"
+        },
+        "opponent": {
+            "opp_username": "RuslanOmelyanovich",
+            "opp_rating": 1645,
+            "time_class": "rapid",
+            "date": "2024.12.17",
+            "link": "https://www.chess.com/game/live/128224184269"
+        },
+        "longest": {
+            "opp_username": "LeonardoPereiraGimenes",
+            "opp_rating": 1426,
+            "time_class": "rapid",
+            "time_spent": 1211,
+            "date": "2024.01.23",
+            "link": "https://www.chess.com/game/live/99799383497"
+        },
+        "moves": {
+            "opp_username": "RafaPogosyian",
+            "opp_rating": 1428,
+            "time_class": "rapid",
+            "my_num_moves": 86,
+            "date": "2024.01.19",
+            "link": "https://www.chess.com/game/live/99432695217"
+        },
+        "least_time_won": {
+            "opp_username": "brianelkhoury",
+            "opp_rating": 1408,
+            "time_class": "bullet",
+            "my_time_left": 4.2,
+            "date": "2024.11.15",
+            "link": "https://www.chess.com/game/live/125448524591"
+        },
+        "least_time_lost": {
+            "opp_username": "LeonardoPereiraGimenes",
+            "opp_rating": 1426,
+            "time_class": "rapid",
+            "opp_time_left": 11.4,
+            "date": "2024.01.23",
+            "link": "https://www.chess.com/game/live/99799383497"
+        }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.10.30",
+                "my_rating": 1042
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.12.31",
+                "my_rating": 1599
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2024.11.15",
+                "my_rating": 939
+            }
+        ]
+    }
+}
