@@ -42,7 +42,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     # Plotting the frequency of games over months
     plt.figure(figsize=(10, 6))
     sns.barplot(x=monthly_counts.index.astype(str), y=monthly_counts.values, palette="flare")
-    plt.title('Frequency of Games Played Over Months')
+    plt.title('Frequency of Games Played Over Months', fontsize=16)
     plt.xlabel('Month')
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)  # Rotate x-axis labels for better visibility
@@ -52,7 +52,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     # Plotting the frequency of games by weekday
     plt.figure(figsize=(10, 6))
     sns.barplot(x=weekday_counts.index, y=weekday_counts.values, palette="flare")
-    plt.title('Frequency of Games Played by Weekday')
+    plt.title('Frequency of Games Played by Weekday', fontsize=16)
     plt.xlabel('Weekday')
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)
@@ -62,7 +62,7 @@ def plot_game_statistics(cleaned_df, output_dir):
     # Plotting the frequency of games by hour
     plt.figure(figsize=(10, 6))
     sns.barplot(x=hourly_counts.index.astype(str), y=hourly_counts.values, palette="flare")
-    plt.title('Frequency of Games Played by Hour')
+    plt.title('Frequency of Games Played by Hour', fontsize=16)
     plt.xlabel('Hour of Day')
     plt.ylabel('Frequency of Games')
     plt.xticks(rotation=45)
@@ -137,7 +137,7 @@ def plot_opening_statistics(cleaned_df, output_dir):
         ax.text(idx, 1.02, f'{int(total_games)} games', ha='center', fontsize=10, color='black')
 
     # Customize the plot
-    plt.title('Win/Draw/Loss Rates for Top 10 Most Common Openings (with Game Counts)', pad=20)
+    plt.title('Win/Draw/Loss Rates for Top 10 Most Common Openings (with Game Counts)', pad=20, fontsize=16)
     plt.xlabel('Opening')
     plt.ylabel('Rate')
     plt.xticks(rotation=45, ha='right', fontsize=10)  # Rotate x-axis labels for readability
@@ -482,9 +482,9 @@ def plot_win_percentage_vs_opp_rating(cleaned_df, output_dir):
     win_percentage = win_percentage.reset_index(name='win_percentage')
 
     # Create the scatterplot
-    plt.figure(figsize=(14, 8))
+    plt.figure(figsize=(10, 6))
     sns.scatterplot(x='opp_rating_range', y='win_percentage', hue='time_class', data=win_percentage, palette='coolwarm', s=100)
-    plt.title('Win Percentage vs. Opponent Rating Range by Time Class')
+    plt.title('Win Percentage vs. Opponent Rating Range by Time Class', fontsize=16)
     plt.xlabel('Opponent Rating Range')
     plt.ylabel('Win Percentage (%)')
     plt.xticks(rotation=45)
@@ -507,7 +507,7 @@ def plot_moves_vs_game_outcome(cleaned_df, output_dir):
     sns.scatterplot(x='my_num_moves', y='time_spent', hue='my_win_or_lose', data=filtered_data, palette='coolwarm', s=100)
 
     # Customize the plot
-    plt.title('Moves vs. Game Outcome')
+    plt.title('Moves vs. Game Outcome', fontsize=16)
     plt.xlabel('Number of Moves Made')
     plt.ylabel('Time Spent (seconds)')
     plt.legend(title='Game Outcome')
@@ -553,7 +553,7 @@ def plot_win_rate_vs_num_moves(cleaned_df, output_dir):
     plt.fill_between(win_rate_data['moves_bin_lower'], win_rate_data['win_percentage'], color='green', alpha=0.3)
 
     # Customize the plot
-    plt.title('Win Rate vs. Number of Moves Made (Binned)')
+    plt.title('Win Rate vs. Number of Moves Made (Binned)', fontsize=16)
     plt.xlabel('Number of Moves (Binned)')
     plt.ylabel('Win Rate (%)')
     plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
@@ -597,7 +597,7 @@ def plot_scaled_rating_difference_by_outcome(cleaned_df, output_dir):
     sns.boxplot(x='my_win_or_lose', y='scaled_rating_difference', data=filtered_data, palette='Set2', width=0.6)
     
     # Customize the plot
-    plt.title('Scaled Rating Difference vs. Game Outcome')
+    plt.title('Scaled Rating Difference vs. Game Outcome', fontsize=16)
     plt.xlabel('Game Outcome')
     plt.ylabel('Scaled Rating Difference (Player - Opponent)')
     
@@ -680,13 +680,13 @@ def plot_game_outcome_by_time_left(cleaned_df, output_dir):
             lose_percent = pd.Series([0] * len(time_stats_normalized))
 
         # Plot the line chart
-        plt.figure(figsize=(14, 8))
+        plt.figure(figsize=(10, 6))
         plt.plot(time_left, win_percent, label='Win Percentage', color='green', linewidth=2)
         plt.plot(time_left, draw_percent, label='Draw Percentage', color='gray', linewidth=2)
         plt.plot(time_left, lose_percent, label='Loss Percentage', color='red', linewidth=2)
 
         # Customize the plot
-        plt.title(f'Win/Draw/Loss Percentages by Time Left ({time_control.capitalize()} Games)')
+        plt.title(f'Win/Draw/Loss Percentages by Time Left ({time_control.capitalize()} Games)', fontsize=16)
         plt.xlabel('Time Left (Seconds)')
         plt.ylabel('Percentage')
         plt.legend(title='Outcome', loc='best')
@@ -753,7 +753,7 @@ def plot_win_ratio_heatmap_by_castling(cleaned_df, output_dir):
     plt.figure(figsize=(10, 6))
     sns.heatmap(heatmap_data, annot=True, cmap='coolwarm', fmt='.2f', linewidths=.5, cbar_kws={'label': 'Win Ratio'})
 
-    plt.title('Win Ratio Heatmap Based on Castling Frequencies')
+    plt.title('Win Ratio Heatmap Based on Castling Frequencies', fontsize=16)
     plt.xlabel('Opponent Castling Frequency')
     plt.ylabel('My Castling Frequency')
     plt.tight_layout()
@@ -792,7 +792,7 @@ def plot_game_count_heatmap_by_castling(cleaned_df, output_dir):
         linewidths=.5, 
         cbar_kws={'label': 'Number of Games'}
     )
-    plt.title('Game Count Heatmap Based on Castling Frequencies')
+    plt.title('Game Count Heatmap Based on Castling Frequencies', fontsize=16)
     plt.xlabel('Opponent Castling Frequency')
     plt.ylabel('My Castling Frequency')
     plt.tight_layout()
@@ -803,40 +803,54 @@ def plot_game_count_heatmap_by_castling(cleaned_df, output_dir):
 
 # In[30]:
 
-
 def plot_rating_progression_over_time(cleaned_df, output_dir):
     """
-    This function generates a plot of rating progression over time for different time classes.
-    It filters the data for non-null ratings and plots the rating for each time class.
+    This function generates a plot of rating progression over time for different time classes,
+    averaged monthly. It filters the data for non-null ratings and plots the average monthly rating
+    for each time class.
     """
     # Ensure 'date' is in datetime format
     cleaned_df['date'] = pd.to_datetime(cleaned_df['date'])
 
-    # Filter rows where 'my_rating' exists
-    rating_data = cleaned_df[~cleaned_df['my_rating'].isna()]
+    # Filter rows where 'my_rating' exists and is numeric
+    rating_data = cleaned_df[~cleaned_df['my_rating'].isna() & cleaned_df['my_rating'].apply(lambda x: isinstance(x, (int, float)))]
+
+    # Extract the month from the 'date' column for grouping
+    rating_data['month'] = rating_data['date'].dt.month
 
     # Get unique time_classes
     time_classes = rating_data['time_class'].unique()
 
-    # Plot rating over time for each time_class
-    plt.figure(figsize=(12, 6))
+    # Prepare the plot
+    plt.figure(figsize=(10, 6))
 
     for time_class in time_classes:
-        # Filter data for the current time_class
+        # Filter data for the current time class
         time_class_data = rating_data[rating_data['time_class'] == time_class]
-        
-        # Plot rating over time for the current time_class
-        plt.plot(time_class_data['date'], time_class_data['my_rating'], marker='o', linestyle='-', label=time_class)
+
+        # Ensure that only numeric values are being processed
+        time_class_data['my_rating'] = pd.to_numeric(time_class_data['my_rating'], errors='coerce')
+
+        # Group by month and calculate the mean rating
+        monthly_avg = time_class_data.groupby('month')['my_rating'].mean()
+
+        # Plot the monthly average rating over time for the current time class
+        plt.plot(monthly_avg.index, monthly_avg, marker='o', linestyle='-', label=time_class)
 
     # Customize the plot
-    plt.title('Rating Over Time for Different Time Controls')
-    plt.xlabel('Date')
-    plt.ylabel('Rating')
-    plt.xticks(rotation=45)
+    plt.title('Monthly Average Rating Over Time for Different Time Controls', fontsize=16)
+    plt.xlabel('Month')
+    plt.ylabel('Average Rating')
+    plt.xticks(range(1, 13), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
     plt.grid(True)
     plt.legend(title='Time Class')
 
+     # Adding a border to the plot
+    
+
+
     # Display the plot
+    
     plt.tight_layout()
     plt.savefig(f"{output_dir}image_0.png")  # Save the plot
     #plt.show()
