@@ -86,7 +86,7 @@ def generate_csv():
             })
 
         else:
-            return jsonify({"error": "Failed to find generated statistics file."}), 500
+            return jsonify({"error": "No games found for the user in 2024"}), 500
 
     except subprocess.CalledProcessError as e:
         print(f"Error: {e.stderr}")

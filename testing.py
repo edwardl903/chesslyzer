@@ -26,8 +26,10 @@ def main(username):
     metadata_df = clean_dataframe(df, username)
     print(f"Columns: {metadata_df.columns}")
     #print(metadata_df['time_class'].unique())
-    chess_df = metadata_df[(metadata_df['rules'] == 'chess') & (metadata_df['time_class'].isin(['blitz', 'rapid', 'bullet', 'daily']))]
-    print(chess_df.isna().sum()) #lol kills the daily games, bug atm
+    if metadata_df.empty:
+        return []
+    else:
+        chess_df = metadata_df[(metadata_df['rules'] == 'chess') & (metadata_df['time_class'].isin(['blitz', 'rapid', 'bullet', 'daily']))]    
     # Drop rows with NaN values (if you want to remove them)
     chess_df = chess_df.dropna()
 
