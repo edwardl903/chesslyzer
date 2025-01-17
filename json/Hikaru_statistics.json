@@ -78,16 +78,30 @@
         "rapid": 59
     },
     "timecontrol_counts": {
-        "3m + 0s": 3564,
-        "1m + 0s": 2824,
-        "3m + 1s": 1054,
-        "10m + 2s": 50,
-        "5m + 1s": 40,
-        "1m + 1s": 34,
-        "5m + 0s": 15,
-        "3m + 2s": 10,
-        "10m + 0s": 9,
-        "30s + 0s": 1
+        "Time_Control": {
+            "0": "3m + 0s",
+            "1": "1m + 0s",
+            "2": "3m + 1s",
+            "3": "10m + 2s",
+            "4": "5m + 1s",
+            "5": "1m + 1s",
+            "6": "5m + 0s",
+            "7": "3m + 2s",
+            "8": "10m + 0s",
+            "9": "30s + 0s"
+        },
+        "Games_Played": {
+            "0": 3564,
+            "1": 2824,
+            "2": 1054,
+            "3": 50,
+            "4": 40,
+            "5": 34,
+            "6": 15,
+            "7": 10,
+            "8": 9,
+            "9": 1
+        }
     },
     "biggest_games": {
         "victory": {
@@ -137,20 +151,40 @@
             "link": "https://www.chess.com/game/live/115682907071"
         },
         "least_time_won": {
-            "opp_username": "Atanejhad",
-            "opp_rating": 2532,
+            "opp_username": "ShadowKing71",
+            "opp_rating": 2877,
             "time_class": "blitz",
-            "my_time_left": 0.0,
-            "date": "2024.06.25",
-            "link": "https://www.chess.com/game/live/113088030745"
+            "my_time_left": 0.2,
+            "date": "2024.07.14",
+            "link": "https://www.chess.com/game/live/114726463595"
         },
         "least_time_lost": {
-            "opp_username": "HamedWafa4",
-            "opp_rating": 2723,
+            "opp_username": "aa175",
+            "opp_rating": 2937,
             "time_class": "blitz",
-            "opp_time_left": 0.0,
-            "date": "2024.04.23",
-            "link": "https://www.chess.com/game/live/107638351425"
+            "opp_time_left": 0.1,
+            "date": "2024.07.08",
+            "link": "https://www.chess.com/game/live/114228584207"
         }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.12.31",
+                "my_rating": 3295
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.09.27",
+                "my_rating": 2769
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2024.12.14",
+                "my_rating": 3268
+            }
+        ]
     }
 }

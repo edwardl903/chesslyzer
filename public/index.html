@@ -44,7 +44,7 @@
 
             <!-- Loading Message and Result Section -->
             <div id="loadingMessage" style="display: none; font-family: 'League Spartan', sans-serif; font-weight: 700; text-align: center; font-size: 14px; color: white; margin-top: 10px;">
-                Generating Chess Analytics... Please allow 15-30 seconds.
+                Generating Chess Analytics... Please wait
             </div>
             <div class="result" id="result" style="display: none; margin-top: 24px; text-align: center; width: 100%; z-index: 10;">
                 <!-- Dynamic Results Populated Here -->
@@ -67,10 +67,19 @@
     const contentContainer = document.getElementById('contentContainer');  // Reference to the content container
     
 
+
     if (!username) {
         alert('Please enter a username.');
         return;
     }
+
+        // Start the timer
+    let startTime = Date.now();
+    let timerInterval = setInterval(() => {
+        let elapsedTime = ((Date.now() - startTime) / 1000).toFixed(1); // seconds
+        loadingMessage.textContent = `Generating Chess Analytics... Please wait (${elapsedTime} seconds elapsed).`;
+    }, 100); // update every 100 milliseconds
+
 
     // Show the loading message
     loadingMessage.style.display = 'block';
@@ -90,6 +99,7 @@
     })
     .then(response => response.json())
     .then(data => {
+        clearInterval(timerInterval); // Stop the timer
         console.log('Received data:', data); // Log the data to verify if it's correct
         loadingMessage.style.display = 'none';  // Hide loading message
         submitBtn.disabled = false;
@@ -362,6 +372,7 @@ const biggestGamesRow = `
                 }
     })
     .catch(error => {
+        clearInterval(timerInterval); // Stop the timer
         loadingMessage.style.display = 'none';  // Hide loading message
         submitBtn.disabled = false;
 
