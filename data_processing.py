@@ -643,7 +643,6 @@ def clean_dataframe(df, username):
         if time_control_seconds == "Weird" or time_control_seconds == 0:
             print(f"Printing Row: {row['link']} and its time_control {row['time_control']} and also print time_control_seconds {time_control_seconds}")
             return np.nan  # Return NaN for invalid or unrecognized time controls
-        print(f"Printing testing: {row[col_name]}")
         return row[col_name] / time_control_seconds
     
     
