@@ -612,15 +612,25 @@ def clean_dataframe(df, username):
         return "Weird"
 
 
-    # Calculate time-related columns
-    cleaned_df['my_time_left'] = np.where(
-        cleaned_df['my_result'].isin(['timeout', 'timevsinsufficient']), 0, 
-        cleaned_df['my_metamoves'].apply(lambda x: time_string_to_seconds_with_fraction(x[-1][1]) if x and len(x[-1]) > 1 else 0) #account for empty 
+    # Determine who made the last move
+    cleaned_df['last_mover'] = np.where(
+        cleaned_df['my_metamoves'].apply(len) > cleaned_df['opp_metamoves'].apply(len), 
+        'me', 
+        'opponent'
     )
 
+        # Calculate 'my_time_left'
+    cleaned_df['my_time_left'] = np.where(
+        (cleaned_df['my_result'].isin(['timeout']) | ((cleaned_df['my_result'] == 'timevsinsufficient') & (cleaned_df['last_mover'] == 'opponent'))), 
+        0, 
+        cleaned_df.apply(lambda row: time_string_to_seconds_with_fraction(row['my_metamoves'][-1][1]) if (row['my_metamoves'] and len(row['my_metamoves'][-1]) > 1) else convert_time_class_to_seconds(row['time_control']), axis=1)
+    )
+
+    # Calculate 'opp_time_left'
     cleaned_df['opp_time_left'] = np.where(
-        cleaned_df['opp_result'].isin(['timeout', 'timevsinsufficient']), 0, 
-        cleaned_df['opp_metamoves'].apply(lambda x: time_string_to_seconds_with_fraction(x[-1][1]) if x and len(x[-1]) > 1 else 0) #account for empty 
+        (cleaned_df['opp_result'].isin(['timeout']) | ((cleaned_df['opp_result'] == 'timevsinsufficient') & (cleaned_df['last_mover'] == 'me'))), 
+        0, 
+        cleaned_df.apply(lambda row: time_string_to_seconds_with_fraction(row['opp_metamoves'][-1][1]) if (row['opp_metamoves'] and len(row['opp_metamoves'][-1]) > 1) else convert_time_class_to_seconds(row['time_control']), axis=1)
     )
     
     cleaned_df['my_num_moves'] = cleaned_df['my_metamoves'].apply(lambda x: len(x) if x else 0)
@@ -633,7 +643,9 @@ def clean_dataframe(df, username):
         if time_control_seconds == "Weird" or time_control_seconds == 0:
             print(f"Printing Row: {row['link']} and its time_control {row['time_control']} and also print time_control_seconds {time_control_seconds}")
             return np.nan  # Return NaN for invalid or unrecognized time controls
+        print(f"Printing testing: {row[col_name]}")
         return row[col_name] / time_control_seconds
+    
     
     cleaned_df['my_time_left_ratio'] = cleaned_df.apply(
         lambda row: safe_time_left_ratio(row, 'my_time_left'),

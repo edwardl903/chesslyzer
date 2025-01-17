@@ -136,7 +136,7 @@ def top_moves_game(df):
     if longest_game.empty:
         return None  # Just in case no match
     return longest_game.iloc[0]
-
+# most intense game
 def top_least_time_won(df):
     won_games = df[df['my_win_or_lose'] == 'win']
     
@@ -148,6 +148,7 @@ def top_least_time_won(df):
         return None  # Just in case no match
     return game_with_least_time.iloc[0]
 
+# most disappoint game
 def top_least_time_lost(df):
     lost_games = df[df['my_win_or_lose'] == 'lose']
     

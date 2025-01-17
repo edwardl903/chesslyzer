@@ -1,0 +1,184 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/5495297.ecfff5dc.200x200o.58204cbc07f3.png",
+    "my_username": "Wind",
+    "castling_counts": {
+        "kingside": 230,
+        "none": 70,
+        "queenside": 47
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 1.0,
+        "hours": 2.0,
+        "minutes": 7.0,
+        "seconds": 55.0,
+        "total_time": "1 days 2 hours 7 minutes 55 seconds",
+        "total_time_in_days": 1.09,
+        "total_time_in_hours": 26.13,
+        "total_time_in_minutes": 1567.92,
+        "total_time_in_seconds": 94075.0,
+        "percentage_of_year": 0.3
+    },
+    "total_moves": 10698,
+    "total_win_draw_loss": {
+        "lose": 175,
+        "win": 165,
+        "draw": 7
+    },
+    "total_results": {
+        "win": 165,
+        "resigned": 105,
+        "checkmated": 45,
+        "timeout": 25,
+        "repetition": 2,
+        "timevsinsufficient": 2,
+        "stalemate": 1,
+        "agreed": 1,
+        "insufficient": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 36,
+    "total_games": 347,
+    "longest_winning_streak": 9,
+    "longest_losing_streak": 6,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "Mohit_Mod",
+            "1": "sakxxham17",
+            "2": "SMAUGLYS1",
+            "3": "ken_kaniff",
+            "4": "cesart22"
+        },
+        "Games_Played": {
+            "0": 5,
+            "1": 4,
+            "2": 4,
+            "3": 4,
+            "4": 3
+        }
+    },
+    "highest_rating": {
+        "rating": 1589,
+        "time_control": "blitz",
+        "date": "2024.11.01"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.07.06",
+        "time_spent": "0 days 2 hours 7 minutes 45 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Kings-Gambit",
+        "black_opening": "Caro-Kann-Defense"
+    },
+    "timeclass_counts": {
+        "bullet": 171,
+        "blitz": 107,
+        "rapid": 69
+    },
+    "timecontrol_counts": {
+        "Time_Control": {
+            "0": "1m + 0s",
+            "1": "10m + 0s",
+            "2": "3m + 0s",
+            "3": "3m + 2s",
+            "4": "5m + 0s",
+            "5": "3m + 1s",
+            "6": "15m + 10s",
+            "7": "5m + 2s"
+        },
+        "Games_Played": {
+            "0": 171,
+            "1": 58,
+            "2": 55,
+            "3": 22,
+            "4": 17,
+            "5": 11,
+            "6": 11,
+            "7": 2
+        }
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "alexitossv",
+            "opp_rating": 2092,
+            "time_class": "bullet",
+            "date": "2024.07.06",
+            "link": "https://www.chess.com/game/live/114023994743"
+        },
+        "upset": {
+            "opp_username": "chrisccmx",
+            "opp_rating": 702,
+            "time_class": "bullet",
+            "date": "2024.07.06",
+            "link": "https://www.chess.com/game/live/114023397199"
+        },
+        "checkmate": {
+            "opp_username": "KrompirjevKruh",
+            "opp_rating": 1349,
+            "time_class": "bullet",
+            "time_spent": 43,
+            "my_num_moves": 16,
+            "date": "2024.10.01",
+            "link": "https://www.chess.com/game/live/121529395169"
+        },
+        "opponent": {
+            "opp_username": "alexitossv",
+            "opp_rating": 2092,
+            "time_class": "bullet",
+            "date": "2024.07.06",
+            "link": "https://www.chess.com/game/live/114023994743"
+        },
+        "longest": {
+            "opp_username": "Luxman009",
+            "opp_rating": 1460,
+            "time_class": "rapid",
+            "time_spent": 2008,
+            "date": "2024.08.08",
+            "link": "https://www.chess.com/game/live/116839809043"
+        },
+        "moves": {
+            "opp_username": "Dylanjeter",
+            "opp_rating": 1390,
+            "time_class": "rapid",
+            "my_num_moves": 77,
+            "date": "2024.07.11",
+            "link": "https://www.chess.com/game/live/114486011167"
+        },
+        "least_time_won": {
+            "opp_username": "LeonelTT",
+            "opp_rating": 1326,
+            "time_class": "bullet",
+            "my_time_left": 0.8,
+            "date": "2024.07.06",
+            "link": "https://www.chess.com/game/live/114023454007"
+        },
+        "least_time_lost": {
+            "opp_username": "andreassis03",
+            "opp_rating": 1411,
+            "time_class": "bullet",
+            "opp_time_left": 0.8,
+            "date": "2024.11.23",
+            "link": "https://www.chess.com/game/live/126155381697"
+        }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.12.26",
+                "my_rating": 1549
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.09.17",
+                "my_rating": 1518
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2024.11.24",
+                "my_rating": 1402
+            }
+        ]
+    }
+}
