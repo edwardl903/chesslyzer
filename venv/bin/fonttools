@@ -1,4 +1,4 @@
-#!/Users/edwardlai/Desktop/chess_scraper/venv/bin/python
+#!/Users/edwardlai/Desktop/GitHub/chesslyzer/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

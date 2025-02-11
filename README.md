@@ -66,3 +66,4 @@ The index.html file contains the structure and content of the homepage, and it l
 6. **Development**
 jupyter-lab
 Use pip-compile requirements.in to generate the requirements.txt file.
+heroku push origin main

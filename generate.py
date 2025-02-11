@@ -37,7 +37,7 @@ def generate_csv():
         # Call the chesslytics.py script to generate the CSV and images
         print(f"Running testing.py script for username: {username}")  # Debugging statement
         result = subprocess.run(
-            ["python", "testing.py", username],
+            ["python3", "testing.py", username],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
