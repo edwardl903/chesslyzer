@@ -67,3 +67,10 @@ The index.html file contains the structure and content of the homepage, and it l
 jupyter-lab
 Use pip-compile requirements.in to generate the requirements.txt file.
 heroku push origin main
+
+$ heroku login
+$ heroku git:clone -a chesslyzer-app
+$ cd chesslyzer-app    
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku main
