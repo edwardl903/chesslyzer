@@ -99,19 +99,24 @@ def fetch_all_games_for_current_year(username, game_filter=None):
 
     return all_games
 
-def fetch_all_games_for_last_year(username, game_filter=None):
+def fetch_all_games_for_selected_year(username, year, game_filter=None):
     player_data = fetch_player_data(username)
     if not player_data or "joined" not in player_data:
         print("Could not determine player's join date.")
         return []
 
     current_date = datetime.now()
-    last_year = current_date.year - 1
+    # last_year = current_date.year - 1
     all_games = []
-    year = last_year
+    # year = last_year
+    year = int(year)
     month = 1
 
     while month <= 12:
+        if year > current_date.year or (year == current_date.year and month > current_date.month):
+            print(f"Skipping {year}-{month:02d} because it's in the future.")
+            break
+
         games = fetch_monthly_games(username, year, month)
         if games is None:
             print(f"No games found for {username} in {year}-{month:02d}.")
@@ -370,8 +375,12 @@ def adjust_date_for_timezone(cleaned_df, date_col, time_col, threshold="19:00:00
     return cleaned_df
 
     
-def fetch_and_process_game_data(username, engine_path="/opt/homebrew/bin/stockfish"):
-    all_games = fetch_all_games_for_last_year(username) ## change to current year if necessary
+def fetch_and_process_game_data(username, year, engine_path="/opt/homebrew/bin/stockfish"):
+    all_games = []
+    if year == "ALL":
+        all_games = fetch_all_games(username) ## change to current year if necessary
+    else: 
+        all_games = fetch_all_games_for_selected_year(username, year) 
     game_data = []
 
 

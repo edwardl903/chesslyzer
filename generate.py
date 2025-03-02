@@ -24,8 +24,10 @@ def generate_csv():
 
     data = request.json
     username = data['username']
+    year = data['year']
+    print(f"Received year: {year}")
 
-    if not username:
+    if not username: # i dont account for year, should be fine
         return jsonify({'error': 'Username is required'}), 400
 
     try:
@@ -35,9 +37,11 @@ def generate_csv():
             os.remove(file)
 
         # Call the chesslytics.py script to generate the CSV and images
-        print(f"Running testing.py script for username: {username}")  # Debugging statement
+        print(f"Running testing.py script for username: {username} for year: {year}")  # Debugging statement
+
+        
         result = subprocess.run(
-            ["python3", "testing.py", username],
+            ["python3", "testing.py", username, year],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

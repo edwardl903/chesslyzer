@@ -31,7 +31,7 @@
             <!-- Title and Instructions -->
             <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-weight: 700; word-wrap: break-word; margin-top: 16px;">
                 <div style="font-size: 54px; line-height: 54px;"> 
-                    ChessLytics: Chess Wrapped 2024!
+                    ChessLytics: Chess Wrapped!
                 </div>
                 <div style="font-size: 30px; font-weight: 400; line-height: 30px; margin-top: 16px;"> 
                     Enter your Chess.com username:
@@ -43,12 +43,29 @@
                 <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 620px; height: 32px; font-family: 'League Spartan', sans-serif; font-size: 30px; text-align: center; color: #2D6056;">
             </div>
 
+            <!-- Year Dropdown -->
+            <div style="width: 100%; max-width: 180px; padding: 28px; background: #EEEED5; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                <select id="yearSelect" style="width: 100%; max-width: 620px; height: 32px; font-family: 'League Spartan', sans-serif; font-size: 30px; text-align: center; color: #2D6056;">
+                    <option value="2025">2025</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <!-- <option value="ALL">All Time</option> -->
+                    
+
+                    
+                </select>
+            </div>
+
             <!-- Button Section -->
             <div style="width: 100%; max-width: 580px; padding: 28px; border-radius: 10px; border: 5px #EEEED5 solid; display: flex; justify-content: center; align-items: center;">
                 <button id="submitBtn" style="width: 380px; height: 32px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 30px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;">
                     Generate Chess Analytics
                 </button>
             </div>
+
 
             <!-- Loading Message and Result Section -->
             <div id="loadingMessage" style="display: none; font-family: 'League Spartan', sans-serif; font-weight: 700; text-align: center; font-size: 14px; color: white; margin-top: 10px;">
@@ -69,6 +86,7 @@
     <script>
     document.getElementById('submitBtn').addEventListener('click', function() {
     const username = document.getElementById('username').value;
+    const year = document.getElementById('yearSelect').value;  // Get selected year
     const loadingMessage = document.getElementById('loadingMessage');
     const submitBtn = document.getElementById('submitBtn');
     const resultContainer = document.getElementById('result');
@@ -81,6 +99,10 @@
         return;
     }
 
+    if (!year) {
+        alert('Please select a valid year.');
+        return;
+    }
         // Start the timer
     let startTime = Date.now();
     let timerInterval = setInterval(() => {
@@ -103,7 +125,7 @@
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username }),
+        body: JSON.stringify({ username: username, year: year }),
     })
     .then(response => response.json())
     .then(data => {
@@ -157,7 +179,7 @@
                     font-family: 'League Spartan', sans-serif;
                     font-weight: 500;
                     line-height: 100%;
-                ">@${data.my_username}'s 2024 CHESS.COM WRAPPED by Chesslytics.xyz</div>
+                ">@${data.my_username}'s ${year} CHESS.COM WRAPPED by Chesslytics.xyz</div>
  
 
                 <div class="profile-stats-container" style="display: flex; align-items: center; margin-bottom: 20px;">

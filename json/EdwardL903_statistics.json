@@ -2,183 +2,212 @@
     "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/70241824.54e3c371.200x200o.9b2a38ee0471.jpeg",
     "my_username": "EdwardL903",
     "castling_counts": {
-        "kingside": 1012,
-        "none": 151,
-        "queenside": 52
+        "kingside": 13212,
+        "none": 3203,
+        "queenside": 2096
     },
     "total_time_spent": {
         "years": 0.0,
-        "days": 4.0,
-        "hours": 4.0,
-        "minutes": 14.0,
-        "seconds": 7.0,
-        "total_time": "4 days 4 hours 14 minutes 7 seconds",
-        "total_time_in_days": 4.18,
-        "total_time_in_hours": 100.24,
-        "total_time_in_minutes": 6014.12,
-        "total_time_in_seconds": 360847.0,
-        "percentage_of_year": 1.14
+        "days": 62.0,
+        "hours": 16.0,
+        "minutes": 2.0,
+        "seconds": 56.0,
+        "total_time": "62 days 16 hours 2 minutes 56 seconds",
+        "total_time_in_days": 62.67,
+        "total_time_in_hours": 1504.05,
+        "total_time_in_minutes": 90242.93,
+        "total_time_in_seconds": 5414576.0,
+        "percentage_of_year": 17.17
     },
-    "total_moves": 45582,
+    "total_moves": 633034,
     "total_win_draw_loss": {
-        "lose": 588,
-        "win": 550,
-        "draw": 77
+        "win": 9111,
+        "lose": 8406,
+        "draw": 994
     },
     "total_results": {
-        "win": 550,
-        "checkmated": 277,
-        "resigned": 164,
-        "timeout": 101,
-        "abandoned": 46,
-        "repetition": 26,
-        "timevsinsufficient": 20,
-        "stalemate": 13,
-        "insufficient": 11,
-        "agreed": 7
+        "win": 9111,
+        "resigned": 4446,
+        "checkmated": 2737,
+        "timeout": 945,
+        "abandoned": 278,
+        "repetition": 277,
+        "timevsinsufficient": 241,
+        "agreed": 220,
+        "stalemate": 129,
+        "insufficient": 125,
+        "50move": 2
     },
     "total_en_passant": 0,
-    "total_promotions": 98,
-    "total_games": 1215,
-    "longest_winning_streak": 9,
-    "longest_losing_streak": 9,
+    "total_promotions": 2134,
+    "total_games": 18511,
+    "longest_winning_streak": 27,
+    "longest_losing_streak": 11,
     "most_played_opponent": {
         "Opponent": {
-            "0": "nicholasholleran",
-            "1": "MagnusDingus",
-            "2": "Tobi134",
-            "3": "miamidade",
-            "4": "VeryAverageChestPlayer"
+            "0": "emazing19",
+            "1": "ayushzenith",
+            "2": "alexearl",
+            "3": "jcheng426",
+            "4": "wwsamson"
         },
         "Games_Played": {
-            "0": 26,
-            "1": 16,
-            "2": 13,
-            "3": 12,
-            "4": 12
+            "0": 214,
+            "1": 167,
+            "2": 86,
+            "3": 79,
+            "4": 79
         }
     },
     "highest_rating": {
-        "rating": 2083,
+        "rating": 2102,
         "time_control": "rapid",
-        "date": "2024.02.06"
+        "date": "2025.02.07"
     },
     "most_time_spent_day_dict": {
-        "date": "2024.12.18",
-        "time_spent": "0 days 5 hours 35 minutes 38 seconds"
+        "date": "2020.12.19",
+        "time_spent": "3 days 2 hours 53 minutes 26 seconds"
     },
     "my_openings": {
         "white_opening": "Reti-Opening",
         "black_opening": "French-Defense"
     },
     "timeclass_counts": {
-        "blitz": 554,
-        "bullet": 459,
-        "rapid": 202
+        "blitz": 10415,
+        "bullet": 5974,
+        "rapid": 2122
     },
     "timecontrol_counts": {
         "Time_Control": {
             "0": "3m + 0s",
             "1": "1m + 0s",
             "2": "10m + 0s",
-            "3": "5m + 2s",
-            "4": "5m + 0s",
-            "5": "2m + 1s",
-            "6": "15m + 10s",
-            "7": "3m + 2s"
+            "3": "5m + 0s",
+            "4": "2m + 1s",
+            "5": "3m + 2s",
+            "6": "30s + 0s",
+            "7": "15m + 10s",
+            "8": "5m + 2s",
+            "9": "5m + 5s",
+            "10": "30m + 0s",
+            "11": "15m + 0s",
+            "12": "10m + 1s",
+            "13": "10s + 0s",
+            "14": "1m + 1s",
+            "15": "1m + 2s",
+            "16": "20m + 0s",
+            "17": "120m + 0s",
+            "18": "10m + 5s",
+            "19": "45m + 45s",
+            "20": "4m + 0s",
+            "21": "10m + 10s"
         },
         "Games_Played": {
-            "0": 524,
-            "1": 457,
-            "2": 200,
-            "3": 19,
-            "4": 10,
-            "5": 2,
-            "6": 2,
-            "7": 1
+            "0": 9128,
+            "1": 5696,
+            "2": 2737,
+            "3": 248,
+            "4": 162,
+            "5": 145,
+            "6": 93,
+            "7": 82,
+            "8": 68,
+            "9": 58,
+            "10": 34,
+            "11": 18,
+            "12": 12,
+            "13": 11,
+            "14": 10,
+            "15": 2,
+            "16": 2,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1
         }
     },
     "biggest_games": {
         "victory": {
-            "opp_username": "Nekokaburi",
-            "opp_rating": 2002,
+            "opp_username": "SabbeI",
+            "opp_rating": 2456,
             "time_class": "blitz",
-            "date": "2024.01.27",
-            "link": "https://www.chess.com/game/live/100113088453"
+            "date": "2021.05.03",
+            "link": "https://www.chess.com/game/live/13794808437"
         },
         "upset": {
-            "opp_username": "emazing19",
-            "opp_rating": 1136,
-            "time_class": "blitz",
-            "date": "2024.09.12",
-            "link": "https://www.chess.com/game/live/119930390847"
+            "opp_username": "jlee2327",
+            "opp_rating": 451,
+            "time_class": "rapid",
+            "date": "2025.02.01",
+            "link": "https://www.chess.com/game/live/132208826881"
         },
         "checkmate": {
-            "opp_username": "Alexlea444",
-            "opp_rating": 1042,
-            "time_class": "blitz",
-            "time_spent": 14,
+            "opp_username": "chess_man58",
+            "opp_rating": 1751,
+            "time_class": "bullet",
+            "time_spent": 7,
             "my_num_moves": 4,
-            "date": "2024.10.10",
-            "link": "https://www.chess.com/game/live/122342987235"
+            "date": "2022.07.25",
+            "link": "https://www.chess.com/game/live/52515113663"
         },
         "opponent": {
-            "opp_username": "mamangcomansawi",
-            "opp_rating": 2175,
-            "time_class": "rapid",
-            "date": "2024.04.13",
-            "link": "https://www.chess.com/game/live/106804785885"
+            "opp_username": "SabbeI",
+            "opp_rating": 2456,
+            "time_class": "blitz",
+            "date": "2021.05.03",
+            "link": "https://www.chess.com/game/live/13794808437"
         },
         "longest": {
-            "opp_username": "GorchakovIvan",
-            "opp_rating": 2119,
-            "time_class": "rapid",
-            "time_spent": 1237,
-            "date": "2024.08.22",
-            "link": "https://www.chess.com/game/live/118094932691"
+            "opp_username": "Mr_Mulligan",
+            "opp_rating": 691,
+            "time_class": "bullet",
+            "time_spent": 86331,
+            "date": "2020.12.19",
+            "link": "https://www.chess.com/game/live/6010850108"
         },
         "moves": {
-            "opp_username": "JoaoPantaroto",
-            "opp_rating": 1914,
-            "time_class": "blitz",
-            "my_num_moves": 103,
-            "date": "2024.10.28",
-            "link": "https://www.chess.com/game/live/123912612711"
+            "opp_username": "Shatranj_2015",
+            "opp_rating": 2001,
+            "time_class": "rapid",
+            "my_num_moves": 116,
+            "date": "2023.06.22",
+            "link": "https://www.chess.com/game/live/81194008965"
         },
         "least_time_won": {
-            "opp_username": "gttjerusalem",
-            "opp_rating": 1825,
-            "time_class": "bullet",
-            "my_time_left": 0.3,
-            "date": "2024.08.27",
-            "link": "https://www.chess.com/game/live/118558677017"
+            "opp_username": "ackerman347",
+            "opp_rating": 1580,
+            "time_class": "blitz",
+            "my_time_left": 0.1,
+            "date": "2020.09.03",
+            "link": "https://www.chess.com/game/live/5392870558"
         },
         "least_time_lost": {
-            "opp_username": "Stonks11",
-            "opp_rating": 1977,
+            "opp_username": "Ranger9",
+            "opp_rating": 1149,
             "time_class": "bullet",
-            "opp_time_left": 0.2,
-            "date": "2024.05.08",
-            "link": "https://www.chess.com/game/live/108969571717"
+            "opp_time_left": 0.1,
+            "date": "2020.07.21",
+            "link": "https://www.chess.com/game/live/5185030538"
         }
     },
     "last_game_ratings": {
         "blitz": [
             {
-                "date": "2024.12.31",
-                "my_rating": 1902
+                "date": "2025.01.19",
+                "my_rating": 2005
             }
         ],
         "rapid": [
             {
-                "date": "2024.12.27",
-                "my_rating": 1975
+                "date": "2025.02.23",
+                "my_rating": 2102
             }
         ],
         "bullet": [
             {
-                "date": "2024.12.31",
-                "my_rating": 1871
+                "date": "2025.01.13",
+                "my_rating": 1912
             }
         ]
     }

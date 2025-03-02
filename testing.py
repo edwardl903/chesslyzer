@@ -17,7 +17,7 @@ def drop_columns(df):
     return df
     
 
-def main(username):
+def main(username, year):
     print("Chesslyzer booting...!!!")
     
     output_dir = 'static/images/'
@@ -28,7 +28,7 @@ def main(username):
 
     # Time fetch_and_process_game_data function
     start_time = time.time()
-    df = fetch_and_process_game_data(username)
+    df = fetch_and_process_game_data(username, year)
     fetch_process_duration = time.time() - start_time
     print(f"Fetching and processing data took {fetch_process_duration:.2f} seconds")
 
@@ -82,6 +82,7 @@ def main(username):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         username = sys.argv[1]  # Get username from command line arguments
-        main(username)
+        year = sys.argv[2]
+        main(username, year)
     else:
-        print("Usage: python chesslytics.py <username>")
+        print("Usage: python testing.py <username> <year>")
