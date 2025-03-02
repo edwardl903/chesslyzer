@@ -375,77 +375,78 @@ def adjust_date_for_timezone(cleaned_df, date_col, time_col, threshold="19:00:00
     return cleaned_df
 
     
+
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
+
+# Helper function to process a single game
+def process_game(game):
+    if 'pgn' not in game:
+        return None  # Skip invalid games
+    
+    pgn = game['pgn']
+    metadata = extract_pgn_metadata(pgn)
+
+    start_time = metadata.get('StartTime', None)
+    end_time = metadata.get('EndTime', None)
+    
+    # Convert to datetime just once per game
+    start_time_est = pd.to_datetime(convert_to_est(start_time), format='%H:%M:%S')
+    end_time_est = pd.to_datetime(convert_to_est(end_time), format='%H:%M:%S')
+
+    w_metamoves, b_metamoves = extract_moves_and_timestamps(pgn)
+    
+    # Gather the required data
+    data = {
+        'url': game['url'],
+        'pgn': pgn,
+        'moves': extract_moves_from_pgn(pgn),
+        'date': metadata.get('Date', None),
+        'start_time_est': start_time_est,
+        'end_time_est': end_time_est,
+        'time_spent': calculate_time_difference(start_time, end_time),
+        'time_control': format_single_time_control(game['time_control']),
+        'white_username': game['white'].get('username', None),
+        'black_username': game['black'].get('username', None),
+        'white_metamoves': w_metamoves,
+        'black_metamoves': b_metamoves,
+        'link': metadata.get('Link', None),
+        'eco': metadata.get('ECOUrl', None),
+        'time_class': game.get('time_class', None),
+        'game_type': game.get('rules', None),
+        'rated': game.get('rated', None),
+        'tcn': game.get('tcn', None),
+        'uuid': game.get('uuid', None),
+        'initial_setup': game.get('initial_setup', None),
+        'fen': game.get('fen', None),
+        'rules': game.get('rules', None),
+        'white_rating': game['white'].get('rating', None),
+        'white_result': game['white'].get('result', None),
+        'black_rating': game['black'].get('rating', None),
+        'black_result': game['black'].get('result', None),
+    }
+
+    return data
+
+# Main function to fetch and process game data
 def fetch_and_process_game_data(username, year, engine_path="/opt/homebrew/bin/stockfish"):
-    all_games = []
+    # Fetch the game data (bulk request or caching here would speed up further)
     if year == "ALL":
-        all_games = fetch_all_games(username) ## change to current year if necessary
-    else: 
-        all_games = fetch_all_games_for_selected_year(username, year) 
-    game_data = []
+        all_games = fetch_all_games(username)
+    else:
+        all_games = fetch_all_games_for_selected_year(username, year)
 
+    # Process games in parallel using ThreadPoolExecutor
+    with ThreadPoolExecutor() as executor:
+        process_partial = partial(process_game)
+        game_data = list(executor.map(process_partial, all_games))
 
-    for game in all_games:
-
-        if 'pgn' not in game:
-            continue  # Skip this game if 'pgn' is missing (these are bughouse games or weird ass games)
-            
-        pgn = game['pgn']
-
-        time_control = format_single_time_control(game['time_control'])
-        
-        metadata = extract_pgn_metadata(pgn)
-
-        date = metadata.get('Date', None)
-        
-        start_time = metadata.get('StartTime', None)
-        end_time = metadata.get('EndTime', None)
-
-
-        start_time_est = convert_to_est(start_time)
-        end_time_est = convert_to_est(end_time)
-        start_time_est = pd.to_datetime(start_time_est, format='%H:%M:%S')
-        end_time_est = pd.to_datetime(end_time_est, format='%H:%M:%S')
-  
-            
-        link = metadata.get('Link', None)
-        eco = metadata.get('ECOUrl', None)
-        time_spent = calculate_time_difference(start_time, end_time)
-        moves = extract_moves_from_pgn(pgn) 
-        w_metamoves, b_metamoves = extract_moves_and_timestamps(pgn)
-        
-        data = {
-            'url': game['url'],
-            'pgn': pgn,
-            'moves': moves,
-            'date': date,
-            'start_time_est': start_time_est,
-            'end_time_est': end_time_est,
-            'time_spent': time_spent,
-            'link': link,
-            'time_control': time_control,
-            'time_class': game.get('time_class', None),
-            'game_type': game.get('rules', None),
-            'rated': game.get('rated', None),
-            'tcn': game.get('tcn', None),
-            'uuid': game.get('uuid', None),
-            'initial_setup': game.get('initial_setup', None),
-            'fen': game.get('fen', None),
-            'rules': game.get('rules', None),
-            'white_username': game['white'].get('username', None),
-            'white_rating': game['white'].get('rating', None),
-            'white_result': game['white'].get('result', None),
-            'white_metamoves': w_metamoves,
-            'black_username': game['black'].get('username', None),
-            'black_rating': game['black'].get('rating', None),
-            'black_result': game['black'].get('result', None),
-            'black_metamoves': b_metamoves,
-            'eco': eco
-        }
-        game_data.append(data)
+    # Filter out invalid games (None results from process_game)
+    game_data = [data for data in game_data if data is not None]
 
     # Convert the list of dictionaries into a DataFrame
     df = pd.DataFrame(game_data)
-    
+
     return df
 
 

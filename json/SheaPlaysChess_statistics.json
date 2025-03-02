@@ -9,15 +9,15 @@
     "total_time_spent": {
         "years": 0.0,
         "days": 44.0,
-        "hours": 6.0,
-        "minutes": 15.0,
-        "seconds": 44.0,
-        "total_time": "44 days 6 hours 15 minutes 44 seconds",
-        "total_time_in_days": 44.26,
-        "total_time_in_hours": 1062.26,
-        "total_time_in_minutes": 63735.73,
-        "total_time_in_seconds": 3824144.0,
-        "percentage_of_year": 12.13
+        "hours": 2.0,
+        "minutes": 12.0,
+        "seconds": 41.0,
+        "total_time": "44 days 2 hours 12 minutes 41 seconds",
+        "total_time_in_days": 44.09,
+        "total_time_in_hours": 1058.21,
+        "total_time_in_minutes": 63492.68,
+        "total_time_in_seconds": 3809561.0,
+        "percentage_of_year": 12.08
     },
     "total_moves": 234037,
     "total_win_draw_loss": {
@@ -66,7 +66,7 @@
     },
     "most_time_spent_day_dict": {
         "date": "2024.06.16",
-        "time_spent": "0 days 12 hours 33 minutes 55 seconds"
+        "time_spent": "0 days 12 hours 31 minutes 13 seconds"
     },
     "my_openings": {
         "white_opening": "Queens-Gambit",
@@ -120,7 +120,7 @@
             "opp_username": "TheAn0maly",
             "opp_rating": 2103,
             "time_class": "rapid",
-            "time_spent": 8,
+            "time_spent": 10,
             "my_num_moves": 2,
             "date": "2024.03.25",
             "link": "https://www.chess.com/game/live/105128512331"

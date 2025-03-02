@@ -8,16 +8,16 @@
     },
     "total_time_spent": {
         "years": 0.0,
-        "days": 21.0,
-        "hours": 2.0,
-        "minutes": 9.0,
-        "seconds": 56.0,
-        "total_time": "21 days 2 hours 9 minutes 56 seconds",
-        "total_time_in_days": 21.09,
-        "total_time_in_hours": 506.17,
-        "total_time_in_minutes": 30369.93,
-        "total_time_in_seconds": 1822196.0,
-        "percentage_of_year": 5.78
+        "days": 20.0,
+        "hours": 14.0,
+        "minutes": 4.0,
+        "seconds": 16.0,
+        "total_time": "20 days 14 hours 4 minutes 16 seconds",
+        "total_time_in_days": 20.59,
+        "total_time_in_hours": 494.07,
+        "total_time_in_minutes": 29644.27,
+        "total_time_in_seconds": 1778656.0,
+        "percentage_of_year": 5.64
     },
     "total_moves": 330890,
     "total_win_draw_loss": {
@@ -119,13 +119,13 @@
             "link": "https://www.chess.com/game/live/112917586785"
         },
         "checkmate": {
-            "opp_username": "Goi_Manne",
-            "opp_rating": 2469,
+            "opp_username": "microbear",
+            "opp_rating": 2393,
             "time_class": "bullet",
-            "time_spent": 19,
-            "my_num_moves": 10,
-            "date": "2024.01.27",
-            "link": "https://www.chess.com/game/live/100122095751"
+            "time_spent": 17,
+            "my_num_moves": 16,
+            "date": "2024.11.30",
+            "link": "https://www.chess.com/game/live/126731990287"
         },
         "opponent": {
             "opp_username": "DanielNaroditsky",

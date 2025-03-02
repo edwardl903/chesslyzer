@@ -74,3 +74,17 @@ $ cd chesslyzer-app
 $ git add .
 $ git commit -am "make it better"
 $ git push heroku main
+
+7. **My Future Iterations**
+Add Filter Buttons
+
+Create buttons to filter live games and game modes (e.g., Blitz, Rapid, Bullet, Daily).
+Improve Visualization Speed
+
+Speed up visualizations by optimizing SQL queries and loading only necessary data.
+Fix Styles
+
+Update the design to improve the look and feel.
+Make It Mobile-Friendly
+
+Ensure the app works well on mobile devices with responsive design.
