@@ -2,35 +2,35 @@
     "my_avatar": "/static/default-avatar.jpg",
     "my_username": "jlee2327",
     "castling_counts": {
-        "kingside": 79,
-        "none": 29,
-        "queenside": 7
+        "kingside": 86,
+        "none": 32,
+        "queenside": 8
     },
     "total_time_spent": {
         "years": 0.0,
         "days": 0.0,
-        "hours": 20.0,
-        "minutes": 25.0,
-        "seconds": 27.0,
-        "total_time": "0 days 20 hours 25 minutes 27 seconds",
-        "total_time_in_days": 0.85,
-        "total_time_in_hours": 20.42,
-        "total_time_in_minutes": 1225.45,
-        "total_time_in_seconds": 73527.0,
-        "percentage_of_year": 0.23
+        "hours": 22.0,
+        "minutes": 13.0,
+        "seconds": 38.0,
+        "total_time": "0 days 22 hours 13 minutes 38 seconds",
+        "total_time_in_days": 0.93,
+        "total_time_in_hours": 22.23,
+        "total_time_in_minutes": 1333.63,
+        "total_time_in_seconds": 80018.0,
+        "percentage_of_year": 0.25
     },
-    "total_moves": 3589,
+    "total_moves": 3951,
     "total_win_draw_loss": {
-        "win": 53,
-        "lose": 52,
+        "win": 60,
+        "lose": 56,
         "draw": 10
     },
     "total_results": {
-        "win": 53,
-        "checkmated": 32,
-        "timeout": 16,
+        "win": 60,
+        "checkmated": 33,
+        "timeout": 18,
         "stalemate": 5,
-        "abandoned": 3,
+        "abandoned": 4,
         "repetition": 2,
         "insufficient": 1,
         "resigned": 1,
@@ -38,8 +38,8 @@
         "agreed": 1
     },
     "total_en_passant": 0,
-    "total_promotions": 12,
-    "total_games": 115,
+    "total_promotions": 16,
+    "total_games": 126,
     "longest_winning_streak": 5,
     "longest_losing_streak": 6,
     "most_played_opponent": {
@@ -47,8 +47,8 @@
             "0": "brian120488",
             "1": "EdwardL903",
             "2": "sohamkharche6699",
-            "3": "jibikingz",
-            "4": "puppy57845"
+            "3": "drajesh123",
+            "4": "stilltrev"
         },
         "Games_Played": {
             "0": 4,
@@ -72,8 +72,8 @@
         "black_opening": "Sicilian-Defense"
     },
     "timeclass_counts": {
-        "rapid": 101,
-        "blitz": 14
+        "rapid": 106,
+        "blitz": 20
     },
     "timecontrol_counts": {
         "Time_Control": {
@@ -82,8 +82,8 @@
             "2": "3m + 0s"
         },
         "Games_Played": {
-            "0": 101,
-            "1": 8,
+            "0": 106,
+            "1": 14,
             "2": 6
         }
     },
@@ -154,14 +154,14 @@
     "last_game_ratings": {
         "blitz": [
             {
-                "date": "2025.02.11",
-                "my_rating": 215
+                "date": "2025.03.06",
+                "my_rating": 218
             }
         ],
         "rapid": [
             {
-                "date": "2025.03.01",
-                "my_rating": 456
+                "date": "2025.03.06",
+                "my_rating": 472
             }
         ],
         "bullet": [

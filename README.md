@@ -88,3 +88,6 @@ Update the design to improve the look and feel.
 Make It Mobile-Friendly
 
 Ensure the app works well on mobile devices with responsive design.
+
+8. **Working on**
+Changing Index.html and Styles.css right now, incorporating download buttons and fixing image that is being generated

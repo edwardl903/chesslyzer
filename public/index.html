@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChessLytics - Chess Wrapped 2024</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://chesslytics.xyz/"/>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="ChessLytics - Your 2024 Chess Wrapped! Analyze your chess stats, trends, and progress over the year with ChessLytics. Improve your strategy and track your chess journey.">
+    <meta name="keywords" content="Chess, Chess Analytics, Chess Stats, Chess Wrapped 2024, Chess Trends, Chess Strategy, Chess Data, Chess Performance, Chess Improvement, Chess Openings, Chess Endgames, Chess Training, Chess Elo, Chess Online, Chess AI, Chess Visualization, Chess Rating, Chess Coaching, Chess Tactics, Chess Study, Chess Games, Chess Progress, Chess Score, Chess Insights, Chess Matches, Chess Review, Chess Strategies, Chess Opening Preparation, Chess Theory, Chess Puzzle, Chess Calculator, Chess Learning, Chess Tournament, Chess Ranking, Chess Records, Chess Blitz, Chess Bullet, Chess Classical, Chess Novice, Chess Grandmaster, Chess Analysis, Chess Report, Chess Report 2024, Chess Year in Review, Chess Club, Chess Community, Chess Database, Chess Tracking, Chess Competitions, Chess Growth, Chess Improvement Tools, Chess Scoreboard, Chess Practice, Chess Progress Tracker, Chess Game Review, Chess Opening Database, Chess Position Analysis, Chess Win Rate, Chess Mistakes, Chess Training Plan, Chess Move Analysis, Chess Study Plan, Chessboard Insights, Chessboard Visualization, Chess Tactics Trainer, Chess Blunders, Chess Opening Repertoire, Chess Strategies for Beginners, Chess Advanced Strategies, Chess Engine, Chess AI Analysis, Chess Trend Analysis, Chess Rating Graph, Chess Performance Chart">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="ChessLytics - Your 2024 Chess Wrapped | Chess Stats & Analytics">
+    <meta property="og:description" content="Discover your 2024 chess journey with ChessLytics. Track your chess performance, analyze trends, and improve your strategy!">
+    <meta property="og:image" content="https://chesslytics.xyz/static/gift2.png">
+    <meta property="og:url" content="https://chesslytics.xyz/">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BGRZLQTPPR"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -144,6 +162,32 @@
 
     // Create a stats container to display analytics data
     const statsContainer = document.createElement('div');
+
+    
+    function downloadStatsAsImage() {
+        const statsToDownload = statsContainer.querySelector('.stats-container');  // Target inner stats content only
+
+        if (!statsToDownload) {
+            console.error('stats-container not found!');
+            return;
+        }
+
+        html2canvas(statsToDownload, {
+            scale: 2,
+            backgroundColor: getComputedStyle(document.body).backgroundColor  // Keeps background color
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `${data.my_username}_ChessWrapped_${year}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+    const downloadButton = document.createElement('button');
+    downloadButton.innerText = 'Download as Image';
+    downloadButton.onclick = downloadStatsAsImage;
+    // Add class for styling
+    downloadButton.classList.add('download-button');
+
     statsContainer.innerHTML = `
     <div class="stats-container">
         <div class="background-overlay"></div>
@@ -379,7 +423,7 @@ const biggestGamesRow = `
     
 `;
 
-
+    statsContainer.insertBefore(downloadButton, statsContainer.firstChild);
     statsContainer.querySelector('#imagesContainer').insertAdjacentHTML('beforebegin', biggestGamesRow);
     resultContainer.appendChild(statsContainer);
     // Smooth scroll to the stats section
