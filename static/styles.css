@@ -1,0 +1,474 @@
+/* ------------------------
+   Global and Base Styles
+------------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'League Spartan', sans-serif;
+    background-color: #2D6056;
+    background-image: url('/static/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: multiply; /* darker result: fixes the color blending problem */
+}
+
+#background, #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+#overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    
+}
+
+#contentContainer {
+    overflow-y: visible;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* ------------------------
+   Main Entry Section
+------------------------- */
+.main-entry {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+/* ------------------------
+   Stats Section
+------------------------- */
+.stats-container {
+    width: 100%;
+    max-width: 1600px;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+    overflow-x: visible;
+}
+
+.background-overlay, .background-overlay-second {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* ------------------------
+   Row Layouts
+------------------------- */
+.row-0, .row-1, .row-2, .row-3 {
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.row-0 {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.row-1, .row-2 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.row-3 {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+}
+
+/* ------------------------
+   Stat Boxes
+------------------------- */
+.stat-box {
+    padding: 20px;
+    background: #EEEED5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.stat-box.no-bg {
+    background: none;
+    box-shadow: none;
+    align-items: center;
+}
+
+.stat-box.center {
+    text-align: center;
+    align-items: center;
+}
+
+/* ------------------------
+   Text Styling
+------------------------- */
+.stat-title, .stat-value, .stat-details, .stat-opponent, .stat-opening {
+    color: #0A4345;
+    font-family: 'League Spartan', sans-serif;
+    line-height: 100%;
+}
+
+.stat-title {
+    font-size: 18.26px;
+    font-weight: 400;
+}
+
+.stat-title.large {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 32.38px;
+    font-weight: 700;
+}
+
+.stat-details, .stat-opponent, .stat-opening {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* ------------------------
+   Profile Section
+------------------------- */
+.profile-stats-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-stats-container img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Row 0 Custom Layout */
+.row-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1133.87px;
+    height: 115.46px;
+}
+
+/* Header title */
+.stats-header-title {
+    color: #EEEED5;
+    font-size: 40px;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    text-align: center;
+}
+
+/* Profile container (image + ratings) */
+.profile-stats-container-custom {
+    display: flex;
+    align-items: center;
+}
+
+.profile-avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+.profile-ratings-row {
+    display: flex;
+    gap: 35px;
+    flex: 1;
+    margin-bottom: 50px;
+}
+
+.profile-rating-box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Images section */
+#imagesContainerCustom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 100px;
+}
+
+.images-header {
+    color: #EEEED5;
+    font-size: 40px;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    text-align: center;
+}
+
+.images-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    margin: 20px;
+}
+
+/* ------------------------
+   Images Section
+------------------------- */
+#imagesContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 100px 0 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#imagesContainer img {
+    max-width: 100%;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------
+   Download Button
+------------------------- */
+.download-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'League Spartan', sans-serif;
+    margin: 20px 0;
+    align-self: center;
+    position: relative;
+    z-index: 10;
+}
+
+.download-button:hover {
+    background-color: #45a049;
+}
+
+
+/* Section Title */
+.stat-section-header {
+    color: #EEEED5;
+    font-size: 40px;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    text-align: center;
+    margin: 40px 0 20px;
+  }
+  
+  /* Special stat box layout */
+  .stat-box2 {
+    padding: 20px;
+    background: #EEEED5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    box-sizing: border-box;
+  }
+  
+  /* Link inside stat box */
+  .stat-link {
+    color: #1b4e7d;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+  
+  .stat-link:hover {
+    color: #0d365f;
+  }
+  
+  /* Optional: smaller date styling */
+  .stat-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0A4345;
+  }
+
+  
+/* ------------------------
+   Responsive Design
+------------------------- */
+@media (max-width: 768px) {
+    .main-entry, .content-container, .stats-container {
+        padding: 12px;
+    }
+
+    .row-1, .row-2, .row-3 {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .stat-title {
+        font-size: 16px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .stat-details, .stat-opponent, .stat-opening {
+        font-size: 14px;
+    }
+
+    .stat-box {
+        padding: 12px;
+    }
+
+    .profile-stats-container img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .download-button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .row-1, .row-2, .row-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .content-container, .stats-container {
+        padding: 10px;
+    }
+
+    .stat-box {
+        width: 100%;
+    }
+
+    .download-button {
+        width: 100%;
+    }
+}
+
+/* ------------------------
+   Images
+------------------------- */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Navigation Styles */
+.nav-link.active {
+    background-color: rgba(238, 238, 213, 0.2) !important;
+    border: 2px solid #EEEED5 !important;
+}
+
+.nav-link:hover {
+    background-color: rgba(238, 238, 213, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+/* Page Content Styles */
+.page-content {
+    min-height: calc(100vh - 80px);
+    padding-top: 20px;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    #navigation .nav-link {
+        font-size: 14px !important;
+        padding: 8px 10px !important;
+    }
+    
+    #navigation {
+        padding: 10px 0 !important;
+    }
+    
+    #navigation > div {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    #contentContainer {
+        margin-top: 120px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #navigation .nav-link {
+        font-size: 12px !important;
+        padding: 6px 8px !important;
+    }
+    
+    #navigation span {
+        font-size: 20px !important;
+    }
+    
+    #navigation img {
+        height: 30px !important;
+    }
+}

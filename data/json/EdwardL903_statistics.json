@@ -1,0 +1,181 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/70241824.54e3c371.200x200o.9b2a38ee0471.jpeg",
+    "my_username": "EdwardL903",
+    "castling_counts": {
+        "kingside": 413,
+        "none": 48,
+        "queenside": 20
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 2.0,
+        "hours": 11.0,
+        "minutes": 28.0,
+        "seconds": 59.0,
+        "total_time": "2 days 11 hours 28 minutes 59 seconds",
+        "total_time_in_days": 2.48,
+        "total_time_in_hours": 59.48,
+        "total_time_in_minutes": 3568.98,
+        "total_time_in_seconds": 214139.0,
+        "percentage_of_year": 0.68
+    },
+    "total_moves": 18638,
+    "total_win_draw_loss": {
+        "win": 230,
+        "lose": 224,
+        "draw": 27
+    },
+    "total_results": {
+        "win": 230,
+        "checkmated": 100,
+        "resigned": 93,
+        "abandoned": 17,
+        "timeout": 14,
+        "repetition": 10,
+        "stalemate": 5,
+        "agreed": 5,
+        "timevsinsufficient": 4,
+        "insufficient": 3
+    },
+    "total_en_passant": 0,
+    "total_promotions": 72,
+    "total_games": 481,
+    "longest_winning_streak": 6,
+    "longest_losing_streak": 7,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "tegranjeet",
+            "1": "Shawn16665",
+            "2": "SantoshBagga",
+            "3": "Auspqr",
+            "4": "Ekun_udu"
+        },
+        "Games_Played": {
+            "0": 13,
+            "1": 9,
+            "2": 7,
+            "3": 7,
+            "4": 6
+        }
+    },
+    "highest_rating": {
+        "rating": 2203,
+        "time_control": "rapid",
+        "date": "2025.06.07"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2025.05.11",
+        "time_spent": "0 days 8 hours 25 minutes 38 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Ponziani-Opening",
+        "black_opening": "French-Defense"
+    },
+    "timeclass_counts": {
+        "blitz": 237,
+        "rapid": 192,
+        "bullet": 52
+    },
+    "timecontrol_counts": {
+        "Time_Control": {
+            "0": "3m + 0s",
+            "1": "10m + 0s",
+            "2": "1m + 0s",
+            "3": "3m + 2s",
+            "4": "5m + 0s",
+            "5": "15m + 10s"
+        },
+        "Games_Played": {
+            "0": 230,
+            "1": 191,
+            "2": 52,
+            "3": 4,
+            "4": 3,
+            "5": 1
+        }
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "Shawn16665",
+            "opp_rating": 2110,
+            "time_class": "blitz",
+            "date": "2025.01.11",
+            "link": "https://www.chess.com/game/live/130388399619"
+        },
+        "upset": {
+            "opp_username": "jlee2327",
+            "opp_rating": 451,
+            "time_class": "rapid",
+            "date": "2025.02.01",
+            "link": "https://www.chess.com/game/live/132208826881"
+        },
+        "checkmate": {
+            "opp_username": "Pravin_Chess7",
+            "opp_rating": 2040,
+            "time_class": "blitz",
+            "time_spent": 35,
+            "my_num_moves": 8,
+            "date": "2025.03.06",
+            "link": "https://www.chess.com/game/live/123595418038"
+        },
+        "opponent": {
+            "opp_username": "HassanTavakoli99",
+            "opp_rating": 2276,
+            "time_class": "rapid",
+            "date": "2025.05.11",
+            "link": "https://www.chess.com/game/live/138360453166"
+        },
+        "longest": {
+            "opp_username": "Fredeid",
+            "opp_rating": 1907,
+            "time_class": "rapid",
+            "time_spent": 2830,
+            "date": "2025.03.08",
+            "link": "https://www.chess.com/game/live/136029587318"
+        },
+        "moves": {
+            "opp_username": "AlphawomanA",
+            "opp_rating": 2180,
+            "time_class": "rapid",
+            "my_num_moves": 132,
+            "date": "2025.05.13",
+            "link": "https://www.chess.com/game/live/138426427214"
+        },
+        "least_time_won": {
+            "opp_username": "lvanoss",
+            "opp_rating": 1895,
+            "time_class": "bullet",
+            "my_time_left": 1.8,
+            "date": "2025.01.08",
+            "link": "https://www.chess.com/game/live/130134583069"
+        },
+        "least_time_lost": {
+            "opp_username": "CLLAlan",
+            "opp_rating": 2046,
+            "time_class": "blitz",
+            "opp_time_left": 0.5,
+            "date": "2025.03.07",
+            "link": "https://www.chess.com/game/live/136024885126"
+        }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2025.06.18",
+                "my_rating": 1863
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2025.06.08",
+                "my_rating": 2203
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2025.05.06",
+                "my_rating": 1884
+            }
+        ]
+    }
+}

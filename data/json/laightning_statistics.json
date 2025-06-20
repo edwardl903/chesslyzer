@@ -1,0 +1,182 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/168281579.1d5caa71.200x200o.543d87a7dfc6.jpeg",
+    "my_username": "Laightning",
+    "castling_counts": {
+        "kingside": 553,
+        "none": 131,
+        "queenside": 57
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 5.0,
+        "hours": 7.0,
+        "minutes": 56.0,
+        "seconds": 40.0,
+        "total_time": "5 days 7 hours 56 minutes 40 seconds",
+        "total_time_in_days": 5.33,
+        "total_time_in_hours": 127.94,
+        "total_time_in_minutes": 7676.67,
+        "total_time_in_seconds": 460600.0,
+        "percentage_of_year": 1.46
+    },
+    "total_moves": 22587,
+    "total_win_draw_loss": {
+        "win": 381,
+        "lose": 342,
+        "draw": 18
+    },
+    "total_results": {
+        "win": 381,
+        "resigned": 229,
+        "checkmated": 94,
+        "timeout": 12,
+        "repetition": 9,
+        "abandoned": 7,
+        "timevsinsufficient": 4,
+        "stalemate": 3,
+        "agreed": 2
+    },
+    "total_en_passant": 0,
+    "total_promotions": 59,
+    "total_games": 741,
+    "longest_winning_streak": 8,
+    "longest_losing_streak": 9,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "krenzar",
+            "1": "kanguluri",
+            "2": "LarryDavidson66",
+            "3": "valya2018",
+            "4": "Antonnio7"
+        },
+        "Games_Played": {
+            "0": 4,
+            "1": 2,
+            "2": 2,
+            "3": 2,
+            "4": 2
+        }
+    },
+    "highest_rating": {
+        "rating": 1720,
+        "time_control": "rapid",
+        "date": "2024.12.02"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2024.11.28",
+        "time_spent": "0 days 7 hours 26 minutes 42 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Italian-Game",
+        "black_opening": "Sicilian-Defense"
+    },
+    "timeclass_counts": {
+        "rapid": 639,
+        "blitz": 72,
+        "bullet": 30
+    },
+    "timecontrol_counts": {
+        "Time_Control": {
+            "0": "10m + 0s",
+            "1": "15m + 10s",
+            "2": "3m + 0s",
+            "3": "1m + 0s",
+            "4": "5m + 0s",
+            "5": "3m + 2s",
+            "6": "10m + 5s"
+        },
+        "Games_Played": {
+            "0": 531,
+            "1": 107,
+            "2": 49,
+            "3": 30,
+            "4": 16,
+            "5": 7,
+            "6": 1
+        }
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "krenzar",
+            "opp_rating": 1496,
+            "time_class": "rapid",
+            "date": "2024.08.21",
+            "link": "https://www.chess.com/game/live/118003160213"
+        },
+        "upset": {
+            "opp_username": "leobear666",
+            "opp_rating": 1168,
+            "time_class": "rapid",
+            "date": "2024.09.13",
+            "link": "https://www.chess.com/game/live/119989825617"
+        },
+        "checkmate": {
+            "opp_username": "Totte_W",
+            "opp_rating": 1123,
+            "time_class": "bullet",
+            "time_spent": 28,
+            "my_num_moves": 11,
+            "date": "2024.11.25",
+            "link": "https://www.chess.com/game/live/126314375651"
+        },
+        "opponent": {
+            "opp_username": "shedshell",
+            "opp_rating": 1741,
+            "time_class": "rapid",
+            "date": "2024.11.30",
+            "link": "https://www.chess.com/game/live/126745191451"
+        },
+        "longest": {
+            "opp_username": "vaio217",
+            "opp_rating": 1527,
+            "time_class": "rapid",
+            "time_spent": 2914,
+            "date": "2024.12.27",
+            "link": "https://www.chess.com/game/live/129093803361"
+        },
+        "moves": {
+            "opp_username": "akmaurya999",
+            "opp_rating": 1695,
+            "time_class": "rapid",
+            "my_num_moves": 96,
+            "date": "2024.12.02",
+            "link": "https://www.chess.com/game/live/126910246145"
+        },
+        "least_time_won": {
+            "opp_username": "RamizLek",
+            "opp_rating": 1352,
+            "time_class": "rapid",
+            "my_time_left": 0.6,
+            "date": "2024.08.11",
+            "link": "https://www.chess.com/game/live/117145778869"
+        },
+        "least_time_lost": {
+            "opp_username": "1Google5pixel",
+            "opp_rating": 1270,
+            "time_class": "bullet",
+            "opp_time_left": 0.1,
+            "date": "2024.11.25",
+            "link": "https://www.chess.com/game/live/126314324585"
+        }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2024.12.27",
+                "my_rating": 1208
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2024.12.27",
+                "my_rating": 1573
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2024.11.25",
+                "my_rating": 1190
+            }
+        ]
+    }
+}

@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessLytics - Chess Wrapped 2024</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://chesslytics.xyz/"/>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NRDNJMZR');</script>
+    <!-- End Google Tag Manager -->
+        
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Looker Studio Embedding - No SDK needed, using iframe with URL parameters -->
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="ChessLytics - Your 2024 Chess Wrapped! Analyze your chess stats, trends, and progress over the year with ChessLytics. Improve your strategy and track your chess journey.">
+    <meta name="keywords" content="Chess, Chess Analytics, Chess Stats, Chess Wrapped 2024, Chess Trends, Chess Strategy, Chess Data, Chess Performance, Chess Improvement, Chess Openings, Chess Endgames, Chess Training, Chess Elo, Chess Online, Chess AI, Chess Visualization, Chess Rating, Chess Coaching, Chess Tactics, Chess Study, Chess Games, Chess Progress, Chess Score, Chess Insights, Chess Matches, Chess Review, Chess Strategies, Chess Opening Preparation, Chess Theory, Chess Puzzle, Chess Calculator, Chess Learning, Chess Tournament, Chess Ranking, Chess Records, Chess Blitz, Chess Bullet, Chess Classical, Chess Novice, Chess Grandmaster, Chess Analysis, Chess Report, Chess Report 2024, Chess Year in Review, Chess Club, Chess Community, Chess Database, Chess Tracking, Chess Competitions, Chess Growth, Chess Improvement Tools, Chess Scoreboard, Chess Practice, Chess Progress Tracker, Chess Game Review, Chess Opening Database, Chess Position Analysis, Chess Win Rate, Chess Mistakes, Chess Training Plan, Chess Move Analysis, Chess Study Plan, Chessboard Insights, Chessboard Visualization, Chess Tactics Trainer, Chess Blunders, Chess Opening Repertoire, Chess Strategies for Beginners, Chess Advanced Strategies, Chess Engine, Chess AI Analysis, Chess Trend Analysis, Chess Rating Graph, Chess Performance Chart">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="ChessLytics - Your 2024 Chess Wrapped | Chess Stats & Analytics">
+    <meta property="og:description" content="Discover your 2024 chess journey with ChessLytics. Track your chess performance, analyze trends, and improve your strategy!">
+    <meta property="og:image" content="https://chesslytics.xyz/static/gift2.png">
+    <meta property="og:url" content="https://chesslytics.xyz/">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRDNJMZR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Background and Overlay -->
+    <div id="background"></div>
+    <div id="overlay"></div>
+
+    <!-- Navigation Bar -->
+    <nav id="navigation" style="position: fixed; top: 0; left: 0; right: 0; background: rgba(45, 96, 86, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; border-bottom: 2px solid #EEEED5;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+            <!-- Logo/Brand -->
+            <div style="display: flex; align-items: center;">
+                <img src="/static/gift2.png" alt="ChessLytics" style="height: 40px; margin-right: 15px;">
+                <span style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 24px;">ChessLytics</span>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div style="display: flex; gap: 30px;">
+                <a href="#home" class="nav-link active" data-page="home" style="color: #EEEED5; text-decoration: none; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 16px; padding: 10px 15px; border-radius: 5px; transition: all 0.3s ease;">Year in Review</a>
+                <a href="#opening-analyzer" class="nav-link" data-page="opening-analyzer" style="color: #EEEED5; text-decoration: none; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 16px; padding: 10px 15px; border-radius: 5px; transition: all 0.3s ease;">Opening Analyzer</a>
+                <a href="#progress-tracker" class="nav-link" data-page="progress-tracker" style="color: #EEEED5; text-decoration: none; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 16px; padding: 10px 15px; border-radius: 5px; transition: all 0.3s ease;">Progress Tracker</a>
+                <a href="#game-analyzer" class="nav-link" data-page="game-analyzer" style="color: #EEEED5; text-decoration: none; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 16px; padding: 10px 15px; border-radius: 5px; transition: all 0.3s ease;">Game Analyzer</a>
+                <a href="#about" class="nav-link" data-page="about" style="color: #EEEED5; text-decoration: none; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 16px; padding: 10px 15px; border-radius: 5px; transition: all 0.3s ease;">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <div id="contentContainer" style="margin-top: 80px;">
+        <!-- Home Page (Year in Review) -->
+        <div id="home-page" class="page-content active">
+            <div class="main-entry">
+                <!-- Image Above Title -->
+                <img src="/static/gift2.png" alt="Chess Image" style="max-width: 120px; margin-bottom: -25px;">
+                
+                <!-- Title and Instructions -->
+                <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-weight: 700; word-wrap: break-word; margin-top: 12px;">
+                    <div style="font-size: 36px; line-height: 36px;"> 
+                        ChessLytics: Chess Wrapped!
+                    </div>
+                    <div style="font-size: 20px; font-weight: 400; line-height: 20px; margin-top: 12px;"> 
+                        Enter your Chess.com username:
+                    </div>
+                </div>
+
+                <!-- Input Section -->
+                <div style="width: 100%; max-width: 400px; padding: 20px; background: #EEEED5; border-radius: 8px; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                    <input type="text" id="username" name="username" placeholder="e.g. EdwardL903" required style="width: 100%; max-width: 400px; height: 28px; font-family: 'League Spartan', sans-serif; font-size: 20px; text-align: center; color: #2D6056;">
+                </div>
+
+                <!-- Year Dropdown -->
+                <div style="width: 100%; max-width: 120px; padding: 20px; background: #EEEED5; border-radius: 8px; display: flex; justify-content: center; align-items: center; margin-top: 15px;">
+                    <select id="yearSelect" style="width: 100%; max-width: 120px; height: 28px; font-family: 'League Spartan', sans-serif; font-size: 20px; text-align: center; color: #2D6056;">
+                        <option value="2025">2025</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+
+                <!-- Button Section -->
+                <div style="width: 100%; max-width: 400px; padding: 20px; border-radius: 8px; border: 3px #EEEED5 solid; display: flex; justify-content: center; align-items: center; margin-top: 15px;">
+                    <button id="submitBtn" style="width: 280px; height: 28px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 20px; text-align: center; color: #EEEED5; background: transparent; border: none; cursor: pointer;">
+                        Generate Chess Analytics
+                    </button>
+                </div>
+
+                <!-- Loading Message and Result Section -->
+                <div id="loadingMessage" style="display: none; font-family: 'League Spartan', sans-serif; font-weight: 700; text-align: center; font-size: 12px; color: white; margin-top: 8px;">
+                    Generating Chess Analytics... Please wait
+                </div>
+                <div class="result" id="result" style="display: none; margin-top: 20px; text-align: center; width: 100%; z-index: 10;">
+                    <!-- Dynamic Results Populated Here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Opening Analyzer Page -->
+        <div id="opening-analyzer-page" class="page-content" style="display: none;">
+            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; padding: 50px 20px;">
+                <h1 style="font-size: 48px; margin-bottom: 30px;">Opening Analyzer</h1>
+                <p style="font-size: 20px; margin-bottom: 40px;">Analyze your opening performance and discover your strengths and weaknesses</p>
+                <div style="background: rgba(238, 238, 213, 0.1); padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 18px; color: #EEEED5;">Coming Soon! This feature will allow you to:</p>
+                    <ul style="text-align: left; font-size: 16px; margin-top: 20px;">
+                        <li>Analyze your win rates with different openings</li>
+                        <li>Compare performance as White vs Black</li>
+                        <li>Track opening trends over time</li>
+                        <li>Get personalized opening recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tracker Page -->
+        <div id="progress-tracker-page" class="page-content" style="display: none;">
+            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; padding: 50px 20px;">
+                <h1 style="font-size: 48px; margin-bottom: 30px;">Progress Tracker</h1>
+                <p style="font-size: 20px; margin-bottom: 40px;">Track your chess improvement over time with detailed analytics</p>
+                <div style="background: rgba(238, 238, 213, 0.1); padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 18px; color: #EEEED5;">Coming Soon! This feature will include:</p>
+                    <ul style="text-align: left; font-size: 16px; margin-top: 20px;">
+                        <li>Rating progression charts</li>
+                        <li>Performance metrics over time</li>
+                        <li>Goal setting and tracking</li>
+                        <li>Improvement recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Analyzer Page -->
+        <div id="game-analyzer-page" class="page-content" style="display: none;">
+            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; padding: 50px 20px;">
+                <h1 style="font-size: 48px; margin-bottom: 30px;">Game Analyzer</h1>
+                <p style="font-size: 20px; margin-bottom: 40px;">Deep dive into individual games with advanced analysis</p>
+                <div style="background: rgba(238, 238, 213, 0.1); padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 18px; color: #EEEED5;">Coming Soon! This feature will provide:</p>
+                    <ul style="text-align: left; font-size: 16px; margin-top: 20px;">
+                        <li>Move-by-move analysis</li>
+                        <li>Blunder detection</li>
+                        <li>Position evaluation</li>
+                        <li>Game replay with annotations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page-content" style="display: none;">
+            <div style="text-align: center; color: #EEEED5; font-family: 'League Spartan', sans-serif; padding: 50px 20px;">
+                <h1 style="font-size: 48px; margin-bottom: 30px;">About ChessLytics</h1>
+                <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                    <p style="font-size: 18px; margin-bottom: 20px; line-height: 1.6;">
+                        ChessLytics is your comprehensive chess analytics platform designed to help you understand and improve your chess game. 
+                        Whether you're a beginner looking to track your progress or an advanced player seeking detailed insights, 
+                        our tools provide the data you need to elevate your chess performance.
+                    </p>
+                    <p style="font-size: 18px; margin-bottom: 20px; line-height: 1.6;">
+                        Our platform analyzes your Chess.com games to provide personalized insights, track your improvement over time, 
+                        and help you identify areas for growth. From opening analysis to endgame patterns, 
+                        ChessLytics gives you the competitive edge you need.
+                    </p>
+                    <div style="background: rgba(238, 238, 213, 0.1); padding: 30px; border-radius: 10px; margin-top: 30px;">
+                        <h3 style="font-size: 24px; margin-bottom: 20px; text-align: center;">Features</h3>
+                        <ul style="font-size: 16px; line-height: 1.8;">
+                            <li><strong>Year in Review:</strong> Get your personalized chess wrapped with comprehensive yearly statistics</li>
+                            <li><strong>Opening Analyzer:</strong> Analyze your opening performance and discover patterns</li>
+                            <li><strong>Progress Tracker:</strong> Monitor your improvement over time with detailed metrics</li>
+                            <li><strong>Game Analyzer:</strong> Deep dive into individual games with advanced analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer style="color: #EEEED5; text-align: center; padding-top: 160px; font-family: 'League Spartan', sans-serif;">
+            <p>&copy; 2025 Edward Lai and Emai Lai. All rights reserved.</p>
+            <p>Developed by Edward Lai | Designed by Emai Lai</p>
+            <p>Contact us via Email: <a href="mailto:EdwardL9039@gmail.com" style="color: #EEEED5; text-decoration: none;">EdwardL9039@gmail.com</a> or on Chess.com: <a href="https://www.chess.com/member/EdwardL903" style="color: #EEEED5; text-decoration: none;">@EdwardL903</a></p>
+        </footer>
+    </div>
+
+    <script>
+    // Navigation functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContents = document.querySelectorAll('.page-content');
+
+        // Add click event listeners to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all page contents
+                pageContents.forEach(page => {
+                    page.style.display = 'none';
+                });
+                
+                // Show the target page
+                const targetPage = this.getAttribute('data-page');
+                const targetPageElement = document.getElementById(targetPage + '-page');
+                if (targetPageElement) {
+                    targetPageElement.style.display = 'block';
+                }
+            });
+        });
+
+        // Add hover effects to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(238, 238, 213, 0.2)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.backgroundColor = 'transparent';
+                }
+            });
+        });
+    });
+
+    // Original form submission code
+    document.getElementById('submitBtn').addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    const year = document.getElementById('yearSelect').value;  // Get selected year
+    const loadingMessage = document.getElementById('loadingMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const resultContainer = document.getElementById('result');
+    const contentContainer = document.getElementById('contentContainer');  // Reference to the content container
+    
+    if (!username) {
+        alert('Please enter a username.');
+        return;
+    }
+
+    if (!year) {
+        alert('Please select a valid year.');
+        return;
+    }
+        // Start the timer
+    let startTime = Date.now();
+    let timerInterval = setInterval(() => {
+        let elapsedTime = ((Date.now() - startTime) / 1000).toFixed(1); // seconds
+        loadingMessage.textContent = `Generating Chess Analytics... Please wait (${elapsedTime} seconds elapsed).`;
+    }, 100); // update every 100 milliseconds
+
+
+    // Show the loading message
+    loadingMessage.style.display = 'block';
+    submitBtn.disabled = true;
+
+    // Clear the result container and hide it initially
+    resultContainer.innerHTML = '';
+    resultContainer.style.display = 'none';
+
+    // Fetch data from the backend
+    fetch('http://127.0.0.1:5000/generate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: username, year: year }),
+    })
+    .then(response => {
+        console.log('DEBUG: Response status:', response.status);
+        console.log('DEBUG: Response ok:', response.ok);
+        return response.json();
+    })
+    .then(data => {
+        console.log('DEBUG: Got data from response');
+        clearInterval(timerInterval);
+        console.log('Received data:', data); // Log the data to verify if it's correct
+        loadingMessage.style.display = 'none';  // Hide loading message
+        submitBtn.disabled = false;
+        
+        // Debug: Check what we received
+        console.log('DEBUG: Data keys:', Object.keys(data));
+        console.log('DEBUG: total_time_spent value:', data.total_time_spent);
+        console.log('DEBUG: Data type:', typeof data.total_time_spent);
+
+        if (data.total_time_spent && data.total_time_spent.days !== undefined) {
+            console.log('DEBUG: Condition passed, showing results');
+            console.log('DEBUG: About to show result container');
+    // Show the result container
+    console.log(data); // Check the structure of 'data'
+
+    resultContainer.style.display = 'block';
+    console.log('DEBUG: Result container displayed');
+    
+
+    // Create a stats container to display analytics data
+    const statsContainer = document.createElement('div');
+    console.log('DEBUG: Created stats container');
+
+    function waitForImage(img) {
+        return new Promise((resolve) => {
+            if (!img) return resolve(); // fallback
+            if (img.complete) return resolve(); // already cached
+            img.onload = resolve;
+            img.onerror = resolve; // still resolve even if broken
+        });
+    }
+    const profileImg = statsContainer.querySelector('.profile-avatar');
+    const avatarImageReady = waitForImage(profileImg);
+    console.log('DEBUG: Set up image waiting');
+
+    
+    function triggerDownload() {
+    const container = statsContainer.querySelector('.stats-container');
+    
+    // Save original styles
+    const originalStyles = {
+        width: container.style.width,
+        maxWidth: container.style.maxWidth,
+        margin: container.style.margin,
+        transform: container.style.transform,
+        position: container.style.position
+    };
+
+    // Set optimal styles for capture
+    container.style.width = '1200px'; // Fixed width for consistency
+    container.style.maxWidth = 'none';
+    container.style.margin = '0';
+    container.style.transform = 'none';
+    container.style.position = 'relative';
+
+    html2canvas(container, {
+        scale: 2, // Higher resolution
+        useCORS: true, // Enable cross-origin image loading
+        allowTaint: true, // Allow cross-origin images
+        backgroundColor: getComputedStyle(document.body).backgroundColor,
+        logging: true, // Help debug issues
+        onclone: (clonedDoc) => {
+            // Fix any dynamic content in the clone
+            const clonedContainer = clonedDoc.querySelector('.stats-container');
+            // Ensure all images are loaded
+            const images = clonedContainer.getElementsByTagName('img');
+            return Promise.all(Array.from(images).map(img => {
+                return new Promise((resolve) => {
+                    if (img.complete) {
+                        resolve();
+                    } else {
+                        img.onload = resolve;
+                        img.onerror = resolve;
+                    }
+                });
+            }));
+        }
+    }).then(canvas => {
+        // Create high-quality PNG
+        const link = document.createElement('a');
+        link.download = `${data.my_username}_ChessWrapped_${year}.png`;
+        link.href = canvas.toDataURL('image/png', 1.0);
+        link.click();
+
+        // Restore original styles
+        Object.assign(container.style, originalStyles);
+    }).catch(err => {
+        console.error('Screenshot failed:', err);
+        // Restore original styles even if failed
+        Object.assign(container.style, originalStyles);
+    });
+}
+    const downloadButton = document.createElement('button');
+    downloadButton.innerText = 'Download as Image';
+    downloadButton.onclick = async () => {
+        console.log('⏳ Waiting for avatar to load...');
+        await avatarImageReady;
+        console.log('✅ Avatar loaded, triggering download...');
+        triggerDownload();
+    };
+
+    downloadButton.classList.add('download-button');
+
+    const shareButton = document.createElement('button');
+    shareButton.innerText = 'Share';
+    shareButton.classList.add('share-button');
+    shareButton.onclick = async () => {
+        const container = statsContainer.querySelector('.stats-container');
+        
+        try {
+            // Set up styles for capture
+            const originalStyles = {
+                width: container.style.width,
+                maxWidth: container.style.maxWidth,
+                margin: container.style.margin,
+                transform: container.style.transform,
+                position: container.style.position
+            };
+
+            container.style.width = '1200px';
+            container.style.maxWidth = 'none';
+            container.style.margin = '0';
+            container.style.transform = 'none';
+            container.style.position = 'relative';
+
+            // Wait for images to load
+            const images = container.getElementsByTagName('img');
+            await Promise.all(Array.from(images).map(img => {
+                if (img.complete) return Promise.resolve();
+                return new Promise((resolve) => {
+                    img.onload = resolve;
+                    img.onerror = resolve;
+                });
+            }));
+
+            // Create canvas and get image data
+            const canvas = await html2canvas(container, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: getComputedStyle(document.body).backgroundColor,
+                logging: true
+            });
+
+            // Convert canvas to blob
+            canvas.toBlob(async (blob) => {
+                try {
+                    // Try to use the native share API if available
+                    if (navigator.share) {
+                        const file = new File([blob], `${data.my_username}_ChessWrapped_${year}.png`, { type: 'image/png' });
+                        await navigator.share({
+                            title: `${data.my_username}'s Chess Wrapped ${year}`,
+                            text: 'Check out my Chess.com stats for the year!',
+                            files: [file]
+                        });
+                    } else {
+                        // Fallback to clipboard
+                        const data = [new ClipboardItem({ 'image/png': blob })];
+                        await navigator.clipboard.write(data);
+                        alert('Screenshot copied to clipboard! You can now paste it anywhere.');
+                    }
+                } catch (err) {
+                    console.error('Share failed:', err);
+                    alert('Could not share the image. Try using the download button instead.');
+                }
+
+                // Restore original styles
+                Object.assign(container.style, originalStyles);
+            }, 'image/png', 1.0);
+
+        } catch (err) {
+            console.error('Screenshot failed:', err);
+            alert('Could not create shareable image. Try using the download button instead.');
+            Object.assign(container.style, originalStyles);
+        }
+    };
+
+    // Create button container for layout
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.gap = '10px';
+    buttonContainer.style.justifyContent = 'center';
+    buttonContainer.style.marginBottom = '20px';
+
+    // Add styles for buttons
+    const buttonStyles = `
+        <style>
+            .button-container button {
+                padding: 10px 20px;
+                font-family: 'League Spartan', sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .download-button {
+                background-color: #2D6056;
+                color: #EEEED5;
+            }
+            .share-button {
+                background-color: #EEEED5;
+                color: #2D6056;
+            }
+            .button-container button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            
+            /* Enhanced styles for special game highlights */
+            .stat-box2 {
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                transform: perspective(1000px) rotateX(0deg);
+                backface-visibility: hidden;
+            }
+            
+            .stat-box2:hover {
+                transform: perspective(1000px) rotateX(5deg) translateY(-8px) scale(1.02);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.4) !important;
+                z-index: 10;
+            }
+            
+            .stat-box2:hover .stat-title {
+                transform: scale(1.05);
+                transition: transform 0.3s ease;
+            }
+            
+            .stat-box2:hover .stat-opponent {
+                transform: scale(1.02);
+                transition: transform 0.3s ease;
+            }
+            
+            .stat-link {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .stat-link::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: left 0.5s ease;
+            }
+            
+            .stat-link:hover::before {
+                left: 100%;
+            }
+            
+            .stat-link:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+            
+            /* Animated icons */
+            .stat-box2:hover div[style*="position: absolute"] {
+                animation: bounce 0.6s ease;
+            }
+            
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-10px);
+                }
+                60% {
+                    transform: translateY(-5px);
+                }
+            }
+            
+            /* Glowing effect for the header */
+            .stat-section-header {
+                animation: glow 2s ease-in-out infinite alternate;
+            }
+            
+            @keyframes glow {
+                from {
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                }
+                to {
+                    box-shadow: 0 4px 25px rgba(45, 96, 86, 0.4), 0 0 30px rgba(45, 96, 86, 0.2);
+                }
+            }
+            
+            /* Responsive design for mobile */
+            @media (max-width: 768px) {
+                .stat-box2 {
+                    margin-bottom: 15px;
+                }
+                
+                .stat-box2:hover {
+                    transform: translateY(-4px) scale(1.01);
+                }
+                
+                .stat-section-header {
+                    font-size: 20px !important;
+                    padding: 12px !important;
+                }
+            }
+        </style>
+    `;
+
+    // Add styles to head
+    document.head.insertAdjacentHTML('beforeend', buttonStyles);
+
+    // Add buttons to container
+    buttonContainer.appendChild(downloadButton);
+    buttonContainer.appendChild(shareButton);
+
+    console.log('DEBUG: About to set innerHTML');
+    statsContainer.innerHTML = `
+  <div class="stats-container">
+    <div class="background-overlay"></div>
+    <div class="background-overlay-second"></div>
+      <!-- Profile Header -->
+      <div class="row row-0 row-profile">
+        <div class="stat-box no-bg center">
+          <div class="stat-title stats-header-title">@${data.my_username}'s ${year} CHESS.COM WRAPPED</div>
+          <div class="profile-stats-container profile-stats-container-custom">
+            <img class="profile-avatar" src="${data.my_avatar}" alt="${data.my_username}'s avatar">
+            <div class="row profile-ratings-row">
+              <div class="stat-box profile-rating-box">
+                <div class="stat-title">BULLET</div>
+                <div class="stat-value">${data.last_game_ratings.bullet[0].my_rating}</div>
+              </div>
+              <div class="stat-box profile-rating-box">
+                <div class="stat-title">BLITZ</div>
+                <div class="stat-value">${data.last_game_ratings.blitz[0].my_rating}</div>
+              </div>
+              <div class="stat-box profile-rating-box">
+                <div class="stat-title">RAPID</div>
+                <div class="stat-value">${data.last_game_ratings.rapid[0].my_rating}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Row 1: Summary Stats -->
+      <div class="row row-1">
+        <div class="stat-box">
+          <div class="stat-title">TOTAL GAMES</div>
+          <div class="stat-value">${data.total_games}</div>
+          <div class="stat-details">${data.total_win_draw_loss.win} wins / ${data.total_win_draw_loss.draw} draws / ${data.total_win_draw_loss.lose} losses</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">MINUTES PLAYED</div>
+          <div class="stat-value">${data.total_time_spent.total_time_in_minutes.toFixed(2)}</div>
+          <div class="stat-details">that's ${data.total_time_spent.total_time}!</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">YOUR HIGHEST RATING</div>
+          <div class="stat-value">${data.highest_rating.rating}</div>
+          <div class="stat-details">in ${data.highest_rating.time_control} chess, on ${data.highest_rating.date}</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Opponents and Openings -->
+      <div class="row row-2">
+        <div class="stat-box">
+          <div class="stat-title">MOST PLAYED OPPONENTS</div>
+          <div class="stat-opponent">@${data.most_played_opponent.Opponent["0"]} (${data.most_played_opponent.Games_Played["0"]} games)</div>
+          <div class="stat-opponent">@${data.most_played_opponent.Opponent["1"]} (${data.most_played_opponent.Games_Played["1"]} games)</div>
+          <div class="stat-opponent">@${data.most_played_opponent.Opponent["2"]} (${data.most_played_opponent.Games_Played["2"]} games)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">MOST PLAYED OPENINGS</div>
+          <div class="stat-opening">White Opening: ${data.my_openings.white_opening}</div>
+          <div class="stat-opening">Black Opening: ${data.my_openings.black_opening}</div>
+        </div>
+      </div>
+
+      <!-- Row 3: Advanced Stats -->
+      <div class="row row-3">
+        <div class="stat-box">
+          <div class="stat-title">FAVORITE TIME CONTROL</div>
+          <div class="stat-value">${data.timecontrol_counts.Time_Control["0"]}</div>
+          <div class="stat-details">(${data.timecontrol_counts.Games_Played["0"]} games)</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-title">LONGEST WINNING STREAK</div>
+          <div class="stat-value">${data.longest_winning_streak}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">LONGEST LOSING STREAK</div>
+          <div class="stat-value">${data.longest_losing_streak}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">MOST HOURS PLAYED IN ONE DAY</div>
+          <div class="stat-details">${data.most_time_spent_day_dict.date}: ${data.most_time_spent_day_dict.time_spent}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive visualizations
+    <div id="lookerEmbedContainer" style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(45, 96, 86, 0.1) 0%, rgba(74, 124, 89, 0.1) 100%); border: 2px solid #EEEED5; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); backdrop-filter: blur(10px);">
+        <div class="stat-title" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); padding: 15px; border-radius: 10px; margin-bottom: 25px; text-align: center; font-size: 24px; color: #EEEED5; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-family: 'League Spartan', sans-serif; font-weight: 700;">
+            📊 INTERACTIVE CHESS VISUALIZATIONS 📊
+        </div>
+        <div style="text-align: center; padding: 60px 20px; color: #EEEED5; font-family: 'League Spartan', sans-serif;">
+            <div style="font-size: 48px; margin-bottom: 20px;">🎯</div>
+            <div style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">Your Personalized Dashboard</div>
+            <div style="font-size: 16px; opacity: 0.8; margin-bottom: 30px;">
+                A custom interactive dashboard will be generated for you below with your personal chess analytics!
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; border: 1px dashed rgba(255, 255, 255, 0.3);">
+                <div style="font-size: 14px; opacity: 0.7;">
+                    🔄 Generating your personalized dashboard...
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+  </div>
+`;
+
+    console.log('DEBUG: innerHTML set successfully');
+
+    const biggestGamesRow = `
+  <div class="stat-title stat-section-header" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); padding: 15px; border-radius: 10px; margin: 30px 0 20px 0; text-align: center; font-size: 24px; color: #EEEED5; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+    🏆 SPECIAL GAME HIGHLIGHTS 🏆
+  </div>
+
+  <!-- Row 1 -->
+  <div class="row row-2" style="margin-bottom: 20px;">
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.9) 0%, rgba(74, 124, 89, 0.9) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">🥇</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">BIGGEST VICTORY</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.victory.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.victory.opp_rating} | ${data.biggest_games.victory.time_class}</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.victory.date}</div>
+      <a href="${data.biggest_games.victory.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">🎯 View Game</a>
+    </div>
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.8) 0%, rgba(74, 124, 89, 0.8) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">😱</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">BIGGEST UPSET</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.upset.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.upset.opp_rating} | ${data.biggest_games.upset.time_class}</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.upset.date}</div>
+      <a href="${data.biggest_games.upset.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">⚡ View Game</a>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="row row-2" style="margin-bottom: 20px;">
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.7) 0%, rgba(74, 124, 89, 0.7) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">⚔️</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">QUICKEST CHECKMATE</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.checkmate.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.checkmate.opp_rating} | ${data.biggest_games.checkmate.time_class}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">⏱️ ${data.biggest_games.checkmate.time_spent}s | 🎯 ${data.biggest_games.checkmate.my_num_moves} moves</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.checkmate.date}</div>
+      <a href="${data.biggest_games.checkmate.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">🗡️ View Game</a>
+    </div>
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.6) 0%, rgba(74, 124, 89, 0.6) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">👑</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">HIGHEST RATED OPPONENT</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.opponent.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.opponent.opp_rating} | ${data.biggest_games.opponent.time_class}</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.opponent.date}</div>
+      <a href="${data.biggest_games.opponent.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">👑 View Game</a>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="row row-2" style="margin-bottom: 20px;">
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.5) 0%, rgba(74, 124, 89, 0.5) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">⏰</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">LONGEST GAME</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.longest.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.longest.opp_rating} | ${data.biggest_games.longest.time_class}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">⏱️ ${data.biggest_games.longest.time_spent} seconds</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.longest.date}</div>
+      <a href="${data.biggest_games.longest.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">⏰ View Game</a>
+    </div>
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.4) 0%, rgba(74, 124, 89, 0.4) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">🎲</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">MOST MOVES GAME</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.moves.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.moves.opp_rating} | ${data.biggest_games.moves.time_class}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">🎯 ${data.biggest_games.moves.my_num_moves} moves</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.moves.date}</div>
+      <a href="${data.biggest_games.moves.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">🎲 View Game</a>
+    </div>
+  </div>
+
+  <!-- Row 4 -->
+  <div class="row row-2" style="margin-bottom: 20px;">
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.3) 0%, rgba(74, 124, 89, 0.3) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">🔥</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">MOST INTENSE GAME</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.least_time_won.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.least_time_won.opp_rating} | ${data.biggest_games.least_time_won.time_class}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">⏱️ ${data.biggest_games.least_time_won.my_time_left}s left</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.least_time_won.date}</div>
+      <a href="${data.biggest_games.least_time_won.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">🔥 View Game</a>
+    </div>
+    <div class="stat-box2" style="background: linear-gradient(135deg, rgba(45, 96, 86, 0.2) 0%, rgba(74, 124, 89, 0.2) 100%); border: 2px solid #EEEED5; box-shadow: 0 6px 20px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 24px;">😔</div>
+      <div class="stat-title" style="color: #EEEED5; font-size: 18px; font-weight: 700; margin-bottom: 10px;">MOST DISAPPOINTING GAME</div>
+      <div class="stat-opponent" style="font-size: 16px; font-weight: 600; color: #EEEED5; margin-bottom: 8px;">@${data.biggest_games.least_time_lost.opp_username}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">Rating: ${data.biggest_games.least_time_lost.opp_rating} | ${data.biggest_games.least_time_lost.time_class}</div>
+      <div class="stat-details" style="font-size: 14px; color: #EEEED5; margin-bottom: 6px;">⏱️ ${data.biggest_games.least_time_lost.opp_time_left}s left</div>
+      <div class="stat-date" style="font-size: 12px; color: #EEEED5; margin-bottom: 10px;">${data.biggest_games.least_time_lost.date}</div>
+      <a href="${data.biggest_games.least_time_lost.link}" target="_blank" class="stat-link" style="background: #EEEED5; color: #2D6056; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">😔 View Game</a>
+    </div>
+  </div>
+`;
+
+    statsContainer.insertBefore(downloadButton, statsContainer.firstChild);
+    statsContainer.insertBefore(shareButton, statsContainer.firstChild);
+    console.log('DEBUG: Buttons inserted');
+    
+    // Add biggest games row directly to stats container
+    console.log('DEBUG: Adding biggest games row');
+    statsContainer.insertAdjacentHTML('beforeend', biggestGamesRow);
+    console.log('DEBUG: Biggest games row added successfully');
+    
+    // Add personalized dashboard if available
+    console.log('DEBUG: Checking for personalized_dashboard_url');
+    console.log('DEBUG: data.personalized_dashboard_url =', data.personalized_dashboard_url);
+    console.log('DEBUG: data.embed_config =', data.embed_config);
+    
+    if (data.personalized_dashboard_url || data.embed_config) {
+        console.log('DEBUG: Adding personalized dashboard');
+        const personalizedDashboardSection = createPersonalizedDashboardSection(data.personalized_dashboard_url, data.embed_config);
+        statsContainer.appendChild(personalizedDashboardSection);
+        console.log('DEBUG: Personalized dashboard added successfully');
+    } else {
+        console.log('DEBUG: No personalized dashboard data found in response');
+    }
+    
+    console.log('DEBUG: About to append statsContainer to resultContainer');
+    resultContainer.appendChild(statsContainer);
+    console.log('DEBUG: statsContainer appended successfully');
+    
+    // Smooth scroll to the stats section
+    statsContainer.scrollIntoView({ behavior: 'smooth' });
+    console.log('DEBUG: Scrolled to stats section');
+
+        } else if (data.error) {
+            // Handle the error message
+            resultContainer.innerHTML = `
+                <p class="error">${data.error}</p>
+            `;
+            resultContainer.style.display = 'block';  // Show the result container even for error
+        }
+    })
+    .catch(error => {
+        clearInterval(timerInterval); // Stop the timer
+        loadingMessage.style.display = 'none';  // Hide loading message
+        submitBtn.disabled = false;
+
+        // Show error in the result container
+        resultContainer.style.display = 'block';
+        resultContainer.innerHTML = `
+            <p class="error">Failed to fetch the data. Please try again later.</p>
+        `;
+    });
+
+    document.getElementById('username').value = '';
+});
+
+// Function to create personalized dashboard section
+function createPersonalizedDashboardSection(dashboardUrl, embedConfig) {
+    const dashboardContainer = document.createElement('div');
+    dashboardContainer.style.cssText = `
+        margin-top: 40px; 
+        padding: 30px; 
+        background: linear-gradient(135deg, rgba(45, 96, 86, 0.15) 0%, rgba(74, 124, 89, 0.15) 100%); 
+        border: 2px solid #EEEED5; 
+        border-radius: 15px; 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2); 
+        backdrop-filter: blur(10px);
+    `;
+    
+    // Check if dashboard URL is properly configured
+    const isPlaceholderUrl = dashboardUrl.includes('YOUR_DASHBOARD_ID') || dashboardUrl.includes('placeholder');
+    
+    if (isPlaceholderUrl) {
+        // Show "Coming Soon" message
+        dashboardContainer.innerHTML = `
+            <div class="stat-title" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); padding: 15px; border-radius: 10px; margin-bottom: 25px; text-align: center; font-size: 24px; color: #EEEED5; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-family: 'League Spartan', sans-serif; font-weight: 700;">
+                🎯 YOUR PERSONALIZED CHESS DASHBOARD 🎯
+            </div>
+            
+            <!-- Coming Soon Section -->
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: 20px; text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 20px;">🚀</div>
+                <h3 style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 24px; margin-bottom: 15px;">Interactive Analytics Dashboard Coming Soon!</h3>
+                <p style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 16px; margin-bottom: 25px; opacity: 0.9;">
+                    We're building a powerful interactive dashboard powered by BigQuery and Looker Studio.<br>
+                    Your chess data is being uploaded to the cloud for real-time analytics!
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px;">
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="font-size: 24px; margin-bottom: 8px;">📊</div>
+                        <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Real-time Analytics</div>
+                        <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Live data from BigQuery</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🎯</div>
+                        <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Interactive Charts</div>
+                        <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Dynamic visualizations</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
+                        <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Personalized Insights</div>
+                        <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Tailored to your data</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: rgba(45, 96, 86, 0.2); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <p style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; margin-bottom: 10px;">
+                        <strong>What's Coming:</strong>
+                    </p>
+                    <ul style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; text-align: left; margin: 0; padding-left: 20px;">
+                        <li>📈 Rating progression charts over time</li>
+                        <li>🎯 Win/loss analysis and patterns</li>
+                        <li>🎨 Opening performance insights</li>
+                        <li>⏱️ Time control preferences</li>
+                        <li>🔥 Performance heatmaps and trends</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; opacity: 0.8;">
+                🔥 Your data is being uploaded to BigQuery for real-time analytics! 🔥
+            </div>
+        `;
+    } else {
+        // Show actual dashboard with Embed SDK
+        dashboardContainer.innerHTML = `
+            <div class="stat-title" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); padding: 15px; border-radius: 10px; margin-bottom: 25px; text-align: center; font-size: 24px; color: #EEEED5; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-family: 'League Spartan', sans-serif; font-weight: 700;">
+                🎯 YOUR PERSONALIZED CHESS DASHBOARD 🎯
+            </div>
+            
+            <!-- Looker Embed SDK Dashboard -->
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: 20px;">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <h3 style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 18px; margin-bottom: 10px;">📊 Interactive Analytics Dashboard</h3>
+                    <p style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; opacity: 0.8;">Real-time data from BigQuery with personalized insights</p>
+                </div>
+                
+                <!-- Embed SDK container -->
+                <div id="lookerEmbedContainer" style="position: relative; width: 100%; height: 600px; border-radius: 10px; overflow: hidden; background: #1a1a1a;">
+                    <!-- Loading overlay -->
+                    <div id="dashboardLoading" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(26, 26, 26, 0.9); display: flex; align-items: center; justify-content: center; z-index: 10;">
+                        <div style="text-align: center; color: #EEEED5;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🔄</div>
+                            <div style="font-family: 'League Spartan', sans-serif; font-size: 16px;">Loading your personalized dashboard...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dashboard controls -->
+                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px;">
+                    <button onclick="refreshEmbedDashboard()" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); color: #EEEED5; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'League Spartan', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        🔄 Refresh Dashboard
+                    </button>
+                    <button onclick="openEmbedFullscreen()" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); color: #EEEED5; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'League Spartan', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        🔍 Fullscreen
+                    </button>
+                    <button onclick="exportDashboard()" style="background: linear-gradient(135deg, #2D6056 0%, #4A7C59 100%); color: #EEEED5; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'League Spartan', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        📊 Export Data
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Dashboard Features -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div style="font-size: 20px; margin-bottom: 8px;">📈</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Rating Progression</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Track your rating over time</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div style="font-size: 20px; margin-bottom: 8px;">🎯</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Game Analysis</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Win/loss patterns and trends</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div style="font-size: 20px; margin-bottom: 8px;">🎨</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Opening Insights</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Your most successful openings</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div style="font-size: 20px; margin-bottom: 8px;">⏱️</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; font-weight: 600;">Time Control</div>
+                    <div style="color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 12px; opacity: 0.8;">Performance by game type</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; color: #EEEED5; font-family: 'League Spartan', sans-serif; font-size: 14px; opacity: 0.8;">
+                🔥 Powered by BigQuery & Looker Studio - Real-time personalized analytics! 🔥
+            </div>
+        `;
+        
+        // Store the dashboard URL for later use
+        window.currentDashboardUrl = dashboardUrl;
+        
+        // Initialize Looker Studio embedding
+        initializeLookerEmbed(dashboardUrl, embedConfig);
+    }
+    
+    return dashboardContainer;
+}
+
+// Function to refresh the dashboard
+function refreshEmbedDashboard() {
+    const loading = document.getElementById('dashboardLoading');
+    
+    if (loading) {
+        loading.style.display = 'flex';
+    }
+    
+    if (window.currentDashboardUrl) {
+        // Refresh by reloading the iframe with a timestamp
+        const refreshUrl = window.currentDashboardUrl + (window.currentDashboardUrl.includes('?') ? '&' : '?') + '_t=' + Date.now();
+        fallbackToIframe(refreshUrl);
+        
+        // Hide loading after refresh
+        setTimeout(() => {
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }, 3000);
+    }
+}
+
+// Function to open dashboard in fullscreen
+function openEmbedFullscreen() {
+    const container = document.getElementById('lookerEmbedContainer');
+    if (container) {
+        if (container.requestFullscreen) {
+            container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+            container.webkitRequestFullscreen();
+        } else if (container.msRequestFullscreen) {
+            container.msRequestFullscreen();
+        }
+    }
+}
+
+// Function to export the dashboard
+function exportDashboard() {
+    const container = document.getElementById('lookerEmbedContainer');
+    if (container) {
+        container.exportData();
+    }
+}
+
+// Global variable to store the embed instance
+let lookerEmbedInstance = null;
+
+// Function to initialize Looker Studio embedding
+function initializeLookerEmbed(dashboardUrl, embedConfig) {
+    try {
+        console.log('Initializing Looker Studio embedding...');
+        
+        // Build the dashboard URL with filters
+        let finalDashboardUrl = dashboardUrl;
+        
+        if (embedConfig && embedConfig.filters) {
+            // Use embed config to build URL with parameters
+            const filters = embedConfig.filters;
+            const dashboardId = embedConfig.dashboard_id || 'dbe35905-fe7a-4971-a502-0e0e5fbe7a3d';
+            
+            // Build URL with parameters for Looker Studio
+            finalDashboardUrl = `https://lookerstudio.google.com/embed/reporting/${dashboardId}`;
+            
+            // Add filters as URL parameters
+            if (filters.username_year) {
+                finalDashboardUrl += `?user_filter=${encodeURIComponent(filters.username_year)}`;
+            }
+            
+            console.log('Using embed config to build URL:', finalDashboardUrl);
+        } else if (dashboardUrl) {
+            // Use the provided dashboard URL
+            finalDashboardUrl = dashboardUrl;
+            console.log('Using provided dashboard URL:', finalDashboardUrl);
+        }
+        
+        // Store the URL for refresh functionality
+        window.currentDashboardUrl = finalDashboardUrl;
+        
+        // Use iframe embedding (this is the correct approach for Looker Studio)
+        fallbackToIframe(finalDashboardUrl);
+        
+    } catch (error) {
+        console.error('Error initializing Looker Studio embedding:', error);
+        fallbackToIframe(dashboardUrl);
+    }
+}
+
+// Fallback function to use iframe if embed SDK fails
+function fallbackToIframe(dashboardUrl) {
+    const container = document.getElementById('lookerEmbedContainer');
+    const loading = document.getElementById('dashboardLoading');
+    
+    if (container) {
+        container.innerHTML = `
+            <iframe 
+                src="${dashboardUrl}"
+                style="width: 100%; height: 100%; border: none; border-radius: 10px;"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        `;
+        
+        // Hide loading after iframe loads
+        const iframe = container.querySelector('iframe');
+        if (iframe) {
+            iframe.onload = function() {
+                if (loading) {
+                    loading.style.display = 'none';
+                }
+            };
+        }
+        
+        // Hide loading after 5 seconds as fallback
+        setTimeout(() => {
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }, 5000);
+    }
+}
+
+// Function to refresh the embed dashboard
+function refreshEmbedDashboard() {
+    const loading = document.getElementById('dashboardLoading');
+    
+    if (loading) {
+        loading.style.display = 'flex';
+    }
+    
+    if (lookerEmbedInstance) {
+        // Refresh the embed
+        lookerEmbedInstance.refresh();
+        
+        // Hide loading after refresh
+        setTimeout(() => {
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }, 3000);
+    } else if (window.currentDashboardUrl) {
+        // Fallback to iframe refresh
+        const refreshUrl = window.currentDashboardUrl + (window.currentDashboardUrl.includes('?') ? '&' : '?') + '_t=' + Date.now();
+        fallbackToIframe(refreshUrl);
+    }
+}
+
+// Function to open embed in fullscreen
+function openEmbedFullscreen() {
+    const container = document.getElementById('lookerEmbedContainer');
+    if (container) {
+        if (container.requestFullscreen) {
+            container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+            container.webkitRequestFullscreen();
+        } else if (container.msRequestFullscreen) {
+            container.msRequestFullscreen();
+        }
+    }
+}
+
+// Function to export dashboard data
+function exportDashboard() {
+    if (lookerEmbedInstance) {
+        // Use embed SDK export functionality
+        lookerEmbedInstance.exportData()
+            .then(function(data) {
+                console.log('Dashboard data exported:', data);
+                // You can implement custom export logic here
+            })
+            .catch(function(error) {
+                console.error('Export failed:', error);
+            });
+    } else {
+        // Fallback: open dashboard in new tab for manual export
+        if (window.currentDashboardUrl) {
+            window.open(window.currentDashboardUrl, '_blank');
+        }
+    }
+}
+
+    </script>
+
+</body>
+</html>

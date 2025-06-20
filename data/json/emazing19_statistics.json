@@ -1,0 +1,173 @@
+{
+    "my_avatar": "https://images.chesscomfiles.com/uploads/v1/user/83570436.f6a6042b.200x200o.d9720715bf41.jpeg",
+    "my_username": "emazing19",
+    "castling_counts": {
+        "none": 174,
+        "kingside": 109,
+        "queenside": 70
+    },
+    "total_time_spent": {
+        "years": 0.0,
+        "days": 1.0,
+        "hours": 2.0,
+        "minutes": 17.0,
+        "seconds": 26.0,
+        "total_time": "1 days 2 hours 17 minutes 26 seconds",
+        "total_time_in_days": 1.1,
+        "total_time_in_hours": 26.29,
+        "total_time_in_minutes": 1577.43,
+        "total_time_in_seconds": 94646.0,
+        "percentage_of_year": 0.3
+    },
+    "total_moves": 12499,
+    "total_win_draw_loss": {
+        "win": 170,
+        "lose": 166,
+        "draw": 17
+    },
+    "total_results": {
+        "win": 170,
+        "checkmated": 97,
+        "timeout": 63,
+        "timevsinsufficient": 7,
+        "resigned": 6,
+        "repetition": 5,
+        "stalemate": 4,
+        "insufficient": 1
+    },
+    "total_en_passant": 0,
+    "total_promotions": 8,
+    "total_games": 353,
+    "longest_winning_streak": 6,
+    "longest_losing_streak": 8,
+    "most_played_opponent": {
+        "Opponent": {
+            "0": "csababoroczky",
+            "1": "LordSlowhand",
+            "2": "Seabelle",
+            "3": "Dinkin-Flicka",
+            "4": "pansionturudic"
+        },
+        "Games_Played": {
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "3": 2,
+            "4": 1
+        }
+    },
+    "highest_rating": {
+        "rating": 1406,
+        "time_control": "rapid",
+        "date": "2025.01.15"
+    },
+    "most_time_spent_day_dict": {
+        "date": "2025.02.10",
+        "time_spent": "0 days 1 hours 37 minutes 32 seconds"
+    },
+    "my_openings": {
+        "white_opening": "Queens-Pawn-Opening",
+        "black_opening": "Scandinavian-Defense"
+    },
+    "timeclass_counts": {
+        "bullet": 232,
+        "blitz": 63,
+        "rapid": 58
+    },
+    "timecontrol_counts": {
+        "Time_Control": {
+            "0": "1m + 0s",
+            "1": "3m + 0s",
+            "2": "10m + 0s"
+        },
+        "Games_Played": {
+            "0": 232,
+            "1": 63,
+            "2": 58
+        }
+    },
+    "biggest_games": {
+        "victory": {
+            "opp_username": "LaynerSavi",
+            "opp_rating": 1452,
+            "time_class": "bullet",
+            "date": "2025.01.15",
+            "link": "https://www.chess.com/game/live/130657219819"
+        },
+        "upset": {
+            "opp_username": "selchuqirm",
+            "opp_rating": 1099,
+            "time_class": "blitz",
+            "date": "2025.06.05",
+            "link": "https://www.chess.com/game/live/139267096908"
+        },
+        "checkmate": {
+            "opp_username": "LaynerSavi",
+            "opp_rating": 1452,
+            "time_class": "bullet",
+            "time_spent": 26,
+            "my_num_moves": 14,
+            "date": "2025.01.15",
+            "link": "https://www.chess.com/game/live/130657219819"
+        },
+        "opponent": {
+            "opp_username": "LaynerSavi",
+            "opp_rating": 1452,
+            "time_class": "bullet",
+            "date": "2025.01.15",
+            "link": "https://www.chess.com/game/live/130657219819"
+        },
+        "longest": {
+            "opp_username": "benmessaoudm",
+            "opp_rating": 1423,
+            "time_class": "rapid",
+            "time_spent": 1233,
+            "date": "2025.02.08",
+            "link": "https://www.chess.com/game/live/132766189921"
+        },
+        "moves": {
+            "opp_username": "MannyManson",
+            "opp_rating": 1408,
+            "time_class": "rapid",
+            "my_num_moves": 70,
+            "date": "2025.03.02",
+            "link": "https://www.chess.com/game/live/123463007040"
+        },
+        "least_time_won": {
+            "opp_username": "LordSlowhand",
+            "opp_rating": 1282,
+            "time_class": "bullet",
+            "my_time_left": 0.2,
+            "date": "2025.02.28",
+            "link": "https://www.chess.com/game/live/123409533748"
+        },
+        "least_time_lost": {
+            "opp_username": "benrous",
+            "opp_rating": 1309,
+            "time_class": "bullet",
+            "opp_time_left": 0.1,
+            "date": "2025.03.02",
+            "link": "https://www.chess.com/game/live/123477162894"
+        }
+    },
+    "last_game_ratings": {
+        "blitz": [
+            {
+                "date": "2025.06.12",
+                "my_rating": 1148
+            }
+        ],
+        "rapid": [
+            {
+                "date": "2025.06.10",
+                "my_rating": 1367
+            }
+        ],
+        "bullet": [
+            {
+                "date": "2025.06.05",
+                "my_rating": 1284
+            }
+        ]
+    }
+}
